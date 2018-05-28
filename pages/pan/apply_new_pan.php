@@ -33,39 +33,39 @@
                   <div class="form-group">
                      <label>Application type :</label>
                      <select id="application_type" name="application_type" class="form-control">
-                        <option value="">Select</option>
-                        <option value="NEW_APPLICATION">New Application</option>
-                        <option value="CORRECTION_CHANGE">Correction/Change</option>
+                        <option value="" selected="selected">Select</option>
+                        <option value="New Application">New Application</option>
+                        <option value="Correction/Change">Correction/Change</option>
                      </select>
                   </div>
                   <div class="form-group">
                      <label>Category of Applicant :</label>
                      <select class="form-control" id="applicant_category" name="applicant_category">
-                        <option>Select</option>
-                        <option>Individual</option>
+                        <option value="" selected="selected">Select</option>
+                        <option value="Individual">Individual</option>
                      </select>
                   </div>
                   <div class="form-group">
                      <label>Applicant's title :</label>
                      <select class="form-control" id="applicant_title" name="applicant_title">
-                        <option>Select</option>
-                        <option>Shri</option>
-                        <option>Smt/Mrs</option>
-                        <option>Kumari/Ms</option>
-                        <option>M/s</option>
+                        <option value="" selected="selected">Select</option>
+                        <option value="Shri">Shri</option>
+                        <option value="Smt/Mrs">Smt/Mrs</option>
+                        <option value="Kumari/Ms">Kumari/Ms</option>
+                        <option value="M/s">M/s</option>
                      </select>
                   </div>
                   <div class="form-group">
                      <label>Applicant Name :</label>
                      <div class="row">
                         <div class="col-4">
-                           <input type="text" id="applicant_first_name" name="applicant_first_name" class="form-control" placeholder="First Name">
+                           <input type="text" id="applicant_fname" name="applicant_fname" class="form-control" placeholder="First Name">
                         </div>
                         <div class="col-4">
-                           <input type="text" id="applicant_middle_name" name="applicant_middle_name" class="form-control" placeholder="Middle Name">
+                           <input type="text" id="applicant_mname" name="applicant_mname" class="form-control" placeholder="Middle Name">
                         </div>
                         <div class="col-4">
-                           <input type="text" id="applicant_last_name" name="applicant_last_name" class="form-control" placeholder="Last Name">
+                           <input type="text" id="applicant_lname" name="applicant_lname" class="form-control" placeholder="Last Name">
                         </div>
                      </div>
                   </div>
@@ -82,10 +82,11 @@
  include '../footer_imports.php';
 ?>
 <script type="text/javascript">
-   $(function () {
+  $(function () {
      //Datemask dd/mm/yyyy
-     $('#date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-   })
+     $('#date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+
+  });
 </script>
 <?php 
  include '../footer.php';
