@@ -36,5 +36,10 @@
   <!-- /.content-wrapper -->
 
   <?php 
+    include '../footer_imports.php';
+  ?>  
+  <script type="text/javascript">
+  </script>
+  <?php 
     include '../footer.php';
   ?>
