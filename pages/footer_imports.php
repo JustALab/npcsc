@@ -34,3 +34,5 @@
     <script src="<?php echo HOMEURL; ?>/assets/dist/js/adminlte.min.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo HOMEURL; ?>/assets/dist/js/demo.js"></script>
+    <!-- jQuery Validate -->
+    <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery-validate/jquery.validate.js"></script>
