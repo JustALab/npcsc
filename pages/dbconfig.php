@@ -2,7 +2,7 @@
 ///if(!defined('TIMEZONE'))
 	//define('TIMEZONE', 'America/Toronto');
 if(!defined('HOMEURL'))
-	define('HOMEURL', 'http://localhost:8888/narpavicsc');
+	define('HOMEURL', 'http://localhost:8888/npcsc');
 
 //date_default_timezone_set(TIMEZONE);
 // This file establishes a connection to MySQL 
