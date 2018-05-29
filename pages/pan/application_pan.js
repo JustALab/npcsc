@@ -1,3 +1,5 @@
+var servicesUrl = 'http://localhost:8888/npcsc/services/';
+
 (function($) {
   $.fn.serializefiles = function() {
       var obj = $(this);
@@ -61,7 +63,7 @@ function signatureUpload() {
 				var image = new Image();
 				image.src = e.target.result;
 				image.onload = function () {
-					var size = document.getElementById('sig').files[0].size / 1024;
+					var size = sig.files[0].size / 1024;
 					if (size <= 9) {
 						sigSize = true;
 					} else {
@@ -106,15 +108,17 @@ function documentUpload() {
 
 function processPan(){
 	var $panForm = $('#pan_application_form');
-	if($panForm.valid()){
+	var isValid = $panForm.valid();
+	if(true){
 		confirmProcessPan($panForm);
 	}
 }
 
 function confirmProcessPan($panForm){
+	//action value process_pan is specified in a hidden form input
 	var data = $panForm.serializefiles();
 	$.ajax({
-		url: "pan_services.php",
+		url: servicesUrl + 'pan_services.php',
 		type: "POST",
 		data:  data,
 		processData: false,

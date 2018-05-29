@@ -27,7 +27,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
-                <input type="text" id="date" name="date" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                <input type="text" id="application_date" name="application_date" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
               </div>
               <!-- /.input group -->
             </div>
@@ -90,7 +90,7 @@
             </div>
             <div class="form-group">
               <label>Name of Card:</label>
-              <input type="text" id="name_on_card" class="form-control required" placeholder="Name on Card">
+              <input type="text" id="name_on_card" name="name_on_card" class="form-control required" placeholder="Name on Card">
             </div>
             <div class="form-group">
               <label>Date of Birth :</label>
@@ -112,20 +112,30 @@
             </div>
             <div class="form-group">
               <label>Name as per Aadhaar:</label>
-              <input type="text" id="name_as_per_aadhaar" name="email" class="form-control required" placeholder="Name as per Aadhaar">
+              <input type="text" id="name_as_per_aadhaar" name="name_as_per_aadhaar" class="form-control required" placeholder="Name as per Aadhaar">
             </div>
             <div class="form-group">
               <label>Proof of ID :</label>
-              <select class="form-control required" id="proof_of_id" name="applicant_category">
+              <select class="form-control required" id="proof_of_id" name="proof_of_id">
                 <option value="" selected="selected">Select</option>
                 <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div class="form-group">
               <label>Proof of Address :</label>
-              <select class="form-control required" id="proof_of_address" name="applicant_category">
+              <select class="form-control required" id="proof_of_address" name="proof_of_address">
                 <option value="" selected="selected">Select</option>
                 <option value="Aadhar">Aadhar</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Proof of Address :</label>
+              <select class="form-control required" id="proof_of_dob" name="proof_of_dob">
+                <option value="" selected="selected">Select</option>
+                <option value="Aadhaar">Aadhaar</option>
+                <option value="Driving License">Driving License</option>
+                <option value="Birth Certificate">Birth Certificate</option>
+                <option value="Matriculation Certificate">Matriculation Certificate</option>
               </select>
             </div>
             <div class="form-group">
@@ -146,7 +156,7 @@
             </div>
             <div class="form-group">
               <label>Premises/Building/Village:</label>
-              <input type="text" id="premises_building_village" name="flat_door_block_no" class="form-control required" placeholder="Premises/Building/Village">
+              <input type="text" id="premises_building_village" name="premises_building_village" class="form-control required" placeholder="Premises/Building/Village">
             </div>
             <div class="form-group">
               <label>Road/Street/Lane/Post Office:</label>
@@ -236,6 +246,8 @@
           </div>
         </div>
       </div>
+      <input type="hidden" name="action" id="action" value="process_pan">
+      <input type="hidden" name="user_id" id="user_id" value="1">
       <!-- /.card -->
   </form>
 </section>
@@ -248,12 +260,12 @@
 <script type="text/javascript">
   $(function () {
      //Datemask dd/mm/yyyy
-     $('#date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+     $('#application_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
      $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
      
-     $('#pan_application_form').validate({
-       errorClass: "my-error-class"
-     });
+     // $('#pan_application_form').validate({
+     //   errorClass: "my-error-class"
+     // });
   
      $('#pan_number_correction_div').hide();
      $('#application_type').on('change', function() {

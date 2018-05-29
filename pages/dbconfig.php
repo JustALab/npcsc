@@ -1,6 +1,8 @@
 <?php
-///if(!defined('TIMEZONE'))
-	//define('TIMEZONE', 'America/Toronto');
+
+/** Default time zone set to India */
+date_default_timezone_set('Asia/Calcutta');
+	
 if(!defined('HOMEURL'))
 	define('HOMEURL', 'http://localhost:8888/npcsc');
 
@@ -15,13 +17,13 @@ $db_password = 'root';
 $db_name = 'narpavicsc';
 
 // Connect to MySQL:
-// $dbc = mysqli_connect ($db_servername,$db_username,$db_password,$db_name);
+$dbc = mysqli_connect ($db_servername,$db_username,$db_password,$db_name);
 
-// // Confirm the connection and select the database:
+// Confirm the connection and select the database:
 
-// if (mysqli_connect_errno()) {
-//     echo "Could not establish database connection!<br>";
-//     exit();
-// }
+if (mysqli_connect_errno()) {
+    echo "Could not establish database connection!<br>";
+    exit();
+}
 
 ?>
