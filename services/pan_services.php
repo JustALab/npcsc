@@ -8,8 +8,6 @@
 	define('SIGNATURE_PATH', 'store/signatures/');
 	define('DOC_PATH', 'store/documents/');
 
-
-
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
 	
@@ -64,7 +62,6 @@
     			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
     		}
     	}
-
     	
     	$result = $db->insertOperation('pan_application',$panFormElements);
     	//file_put_contents("formlog.log", print_r( $result, true ));
