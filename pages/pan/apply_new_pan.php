@@ -270,8 +270,10 @@
      $('#pan_number_correction_div').hide();
      $('#application_type').on('change', function() {
        if(this.value === 'Correction/Change'){
+         $('#pan_number').addClass('required');
          $('#pan_number_correction_div').show();
        } else {
+          $('#pan_number').removeClass('required');
          $('#pan_number_correction_div').hide();
        }
      });
