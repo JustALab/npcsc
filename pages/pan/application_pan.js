@@ -1,5 +1,37 @@
 var servicesUrl = 'http://localhost:8888/npcsc/services/';
 
+$(function () {
+ //Datemask dd/mm/yyyy
+ $('#application_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+ $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+ 
+ $('#pan_application_form').validate({
+   errorClass: "my-error-class",
+   rules: {
+    pan_number: {
+      maxlength: 10
+    },
+    pin_code: {
+      maxlength: 6
+    },
+    aadhaar_no: {
+      maxlength: 12
+    }
+   }
+ });
+
+ $('#pan_number_correction_div').hide();
+ $('#application_type').on('change', function() {
+   if(this.value === 'Correction/Change'){
+     $('#pan_number').addClass('required');
+     $('#pan_number_correction_div').show();
+   } else {
+      $('#pan_number').removeClass('required');
+     $('#pan_number_correction_div').hide();
+   }
+ });
+});
+
 (function($) {
   $.fn.serializefiles = function() {
       var obj = $(this);

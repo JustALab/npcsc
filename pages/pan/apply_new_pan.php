@@ -257,28 +257,6 @@
 <?php 
   include '../footer_imports.php';
   ?>
-<script type="text/javascript">
-  $(function () {
-     //Datemask dd/mm/yyyy
-     $('#application_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
-     $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
-     
-     $('#pan_application_form').validate({
-       errorClass: "my-error-class"
-     });
-  
-     $('#pan_number_correction_div').hide();
-     $('#application_type').on('change', function() {
-       if(this.value === 'Correction/Change'){
-         $('#pan_number').addClass('required');
-         $('#pan_number_correction_div').show();
-       } else {
-          $('#pan_number').removeClass('required');
-         $('#pan_number_correction_div').hide();
-       }
-     });
-  });
-</script>
 <script type="text/javascript" src="application_pan.js"></script>
 <?php 
   include '../footer.php';
