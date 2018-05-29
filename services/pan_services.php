@@ -32,7 +32,7 @@
 
 	function processPan(){
 		global $db, $form;
-		$panFormElements = array("application_date" => "application_date", "application_type" => "pplication_type", "pan_number" => "pan_number", "applicant_category" => "applicant_category", "applicant_title" => "applicant_title", "applicant_fname" => "applicant_fname", "applicant_mname" => "applicant_mname", "applicant_lname" => "applicant_lname", "father_fname" => "father_fname", "father_mname" => "father_mname", "father_lname" => "father_lname", "name_on_card" => "name_on_card", "dob" => "dob", "contact_details" => "contact_details", "email" => "email", "name_as_per_aadhaar" => "name_as_per_aadhaar", "proof_of_id" => "proof_of_id", "proof_of_address" => "proof_of_address", "proof_of_dob" => "proof_of_dob", "gender" => "gender", "aadhaar_no" => "aadhaar_no", "flat_door_block_no" => "flat_door_block_no", "premises_building_village" => "premises_building_village", "road_street_lane_postoffice" => "road_street_lane_postoffice", "area_taluk_subdivision" => "area_taluk_subdivision", "town_district" => "town_district", "state_ut" => "state_ut", "pin_code" => "pin_code", "user_id" => "user_id"); 
+		$panFormElements = array("application_date" => "application_date", "application_type" => "application_type", "pan_number" => "pan_number", "applicant_category" => "applicant_category", "applicant_title" => "applicant_title", "applicant_fname" => "applicant_fname", "applicant_mname" => "applicant_mname", "applicant_lname" => "applicant_lname", "father_fname" => "father_fname", "father_mname" => "father_mname", "father_lname" => "father_lname", "name_on_card" => "name_on_card", "dob" => "dob", "contact_details" => "contact_details", "email" => "email", "name_as_per_aadhaar" => "name_as_per_aadhaar", "proof_of_id" => "proof_of_id", "proof_of_address" => "proof_of_address", "proof_of_dob" => "proof_of_dob", "gender" => "gender", "aadhaar_no" => "aadhaar_no", "flat_door_block_no" => "flat_door_block_no", "premises_building_village" => "premises_building_village", "road_street_lane_postoffice" => "road_street_lane_postoffice", "area_taluk_subdivision" => "area_taluk_subdivision", "town_district" => "town_district", "state_ut" => "state_ut", "pin_code" => "pin_code", "user_id" => "user_id"); 
 		$panFormElements = $form->getFormValues($panFormElements,$_POST);
 
 		if(isset($_FILES['photo']['name'])){
@@ -65,8 +65,15 @@
     		}
     	}
 
-		file_put_contents("formlog.log", print_r( $panFormElements, true ));
-		return array("status"=>"Success","message"=>"New PAN application request submitted successfully.");
+    	
+    	$result = $db->insertOperation('pan_application',$panFormElements);
+    	//file_put_contents("formlog.log", print_r( $result, true ));
+    	if($result['status'] == 'success'){
+    		$lastInsertId = $result['last_insert_id'];
+    		return array("status"=>"success","message"=>"New PAN application request submitted successfully.");
+    	} else {
+    		return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
+    	}
 	}
 
 ?>

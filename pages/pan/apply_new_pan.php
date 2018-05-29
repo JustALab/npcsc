@@ -263,9 +263,9 @@
      $('#application_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
      $('#dob').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
      
-     // $('#pan_application_form').validate({
-     //   errorClass: "my-error-class"
-     // });
+     $('#pan_application_form').validate({
+       errorClass: "my-error-class"
+     });
   
      $('#pan_number_correction_div').hide();
      $('#application_type').on('change', function() {

@@ -109,7 +109,7 @@ function documentUpload() {
 function processPan(){
 	var $panForm = $('#pan_application_form');
 	var isValid = $panForm.valid();
-	if(true){
+	if(isValid){
 		confirmProcessPan($panForm);
 	}
 }
@@ -124,14 +124,11 @@ function confirmProcessPan($panForm){
 		processData: false,
         contentType: false,
 		dataType: 'json',
-		success: function(data){
-			// bootbox.alert(data.message,function(){
-			// 	window.location='par-approve-reject-view.php';
-			// });
-			
+		success: function(result){
+			alert(result.message);
 		},
 		error: function(){
-			// bootbox.alert("failure");
+			bootbox.alert("Unknown error occured!");
 		} 	        
 	});
 }
