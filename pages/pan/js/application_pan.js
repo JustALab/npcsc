@@ -9,9 +9,11 @@ $(function () {
    errorClass: "my-error-class",
    rules: {
     pan_number: {
+      mixlength: 10,
       maxlength: 10
     },
     pin_code: {
+      minlength: 6,
       maxlength: 6
     },
     aadhaar_no: {
