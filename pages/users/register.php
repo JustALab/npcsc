@@ -42,6 +42,13 @@
       .my-error-class {
         color:#FF0000;  /* red */
       }
+      input[type=number]::-webkit-inner-spin-button, 
+      input[type=number]::-webkit-outer-spin-button { 
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          margin: 0; 
+      }
     </style>
   </head>
   <body class="hold-transition register-page">
@@ -52,7 +59,7 @@
     <div class="card">
       <div class="card-body register-card-body">
         <p class="login-box-msg reg-frm">User Registeration</p>
-        <form id="user_registration_form">
+        <form id="user_registration_form" name="user_registration_form">
           <div class="form-group has-feedback">
             <label>Name :</label>
             <input type="text" id="name" name="name" class="form-control required" placeholder="Full name">

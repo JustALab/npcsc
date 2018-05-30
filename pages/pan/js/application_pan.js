@@ -145,16 +145,17 @@ function documentUpload() {
 }
 
 function processPan(){
-	var $panForm = $('#pan_application_form');
-	var isValid = $panForm.valid();
-	if(isValid){
-		confirmProcessPan($panForm);
+	if($('#pan_application_form').valid()){
+		confirmProcessPan();
 	}
 }
 
-function confirmProcessPan($panForm){
+function confirmProcessPan(){
 	//action value process_pan is specified in a hidden form input
-	var data = $panForm.serializefiles();
+	$('#pan_number').val(function () {
+		return this.value.toUpperCase();
+	});
+	var data = $('#pan_application_form').serializefiles();
 	$.ajax({
 		url: servicesUrl + 'pan_services.php',
 		type: "POST",
