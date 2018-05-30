@@ -1,35 +1,10 @@
 Array
 (
-    [application_date] => 
-    [pplication_type] => 
-    [pan_number] => 
-    [applicant_category] => 
-    [applicant_title] => 
-    [applicant_fname] => 
-    [applicant_mname] => 
-    [applicant_lname] => 
-    [father_fname] => 
-    [father_mname] => 
-    [father_lname] => 
-    [name_on_card] => 
-    [dob] => 
-    [contact_details] => 
-    [email] => 
-    [name_as_per_aadhaar] => 
-    [proof_of_id] => 
-    [proof_of_address] => 
-    [proof_of_dob] => 
-    [gender] => 
-    [aadhaar_no] => 987654321234
-    [flat_door_block_no] => 
-    [premises_building_village] => 
-    [road_street_lane_postoffice] => 
-    [area_taluk_subdivision] => 
-    [town_district] => 
-    [state_ut] => 
-    [pin_code] => 
-    [user_id] => 1
-    [photo_path] => store/photos/1_987654321234_photo.jpg
-    [signature_path] => store/signatures/1_987654321234_sign.jpg
-    [document_path] => store/documents/1_987654321234_doc.pdf
+    [name] => Ramu Ramasamy
+    [email] => rram.ramasamy@gmail.com
+    [password] => $2y$12$YciOiD67R6VXS0gP5LlcRu4IFO8hiH9gm9CLZxe455NK0XmpDCTAO
+    [mobile] => 9894130821
+    [aadhaar_no] => 123456789010
+    [pan_number] => BDKPR6053E
+    [address] => No. 11, Annai Velankanni Nagar, Thondamuthur Road
 )

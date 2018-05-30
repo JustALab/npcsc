@@ -15,7 +15,11 @@ $(function () {
       maxlength: 6
     },
     aadhaar_no: {
+      minlength: 12,
       maxlength: 12
+    },
+    email: {
+    	email: true
     }
    }
  });
