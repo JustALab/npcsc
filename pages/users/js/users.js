@@ -1,11 +1,6 @@
 var servicesUrl = 'http://localhost:8888/npcsc/services/';
 
-$(function () {
-	$('input').iCheck({
-	  checkboxClass: 'icheckbox_square-blue',
-	  radioClass   : 'iradio_square-blue',
-	  increaseArea : '20%' // optional
-	});
+$(document).ready(function () {
 
 	$('#user_registration_form').validate({
 	   errorClass: "my-error-class",
@@ -44,10 +39,9 @@ function registerUser(){
 	});
 
 	if(isPassowrdMatching()){
-		var $regForm = $('#user_registration_form');
-		var isValid = $regForm.valid();
+		var isValid = $('#user_registration_form').valid();
 		if(isValid){
-			var data = $regForm.serialize();
+			var data = $('#user_registration_form').serialize();
 			$.ajax({
 				url: servicesUrl + 'user_services.php',
 				type: 'POST',
@@ -55,11 +49,13 @@ function registerUser(){
 				dataType: 'json',
 				success: function(result){
 					alert(result.message)
-					$(':input','#user_registration_form')
-					  .not(':button, :submit, :reset, :hidden')
-					  .val('')
-					  .prop('checked', false)
-					  .prop('selected', false);
+					if(result.status === 'success'){
+						$(':input','#user_registration_form')
+						  .not(':button, :submit, :reset, :hidden')
+						  .val('')
+						  .prop('checked', false)
+						  .prop('selected', false);
+					}
 				},
 				error: function(){
 					alert("failure");

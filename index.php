@@ -1,6 +1,51 @@
-<?php
+<?php session_start();
+  
+  if(isset($_SESSION['login'])){
+    if($_SESSION['user_type'] == 'ADMIN'){
+      header('Location: pages/dashboard_admin.php');
+    } else {
+      header('Location: pages/dashboard.php');
+    }
+    exit();
+  }
+
   include 'pages/dbconfig.php';
-  ?>
+
+  if(isset($_POST['login_button'])){
+    $email = mysqli_real_escape_string($dbc,trim($_POST['email']));
+    $password = mysqli_real_escape_string($dbc,trim($_POST['password']));
+    $query = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($dbc, $query);
+    if(mysqli_num_rows($result)>0) {
+      $row = mysqli_fetch_assoc($result);
+        if(password_verify($password, $row['password'])){
+          $_SESSION['username'] = ucwords($row['name']); 
+          $_SESSION['email'] = $row['email'];
+          $_SESSION['user_id'] = $row['user_id'];
+          $_SESSION['user_type'] = $row['user_type'];
+          // file_put_contents("formlog.log", print_r( $row, true ));
+          if($row['status'] == "APPROVED"){
+            // file_put_contents("formlog.log", print_r( 'true', true ));
+            $_SESSION['login'] = 'yes';
+            if($_SESSION['user_type'] == 'ADMIN'){
+              header('Location: pages/dashboard_admin.php');
+            } else {
+              header('Location: pages/dashboard.php');
+            }
+            exit();
+          }
+          $walletQuery = "SELECT * FROM wallet WHERE user_id='".$row['user_id']."'";
+          $walletResult = mysqli_query($dbc, $walletQuery);
+        } else {
+          echo '<script language="javascript">alert("Wrong password!")</script>';
+        }
+    } else {
+      echo '<script language="javascript">alert("User not available!")</script>';
+    }
+  }
+
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,56 +61,57 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/dist/css/adminlte.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo HOMEURL; ?>/plugins/iCheck/square/blue.css">
+    <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/plugins/iCheck/square/blue.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <style>
       .Sign{
-        font-size: 22px;
+      font-size: 22px;
       }
       .reg {
-        text-align: right;
-        color: black;
+      text-align: right;
+      color: black;
       }
       .forg{
-        color: black; 
+      color: black; 
       }
       .btn-1{
-        margin-top: 10px;
-        margin-bottom: 15px;
+      margin-top: 10px;
+      margin-bottom: 15px;
       }    
     </style>
   </head>
   <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html"><b>Narpavi CSC</b></a>
+        <a href=""><b>Narpavi CSC</b></a>
       </div>
       <!-- /.login-logo -->
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg Sign"><b>Sign in</b></p>
-          <form action="../../index2.html" method="post">
+          <form id="login_form" name="login_form" action="index.php" method="POST">
             <div class="form-group has-feedback">
               <label>Email :</label>
-              <input type="email" class="form-control" placeholder="Email">
+              <input type="email" id="email" name="email" class="form-control" placeholder="Email">
             </div>
             <div class="form-group has-feedback">
               <label>Password :</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <input type="password" id="password" name="password" class="form-control" placeholder="Password">
             </div>
             <div class="row">
               <p class="col-6">
                 <a href="#" class="forg">Forgot password</a>
               </p>
               <p class="col-6 reg">
-                <a href="register.html" class="reg"><b>Register</b></a>
+                <a href="<?php echo HOMEURL; ?>/pages/users/register.php" class="reg"><b>Register</b></a>
               </p>
             </div>
             <!-- /.col -->
+            <input type="hidden" name="action" value="login_user">
             <div class="row btn-1">
               <div class="col-12">
-                <button type="submit" class="btn bg-info btn-block btn-flat ">Sign In</button>
+                <button type="submit" name="login_button" onclick="" class="btn bg-info btn-block btn-flat">Log In</button>
               </div>
               <!-- /.col -->
             </div>
@@ -77,19 +123,8 @@
     </div>
     <!-- /.login-box -->
     <!-- jQuery -->
-    <script src="<?php echo HOMEURL; ?>/plugins/jquery/jquery.min.js"></script>
+    <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="<?php echo HOMEURL; ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- iCheck -->
-    <script src="<?php echo HOMEURL; ?>/plugins/iCheck/icheck.min.js"></script>
-    <script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass   : 'iradio_square-blue',
-          increaseArea : '20%' // optional
-        })
-      })
-    </script>
+    <script src="<?php echo HOMEURL; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

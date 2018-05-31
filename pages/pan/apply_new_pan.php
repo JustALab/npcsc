@@ -1,7 +1,7 @@
-<?php 
-  include '../header_nav.php';
-  include '../sidebar.php';
-  ?>
+<?php session_start();
+include '../header_nav.php';
+include '../sidebar.php';
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 <!-- Main content -->

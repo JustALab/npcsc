@@ -18,6 +18,9 @@
 	    case 'register_user':
 	        $finaloutput = registerUser();
 	    break;
+        case 'login_user':
+            $finaloutput = loginUser();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -27,62 +30,57 @@
     function registerUser(){
         global $db, $form;
         $regFormElements = array("name" => "name", "email" => "email", "password" => "password", "mobile" => "mobile", "aadhaar_no" => "aadhaar_no", "pan_number" => "pan_number", "address" => "address");
-        $regFormElements = $form->getFormValues($regFormElements,$_POST);
+        $regFormElements = $form->getFormValues($regFormElements, $_POST);
         $options = array('cost' => 12);
         $regFormElements['password'] = password_hash($regFormElements['password'], PASSWORD_BCRYPT, $options);
-        $result = $db->insertOperation('users',$regFormElements);
-        file_put_contents("formlog.log", print_r( $regFormElements, true ));
-        if($result['status'] == 'success'){
-            $lastInsertId = $result['last_insert_id'];
-            return array("status"=>"success","message"=>"User registered successfully. Please wait for approval.");
-        } else {
-            return array("status"=>"failure","message"=>"User registration failure.");
+        if(!checkIfUserExists($regFormElements['email'])){
+            $result = $db->insertOperation('users',$regFormElements);
+            //file_put_contents("formlog.log", print_r( $regFormElements, true ));
+            if($result['status'] == 'success'){
+                $lastInsertId = $result['last_insert_id'];
+                return array("status"=>"success","message"=>"User registered successfully. Please wait for approval.");
+            } else {
+                return array("status"=>"failure","message"=>"User registration failure.");
+            }
         }
+        return array("status"=>"failure","message"=>"User already exists.");
     }
 
-	function processPan(){
-		global $db, $form;
-		$panFormElements = array("application_date" => "application_date", "application_type" => "application_type", "pan_number" => "pan_number", "applicant_category" => "applicant_category", "applicant_title" => "applicant_title", "applicant_fname" => "applicant_fname", "applicant_mname" => "applicant_mname", "applicant_lname" => "applicant_lname", "father_fname" => "father_fname", "father_mname" => "father_mname", "father_lname" => "father_lname", "name_on_card" => "name_on_card", "dob" => "dob", "contact_details" => "contact_details", "email" => "email", "name_as_per_aadhaar" => "name_as_per_aadhaar", "proof_of_id" => "proof_of_id", "proof_of_address" => "proof_of_address", "proof_of_dob" => "proof_of_dob", "gender" => "gender", "aadhaar_no" => "aadhaar_no", "flat_door_block_no" => "flat_door_block_no", "premises_building_village" => "premises_building_village", "road_street_lane_postoffice" => "road_street_lane_postoffice", "area_taluk_subdivision" => "area_taluk_subdivision", "town_district" => "town_district", "state_ut" => "state_ut", "pin_code" => "pin_code", "user_id" => "user_id"); 
-		$panFormElements = $form->getFormValues($panFormElements,$_POST);
+    /**
+     * call this method when the user is approved by the admin.
+     */
+    function createWalletForUser($userId){
+        global $dbc;
+        $query = "INSERT INTO wallet (user_id) VALUES ('$userId')";
+        mysqli_query($dbc, $query);
+    }
 
-		if(isset($_FILES['photo']['name'])){
-			$fileExtenstion = explode('.', $_FILES['photo']['name']);
-    		$photoFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_photo';
-    		$photoPath = PHOTO_PATH.$photoFname.'.'.$fileExtenstion[1];
-    		$panFormElements['photo_path'] = $photoPath;
-    		if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)){
-    			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload photo, please try again!");
-    		}
-    	}
+    function checkIfUserExists($email){
+        global $dbc;
+        $query = 'SELECT * FROM users WHERE email = "'.$email.'"';
+        $result = mysqli_query($dbc, $query);
+        if(mysqli_num_rows($result) > 0) {
+            return true;
+        }
+        return false;
+    }
 
-    	if(isset($_FILES['signature']['name'])){
-    		$fileExtenstion = explode('.', $_FILES['signature']['name']);
-    		$signatureFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_sign';
-    		$signaturePath = SIGNATURE_PATH.$signatureFname.'.'.$fileExtenstion[1];
-    		$panFormElements['signature_path'] = $signaturePath;
-    		if(!move_uploaded_file($_FILES['signature']['tmp_name'], $signaturePath)){
-    			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload signature, please try again!");
-    		}
-    	}
+	function loginUser(){
+        global $dbc, $form;
+        $loginFormElements = array('email' => 'email', 'password' => 'password');
+        $loginFormElements = $form->getFormValues($loginFormElements, $_POST);
+        $query = "SELECT * FROM users WHERE email='".$loginFormElements['email']."'";
+        $result = mysqli_query($dbc, $query);
+        if(mysqli_num_rows($result) > 0){
+            $row = mysqli_fetch_assoc($result);
+            // file_put_contents("formlog.log", print_r( $row, true ));
+            if(password_verify($loginFormElements['password'], $row['password'])){
+                return array('status' => 'success');
+            } else {
+                return array('status' => 'failure');
+            }
+        }
 
-    	if(isset($_FILES['document']['name'])){
-    		$fileExtenstion = explode('.', $_FILES['document']['name']);
-    		$documentFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_doc';
-    		$documentPath = DOC_PATH.$documentFname.'.'.$fileExtenstion[1];
-    		$panFormElements['document_path'] = $documentPath;
-    		if(!move_uploaded_file($_FILES['document']['tmp_name'], $documentPath)){
-    			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
-    		}
-    	}
-    	
-    	$result = $db->insertOperation('pan_application',$panFormElements);
-    	//file_put_contents("formlog.log", print_r( $result, true ));
-    	if($result['status'] == 'success'){
-    		$lastInsertId = $result['last_insert_id'];
-    		return array("status"=>"success","message"=>"New PAN application request submitted successfully.");
-    	} else {
-    		return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
-    	}
-	}
+    }
 
 ?>

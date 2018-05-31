@@ -1,6 +1,6 @@
 <?php session_start();
-  include '../header_nav.php';
-  include '../sidebar.php';
+  include 'header_nav.php';
+  include 'sidebar.php';
 ?>
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -10,7 +10,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">PAN View</h3>
+          <h3 class="card-title">Dashboard</h3>
 
           <!-- <div class="card-tools">
             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -20,7 +20,7 @@
           </div> -->
         </div>
         <div class="card-body">
-          agent pan view
+          admin dashboard
         </div>
         <!-- /.card-body -->
         <!-- <div class="card-footer">
@@ -36,10 +36,10 @@
   <!-- /.content-wrapper -->
 
   <?php 
-    include '../footer_imports.php';
+    include 'footer_imports.php';
   ?>  
   <script type="text/javascript">
   </script>
   <?php 
-    include '../footer.php';
+    include 'footer.php';
   ?>

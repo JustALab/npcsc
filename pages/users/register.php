@@ -96,7 +96,7 @@
             <div class="col-sm-6 col-xs-12">
               <div class="form-group has-feedback">
                 <label>Aadhar Number :</label>
-                <input type="text" id="aadhaar_no" name="aadhaar_no" class="form-control required" placeholder="Aadhar Number">
+                <input type="number" id="aadhaar_no" name="aadhaar_no" class="form-control required" placeholder="Aadhar Number">
               </div>
             </div>
             <div class="col-sm-6 col-xs-12">

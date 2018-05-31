@@ -1,5 +1,9 @@
-<?php 
+<?php
   include 'dbconfig.php';
+  if(!isset($_SESSION['login'])){
+      header('Location: '. HOMEURL);
+      exit();
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -100,7 +104,7 @@
             <i class="fa fa-gear mr-2"></i> Profile & Settings
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="<?php echo HOMEURL; ?>/pages/logout.php" class="dropdown-item">
             <i class="fa fa-close mr-2"></i> Logout
           </a>
       </li>
