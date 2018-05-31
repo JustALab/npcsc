@@ -91,7 +91,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance">3450.80</span></span>
+          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $_SESSION['wallet_amount']; ?></span></span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span>Welcome, <span id="username_nav"><?php echo ucwords($_SESSION['username']); ?></span></span>
         </a>
       </li>
       <li class="nav-item dropdown">

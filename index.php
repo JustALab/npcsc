@@ -18,27 +18,31 @@
     $result = mysqli_query($dbc, $query);
     if(mysqli_num_rows($result)>0) {
       $row = mysqli_fetch_assoc($result);
-        if(password_verify($password, $row['password'])){
-          $_SESSION['username'] = ucwords($row['name']); 
-          $_SESSION['email'] = $row['email'];
-          $_SESSION['user_id'] = $row['user_id'];
-          $_SESSION['user_type'] = $row['user_type'];
-          // file_put_contents("formlog.log", print_r( $row, true ));
-          if($row['status'] == "APPROVED"){
-            // file_put_contents("formlog.log", print_r( 'true', true ));
-            $_SESSION['login'] = 'yes';
-            if($_SESSION['user_type'] == 'ADMIN'){
-              header('Location: pages/dashboard_admin.php');
-            } else {
-              header('Location: pages/dashboard.php');
-            }
-            exit();
-          }
+      if(password_verify($password, $row['password'])){
+        $_SESSION['username'] = ucwords($row['name']); 
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['user_id'] = $row['user_id'];
+        $_SESSION['user_type'] = $row['user_type'];
+        if($row['status'] == "APPROVED"){
           $walletQuery = "SELECT * FROM wallet WHERE user_id='".$row['user_id']."'";
           $walletResult = mysqli_query($dbc, $walletQuery);
-        } else {
-          echo '<script language="javascript">alert("Wrong password!")</script>';
+          if(mysqli_num_rows($walletResult) > 0){
+            $walletRow = mysqli_fetch_assoc($walletResult);
+            $_SESSION['wallet_amount'] = $walletRow['amount'];
+          }
+          $_SESSION['login'] = 'yes';
+          if($_SESSION['user_type'] == 'ADMIN'){
+            header('Location: pages/dashboard_admin.php');
+          } else {
+            header('Location: pages/dashboard.php');
+          }
+          exit();
+        }else {
+          echo '<script language="javascript">alert("User not yet approved by Admin. Please kindly wait for approval.")</script>';
         }
+      } else {
+        echo '<script language="javascript">alert("Wrong password!")</script>';
+      }
     } else {
       echo '<script language="javascript">alert("User not available!")</script>';
     }

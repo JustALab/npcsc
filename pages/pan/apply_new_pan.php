@@ -247,7 +247,7 @@ include '../sidebar.php';
         </div>
       </div>
       <input type="hidden" name="action" id="action" value="process_pan">
-      <input type="hidden" name="user_id" id="user_id" value="1">
+      <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
       <!-- /.card -->
   </form>
 </section>
