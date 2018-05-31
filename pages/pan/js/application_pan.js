@@ -1,5 +1,3 @@
-var servicesUrl = 'http://localhost:8888/npcsc/services/';
-
 $(function () {
  //Datemask dd/mm/yyyy
  $('#application_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
@@ -165,9 +163,20 @@ function confirmProcessPan(){
 		dataType: 'json',
 		success: function(result){
 			alert(result.message);
+			if(result.status === 'success'){
+				clearFields();
+			}
 		},
 		error: function(){
 			bootbox.alert("Unknown error occured!");
 		} 	        
 	});
+}
+
+function clearFields(){
+	$(':input','#pan_application_form')
+				  .not(':button, :submit, :reset, :hidden')
+				  .val('')
+				  .prop('checked', false)
+				  .prop('selected', false);
 }

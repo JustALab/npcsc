@@ -1,4 +1,8 @@
 <?php session_start();
+if($_SESSION['user_type'] == 'ADMIN'){
+  echo '<script>history.go(-1);</script>';
+  exit();
+}
 include '../header_nav.php';
 include '../sidebar.php';
 ?>
@@ -241,7 +245,7 @@ include '../sidebar.php';
               <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
             </div>
             <div class="col-sm-4">
-              <button type="button" class="btn btn-block btn-warning">Reset</button>
+              <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
             </div>
           </div>
         </div>
@@ -257,6 +261,9 @@ include '../sidebar.php';
 <?php 
   include '../footer_imports.php';
   ?>
+<script>
+  var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
+</script>
 <script type="text/javascript" src="js/application_pan.js"></script>
 <?php 
   include '../footer.php';

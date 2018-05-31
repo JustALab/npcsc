@@ -6,6 +6,9 @@ date_default_timezone_set('Asia/Calcutta');
 if(!defined('HOMEURL'))
 	define('HOMEURL', 'http://localhost:8888/npcsc');
 
+if(!defined('SERVICES_URL'))
+	define('SERVICES_URL', 'http://localhost:8888/npcsc/services/');
+
 //date_default_timezone_set(TIMEZONE);
 // This file establishes a connection to MySQL 
 // and selects the database.

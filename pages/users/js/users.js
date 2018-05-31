@@ -1,5 +1,3 @@
-var servicesUrl = 'http://localhost:8888/npcsc/services/';
-
 $(document).ready(function () {
 
 	$('#user_registration_form').validate({

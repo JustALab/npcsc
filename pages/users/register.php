@@ -135,6 +135,9 @@
     <script src="<?php echo HOMEURL; ?>/assets/plugins/iCheck/icheck.min.js"></script>
     <!-- jQuery Validate -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery-validate/jquery.validate.js"></script>
+    <script>
+      var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
+    </script>
     <script src="js/users.js"></script>
   </body>
 </html>

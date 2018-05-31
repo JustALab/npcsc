@@ -56,12 +56,24 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
+      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
+      </li> -->
+    <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          Wallet Balance: 
+        </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $_SESSION['wallet_amount']; ?></span></span>
+        </a>
+      </li>
+    <?php } ?>
     </ul>
 
     
@@ -84,16 +96,6 @@
           </a>
         </div>
       </li> -->
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          Wallet Balance: 
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $_SESSION['wallet_amount']; ?></span></span>
-        </a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span>Welcome, <span id="username_nav"><?php echo ucwords($_SESSION['username']); ?></span></span>

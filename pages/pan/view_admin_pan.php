@@ -1,4 +1,8 @@
 <?php session_start();
+  if($_SESSION['user_type'] != 'ADMIN'){
+  echo '<script>history.go(-1);</script>';
+  exit();
+}
   include '../header_nav.php';
   include '../sidebar.php';
 ?>
