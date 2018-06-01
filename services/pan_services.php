@@ -4,9 +4,9 @@
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
 
-	define('PHOTO_PATH', 'store/photos/');
-	define('SIGNATURE_PATH', 'store/signatures/');
-	define('DOC_PATH', 'store/documents/');
+	define('PHOTO_PATH', '/store/photos/');
+	define('SIGNATURE_PATH', '/store/signatures/');
+	define('DOC_PATH', '/store/documents/');
 
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
