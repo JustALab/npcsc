@@ -3,18 +3,12 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 31, 2018 at 08:44 PM
+-- Generation Time: Jun 01, 2018 at 04:49 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `narpavicsc`
@@ -57,9 +51,9 @@ CREATE TABLE `pan_application` (
   `town_district` varchar(50) NOT NULL,
   `state_ut` varchar(50) NOT NULL,
   `pin_code` varchar(7) NOT NULL,
-  `photo_path` varchar(500) NOT NULL,
-  `signature_path` varchar(500) NOT NULL,
-  `document_path` varchar(500) NOT NULL,
+  `photo_file_name` varchar(500) NOT NULL,
+  `signature_file_name` varchar(500) NOT NULL,
+  `document_file_name` varchar(500) NOT NULL,
   `receipt_path` varchar(500) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -214,7 +208,7 @@ ALTER TABLE `wallet_transactions`
 -- AUTO_INCREMENT for table `pan_application`
 --
 ALTER TABLE `pan_application`
-  MODIFY `application_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `application_no` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `price_config`
 --
@@ -278,7 +272,3 @@ ALTER TABLE `wallet_requests`
 --
 ALTER TABLE `wallet_transactions`
   ADD CONSTRAINT `wallet_transactions_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`wallet_id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
