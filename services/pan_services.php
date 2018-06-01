@@ -33,11 +33,13 @@
 		$panFormElements = array("application_date" => "application_date", "application_type" => "application_type", "pan_number" => "pan_number", "applicant_category" => "applicant_category", "applicant_title" => "applicant_title", "applicant_fname" => "applicant_fname", "applicant_mname" => "applicant_mname", "applicant_lname" => "applicant_lname", "father_fname" => "father_fname", "father_mname" => "father_mname", "father_lname" => "father_lname", "name_on_card" => "name_on_card", "dob" => "dob", "contact_details" => "contact_details", "email" => "email", "name_as_per_aadhaar" => "name_as_per_aadhaar", "proof_of_id" => "proof_of_id", "proof_of_address" => "proof_of_address", "proof_of_dob" => "proof_of_dob", "gender" => "gender", "aadhaar_no" => "aadhaar_no", "flat_door_block_no" => "flat_door_block_no", "premises_building_village" => "premises_building_village", "road_street_lane_postoffice" => "road_street_lane_postoffice", "area_taluk_subdivision" => "area_taluk_subdivision", "town_district" => "town_district", "state_ut" => "state_ut", "pin_code" => "pin_code", "user_id" => "user_id"); 
 		$panFormElements = $form->getFormValues($panFormElements,$_POST);
 
+        $time = date('YmdHis');
+
 		if(isset($_FILES['photo']['name'])){
 			$fileExtenstion = explode('.', $_FILES['photo']['name']);
-    		$photoFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_photo';
+    		$photoFname = $_POST['user_id'] .'_photo_' . $time;
     		$photoPath = PHOTO_PATH.$photoFname.'.'.$fileExtenstion[1];
-    		$panFormElements['photo_path'] = $photoPath;
+    		$panFormElements['photo_file_name'] = $photoFname.'.'.$fileExtenstion[1];
     		if(!move_uploaded_file($_FILES['photo']['tmp_name'], $photoPath)){
     			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload photo, please try again!");
     		}
@@ -45,9 +47,9 @@
 
     	if(isset($_FILES['signature']['name'])){
     		$fileExtenstion = explode('.', $_FILES['signature']['name']);
-    		$signatureFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_sign';
+    		$signatureFname = $_POST['user_id'] . '_sign_' . $time;
     		$signaturePath = SIGNATURE_PATH.$signatureFname.'.'.$fileExtenstion[1];
-    		$panFormElements['signature_path'] = $signaturePath;
+    		$panFormElements['signature_file_name'] = $signatureFname.'.'.$fileExtenstion[1];
     		if(!move_uploaded_file($_FILES['signature']['tmp_name'], $signaturePath)){
     			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload signature, please try again!");
     		}
@@ -55,9 +57,9 @@
 
     	if(isset($_FILES['document']['name'])){
     		$fileExtenstion = explode('.', $_FILES['document']['name']);
-    		$documentFname = $_POST['user_id'].'_'.$_POST['aadhaar_no'].'_doc';
+    		$documentFname = $_POST['user_id'] .'_doc_' . $time;
     		$documentPath = DOC_PATH.$documentFname.'.'.$fileExtenstion[1];
-    		$panFormElements['document_path'] = $documentPath;
+    		$panFormElements['document_file_name'] = $documentFname.'.'.$fileExtenstion[1];
     		if(!move_uploaded_file($_FILES['document']['tmp_name'], $documentPath)){
     			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
     		}
