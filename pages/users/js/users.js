@@ -17,7 +17,13 @@ $(document).ready(function () {
 	    aadhaar_no: {
 	      minlength: 12,
 	      maxlength: 12
-	    }
+	    },
+	    password: {
+	      minlength: 8	    
+	    },
+	   	confirm_password: {
+	   	  minlength: 8
+	   	}
 	   }
 	 });
 });
