@@ -23,7 +23,7 @@
         $_SESSION['email'] = $row['email'];
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_type'] = $row['user_type'];
-        if($row['status'] == "APPROVED"){
+        if($row['status'] == "Approved"){
           $walletQuery = "SELECT * FROM wallet WHERE user_id='".$row['user_id']."'";
           $walletResult = mysqli_query($dbc, $walletQuery);
           if(mysqli_num_rows($walletResult) > 0){
@@ -37,7 +37,11 @@
             header('Location: pages/dashboard.php');
           }
           exit();
-        }else {
+        } else if($row['status'] == "Denied"){
+          echo '<script language="javascript">alert("User rejected by Admin.")</script>';
+        } else if($row['status'] == "Blocked"){
+          echo '<script language="javascript">alert("User blocked by Admin.")</script>';
+        } else {
           echo '<script language="javascript">alert("User not yet approved by Admin. Please kindly wait for approval.")</script>';
         }
       } else {
