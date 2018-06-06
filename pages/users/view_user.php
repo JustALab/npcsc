@@ -95,6 +95,13 @@
             </div>
           </div>
         <?php } ?>
+        <?php if($row['status'] == 'Blocked'){ ?>
+          <div id="block_row" class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, 'Approved');">Unblock</button>
+            </div>
+          </div>
+        <?php } ?>
         </div>
         <!-- /.card-footer-->
       </div>
