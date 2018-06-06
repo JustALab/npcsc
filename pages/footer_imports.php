@@ -36,3 +36,6 @@
     <script src="<?php echo HOMEURL; ?>/assets/dist/js/demo.js"></script>
     <!-- jQuery Validate -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery-validate/jquery.validate.js"></script>
+    <!-- DataTables -->
+    <script src="<?php echo HOMEURL; ?>/assets/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="<?php echo HOMEURL; ?>/assets/plugins/datatables/dataTables.bootstrap4.js"></script>

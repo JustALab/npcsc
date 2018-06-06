@@ -21,6 +21,9 @@
         case 'login_user':
             $finaloutput = loginUser();
         break;
+        case 'update_status':
+            $finaloutput = updateStatus();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -29,7 +32,7 @@
 
     function registerUser(){
         global $db, $form;
-        $regFormElements = array("name" => "name", "email" => "email", "password" => "password", "mobile" => "mobile", "aadhaar_no" => "aadhaar_no", "pan_number" => "pan_number", "address" => "address");
+        $regFormElements = array("name" => "name", "email" => "email", "password" => "password", "mobile" => "mobile", "aadhaar_no" => "aadhaar_no", "pan_no" => "pan_no", "address" => "address");
         $regFormElements = $form->getFormValues($regFormElements, $_POST);
         $options = array('cost' => 12);
         $regFormElements['password'] = password_hash($regFormElements['password'], PASSWORD_BCRYPT, $options);
@@ -65,22 +68,9 @@
         return false;
     }
 
-	function loginUser(){
-        global $dbc, $form;
-        $loginFormElements = array('email' => 'email', 'password' => 'password');
-        $loginFormElements = $form->getFormValues($loginFormElements, $_POST);
-        $query = "SELECT * FROM users WHERE email='".$loginFormElements['email']."'";
-        $result = mysqli_query($dbc, $query);
-        if(mysqli_num_rows($result) > 0){
-            $row = mysqli_fetch_assoc($result);
-            // file_put_contents("formlog.log", print_r( $row, true ));
-            if(password_verify($loginFormElements['password'], $row['password'])){
-                return array('status' => 'success');
-            } else {
-                return array('status' => 'failure');
-            }
-        }
-
+	function updateStatus(){
+        global $dbc;
+        return array("status"=>"success","message"=>"User approved.");
     }
 
 ?>

@@ -72,6 +72,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="<?php echo HOMEURL; ?>/pages/users/view_users.php" class="nav-link">
+              <i class="nav-icon fa fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /. Admin sidebar-menu -->

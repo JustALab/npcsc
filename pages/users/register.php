@@ -102,7 +102,7 @@
             <div class="col-sm-6 col-xs-12">
               <div class="form-group has-feedback">
                 <label>Pan Number :</label>
-                <input type="text" id="pan_number" name="pan_number" class="form-control required" placeholder="Pan Number">
+                <input type="text" id="pan_no" name="pan_no" class="form-control required" placeholder="Pan Number">
               </div>
             </div>
           </div>

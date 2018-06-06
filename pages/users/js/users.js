@@ -10,7 +10,7 @@ $(document).ready(function () {
 	    email: {
 	    	email: true
 	    },
-	    pan_number: {
+	    pan_no: {
 	      minlength: 10,
 	      maxlength: 10
 	    },
@@ -26,6 +26,14 @@ $(document).ready(function () {
 	   	}
 	   }
 	 });
+
+	$(function () {
+	    $('#users_table').DataTable();
+	});
+
+	$('#user_status').on('change', function(){
+		loadPage();
+	});
 });
 
 function isPassowrdMatching(){
@@ -38,7 +46,7 @@ function isPassowrdMatching(){
 }
 
 function registerUser(){
-	$('#pan_number').val(function () {
+	$('#pan_no').val(function () {
     	return this.value.toUpperCase();
 	});
 
@@ -71,4 +79,40 @@ function registerUser(){
 		$('#confirm_password').val('');
 		alert("Passwords does not match! Try again!");
 	}
+}
+
+function loadPage(){
+	var status = $('#user_status').val();
+	var url = 'view_users.php?status=';
+	switch(status){
+		case 'Pending':
+			url += 'Pending';
+		break;
+		case 'Approved':
+			url += 'Approved';
+		break;
+		case 'Denied':
+			url += 'Denied';
+		break;
+		case 'Blocked':
+			url += 'Blocked';
+		break;
+	}
+	this.document.location.href = url;
+}
+
+function updateUserStatus(userId, newStatus){
+	var data = 'user_id=' + userId + '&new_status=' + newStatus + '&action=update_status';
+	$.ajax({
+		url: servicesUrl + 'user_services.php',
+		type: 'POST',
+		data:  data,
+		dataType: 'json',
+		success: function(result){
+			alert(result.message)
+		},
+		error: function(){
+			alert("failure");
+		} 	        
+	});
 }

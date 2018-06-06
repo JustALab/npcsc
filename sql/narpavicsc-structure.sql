@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 01, 2018 at 04:49 AM
+-- Generation Time: Jun 06, 2018 at 09:08 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -22,7 +22,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `pan_application` (
   `application_no` int(11) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'PENDING',
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
   `application_date` varchar(10) NOT NULL,
   `application_type` varchar(20) NOT NULL,
   `pan_number` varchar(10) DEFAULT NULL,
@@ -95,9 +95,9 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `mobile` varchar(10) NOT NULL,
   `aadhaar_no` varchar(12) NOT NULL,
-  `pan_number` varchar(10) NOT NULL,
+  `pan_no` varchar(10) NOT NULL,
   `address` varchar(500) NOT NULL,
-  `status` varchar(20) NOT NULL DEFAULT 'PENDING',
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
   `user_location` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -223,7 +223,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `wallet`
 --

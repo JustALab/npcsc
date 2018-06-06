@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/plugins/datatables/dataTables.bootstrap4.css">
+  
   <style type="text/css">
     .my-error-class {
       color:#FF0000;  /* red */
@@ -98,7 +101,7 @@
       </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <span>Welcome, <span id="username_nav"><?php echo ucwords($_SESSION['username']); ?></span></span>
+          <span>Welcome <span id="username_nav"><?php echo ucwords($_SESSION['username']); ?></span></span>
         </a>
       </li>
       <li class="nav-item dropdown">
