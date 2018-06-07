@@ -37,7 +37,7 @@
         $options = array('cost' => 12);
         $regFormElements['password'] = password_hash($regFormElements['password'], PASSWORD_BCRYPT, $options);
         if(!checkIfUserExists($regFormElements['email'])){
-            $result = $db->insertOperation('users',$regFormElements);
+            $result = $db->insertOperation(TABLE_USERS,$regFormElements);
             //file_put_contents("formlog.log", print_r( $regFormElements, true ));
             if($result['status'] == 'success'){
                 $lastInsertId = $result['last_insert_id'];
@@ -54,13 +54,13 @@
      */
     function createWalletForUser($userId){
         global $dbc;
-        $query = "INSERT INTO wallet (user_id) VALUES ('$userId')";
+        $query = "INSERT INTO ".TABLE_WALLET." (user_id) VALUES ('$userId')";
         mysqli_query($dbc, $query);
     }
 
     function checkIfUserExists($email){
         global $dbc;
-        $query = 'SELECT * FROM users WHERE email = "'.$email.'"';
+        $query = 'SELECT * FROM '.TABLE_USERS.' WHERE email = "'.$email.'"';
         $result = mysqli_query($dbc, $query);
         if(mysqli_num_rows($result) > 0) {
             return true;
@@ -68,9 +68,28 @@
         return false;
     }
 
-	function updateStatus(){
+    function getPreviousStatus($userId){
         global $dbc;
-        return array("status"=>"success","message"=>"User approved.");
+        $query = "SELECT status FROM ".TABLE_USERS." WHERE user_id='$userId'";
+        $result = mysqli_query($dbc, $query);
+        $row = mysqli_fetch_assoc($result);
+        return $row['status'];
+    }
+
+	function updateStatus(){
+        global $db;
+        $userId = $_POST['user_id'];
+        $oldStatus = getPreviousStatus($userId);
+        $newStatus = $_POST['new_status'];
+        $result = $db->updateOperation(TABLE_USERS, array('status'=>$newStatus), array('user_id'=>$userId));
+        // file_put_contents("formlog.log", print_r( $result, true ));
+        if($result['status'] == 'success'){
+            if($oldStatus == STATUS_PENDING && $newStatus == STATUS_APPROVED){
+              createWalletForUser($userId);  
+            }
+            return array("status"=>"success","message"=>"User status successfully updated.");
+        }
+        return array("status"=>"failure","message"=>"User status update failure.");
     }
 
 ?>

@@ -81,10 +81,10 @@
         <?php if($row['status'] == 'Pending'){ ?>
           <div id="approve_reject_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, 'Approved');">Approve</button>
+              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, 'Denied');">Deny</button>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, 'Denied');">Deny</button>
+              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, 'Approved');">Approve</button>
             </div>
           </div>
         <?php } ?>

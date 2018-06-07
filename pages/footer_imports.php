@@ -39,3 +39,5 @@
     <!-- DataTables -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/datatables/jquery.dataTables.js"></script>
     <script src="<?php echo HOMEURL; ?>/assets/plugins/datatables/dataTables.bootstrap4.js"></script>
+    <!-- Bootbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>

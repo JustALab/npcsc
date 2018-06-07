@@ -102,6 +102,28 @@ function loadPage(){
 }
 
 function updateUserStatus(userId, newStatus){
+
+	bootbox.confirm({
+	    message: "Are you sure want to update the status of this user?",
+	    buttons: {
+	        confirm: {
+	            label: 'Yes',
+	            className: 'btn-success'
+	        },
+	        cancel: {
+	            label: 'No',
+	            className: 'btn-danger'
+	        }
+	    },
+	    callback: function (result) {
+	        if(result){
+	        	confirmUpdateStatus(userId, newStatus);
+	        }
+	    }
+	});
+}
+
+function confirmUpdateStatus(userId, newStatus){
 	var data = 'user_id=' + userId + '&new_status=' + newStatus + '&action=update_status';
 	$.ajax({
 		url: servicesUrl + 'user_services.php',
@@ -109,10 +131,14 @@ function updateUserStatus(userId, newStatus){
 		data:  data,
 		dataType: 'json',
 		success: function(result){
-			alert(result.message)
+			location.reload();
+			// bootbox.alert({
+			// 	message: result.message,
+			// 	callback: function(){}
+			// });
 		},
 		error: function(){
-			alert("failure");
+			bootbox.alert("failure");
 		} 	        
 	});
 }
