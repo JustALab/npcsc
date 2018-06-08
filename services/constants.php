@@ -6,6 +6,7 @@
 
     define('TABLE_USERS', 'users');
     define('TABLE_WALLET', 'wallet');
+    define('TABLE_WALLET_REQUESTS', 'wallet_requests');
     define('TABLE_SERVICES', 'services');
     define('TABLE_PRICE_CONFIG', 'price_config');
 

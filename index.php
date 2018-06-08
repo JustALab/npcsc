@@ -29,6 +29,7 @@
           if(mysqli_num_rows($walletResult) > 0){
             $walletRow = mysqli_fetch_assoc($walletResult);
             $_SESSION['wallet_amount'] = $walletRow['amount'];
+            $_SESSION['wallet_id'] = $walletRow['wallet_id'];
           }
           $_SESSION['login'] = 'yes';
           if($_SESSION['user_type'] == 'ADMIN'){

@@ -33,7 +33,6 @@ include '../sidebar.php';
                 </div>
                 <input type="text" id="application_date" name="application_date" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
               </div>
-              <!-- /.input group -->
             </div>
             <div class="form-group">
               <label>Application type :</label>
@@ -242,7 +241,7 @@ include '../sidebar.php';
         <div class="card-footer">
           <div class="row">
             <div class="col-sm-4">
-              <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
+              <button type="button" class="btn btn-block btn-success" onclick="submitRequest();">Process</button>
             </div>
             <div class="col-sm-4">
               <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>

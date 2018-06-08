@@ -1,0 +1,9 @@
+<?php 
+	
+	$narpaviBanks = array('1'=>'State Bank of India', '2' => 'HDFC Bank');
+
+	$transactionType = array('1'=>'Online Transfer','2'=>'NEFT / RTGS / IMPS','3'=>'Cheque / DD');
+
+	$banks = array('1'=>'State Bank Of India', '2'=>'ICICI Bank', '3'=>'Punjab National Bank', '4'=>'Bank of Baroda', '5'=>'Canara Bank', '6'=>'HDFC Bank', '7'=>'AXIS Bank', '8'=>'Bank of India', '9'=>'IDBI Bank', '10'=>'Union Bank of India', '11'=>'Central Bank of India', '12'=>'Vijaya Bank', '13'=>'Mahalaxmi Bank', '14'=>'Karur Vysya Bank', '15'=>'Indian Bank', '16'=>'Allahabad Bank', '17'=>'Andhra Bank', '18'=>'Bank of Baroda(Corporate)', '19'=>'Bank of Maharastra', '20'=>'Corporation Bank', '21'=>'Citi Bank', '22'=>'City Union Bank', '23'=>'Cosmos Bank', '24'=>'Deutsche Bank', '25'=>'DCB Bank Personal', '26'=>'DCB Bank Business', '27'=>'Dena Bank', '28'=>'Dhanalaxmi Bank', '29'=>'Federal Bank', '30'=>'Indusind Bank', '31'=>'Indian Overseas Bank', '32'=>'ING Vysya Bank', '33'=>'Jammu and Kashmir Bank', '34'=>'Janata Sahakari Bank', '35'=>'Karnataka Bank', '36'=>'Kotak Bank', '37'=>'Lakshmi Vilas Bank(Corporate)', '38'=>'Lakshmi Vilas Bank(Retail)', '39'=>'Oriental Bank of Commerce', '40'=>'Punjab and Sind Bank', '41'=>'PNB(Corporate)', '42'=>'Punjab and Maharashtra Co-operative Bank', '43'=>'Ratnakar Bank', '44'=>'Saraswat Bank', '45'=>'Standard Chartered Bank', '46'=>'South Indian Bank', '47'=>'State Bank of Bikaner and Jaipur', '48'=>'State Bank of Hyderabad', '49'=>'State Bank of Mysore', '50'=>'State Bank of Patiala', '51'=>'State Bank of Travancore', '52'=>'Syndicate Bank', '53'=>'Tamilnad Mercantile Bank', '54'=>'TNSC Bank', '55'=>'UCO Bank', '56'=>'United Bank of India', '57'=>'Yes Bank', '58'=>'DCCB', '59'=>'Training', '60'=>'CATHOLIC SYRIAN BANK');
+
+?>

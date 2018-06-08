@@ -40,6 +40,8 @@
     .my-error-class {
       color:#FF0000;  /* red */
     }
+
+    /** removes the spinner button in number only field */    
     input[type=number]::-webkit-inner-spin-button, 
     input[type=number]::-webkit-outer-spin-button { 
         -webkit-appearance: none;
