@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 06, 2018 at 09:08 PM
+-- Generation Time: Jun 08, 2018 at 05:21 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -164,7 +164,7 @@ ALTER TABLE `pan_application`
 --
 ALTER TABLE `price_config`
   ADD PRIMARY KEY (`price_config_id`),
-  ADD KEY `service_id` (`service_id`);
+  ADD UNIQUE KEY `service_id` (`service_id`);
 
 --
 -- Indexes for table `services`
@@ -213,22 +213,22 @@ ALTER TABLE `pan_application`
 -- AUTO_INCREMENT for table `price_config`
 --
 ALTER TABLE `price_config`
-  MODIFY `price_config_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `price_config_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `wallet`
 --
 ALTER TABLE `wallet`
-  MODIFY `wallet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `wallet_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `wallet_requests`
 --
