@@ -7,6 +7,7 @@
    include '../sidebar.php';
    include '../dbconfig.php';
    include '../../services/constants.php';
+   include 'bank_config.php';
    
    $status = 'Pending';
    if(isset($_GET['status'])){
@@ -29,7 +30,6 @@
                         <option value="Pending" <?php echo (($status=='Pending')?'selected="selected"':''); ?>>Pending</option>
                         <option value="Approved" <?php echo (($status=='Approved')?'selected="selected"':''); ?>>Approved</option>
                         <option value="Denied" <?php echo (($status=='Denied')?'selected="selected"':''); ?>>Denied</option>
-                        <option value="Blocked" <?php echo (($status=='Blocked')?'selected="selected"':''); ?>>Blocked</option>
                      </select>
                   </div>
                </div>
@@ -66,7 +66,7 @@
                          echo "<tr>";
                          echo "<td>".++$rowCount."</td>";
                          echo "<td>".$row['request_id']."</td>";
-                         echo "<td>".$row['to_bank_name']."</td>";
+                         echo "<td>".$narpaviBanks[$row['to_bank_name']]."</td>";
                          echo "<td>".$row['request_amount']."</td>";
                          echo "<td>".$row['request_date']."</td>";
                          // echo "<td>".$row['user_location']."</td>";
