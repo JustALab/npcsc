@@ -6,9 +6,10 @@
   include '../header_nav.php';
   include '../sidebar.php';
   include '../dbconfig.php';
+  include '../../services/constants.php';
 
   $userId = $_GET['user_id'];
-  $query = "SELECT * FROM users WHERE user_id='$userId'";
+  $query = "SELECT * FROM ".TABLE_USERS." WHERE user_id='$userId'";
   $result = mysqli_query($dbc, $query);
   $row = mysqli_fetch_assoc($result);
 ?>
@@ -24,16 +25,16 @@
 
           <div class="card-tools">
           <?php if($row['status'] == 'Approved'){ ?>
-            <button type="button" class="btn btn-block btn-success" disabled>Approved</button>
+            <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
           <?php } ?>
           <?php if($row['status'] == 'Denied'){ ?>
-            <button type="button" class="btn btn-block btn-danger" disabled>Denied</button>
+            <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
           <?php } ?>
           <?php if($row['status'] == 'Pending'){ ?>
-            <button type="button" class="btn btn-block btn-warning" disabled>Pending</button>
+            <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
           <?php } ?>
           <?php if($row['status'] == 'Blocked'){ ?>
-            <button type="button" class="btn btn-block btn-danger" disabled>Blocked</button>
+            <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
           <?php } ?>
           </div>
         </div>

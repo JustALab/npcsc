@@ -27,8 +27,24 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="<?php echo HOMEURL; ?>/pages/users/view_users.php" class="nav-link">
+              <i class="nav-icon fa fa-users"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="<?php echo HOMEURL; ?>/pages/price_config/price_config.php" class="nav-link">
               <i class="nav-icon fa fa-money"></i>
+              <p>
+                Price Configuration
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-rupee"></i>
               <p>
                 Wallet
                 <i class="fa fa-angle-left right"></i>
@@ -72,14 +88,6 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="<?php echo HOMEURL; ?>/pages/users/view_users.php" class="nav-link">
-              <i class="nav-icon fa fa-users"></i>
-              <p>
-                Users
-              </p>
-            </a>
-          </li>
         </ul>
       </nav>
       <!-- /. Admin sidebar-menu -->
@@ -104,7 +112,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-money"></i>
+              <i class="nav-icon fa fa-rupee"></i>
               <p>
                 Wallet
                 <i class="fa fa-angle-left right"></i>

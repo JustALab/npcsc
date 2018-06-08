@@ -6,6 +6,7 @@
   include '../header_nav.php';
   include '../sidebar.php';
   include '../dbconfig.php';
+  include '../../services/constants.php';
 
   $status = 'Approved';
   if(isset($_GET['status'])){
@@ -59,7 +60,7 @@
           </thead>
           <tbody>
             <?php
-                $query = 'SELECT * FROM users WHERE user_type="AGENT" AND status="'.$status.'"';
+                $query = 'SELECT * FROM '.TABLE_USERS.' WHERE user_type="AGENT" AND status="'.$status.'"';
                 $result = mysqli_query($dbc, $query);
                 if(mysqli_num_rows($result) > 0){
                   $rowCount = 0;
