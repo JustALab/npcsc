@@ -11,7 +11,26 @@ function editAmount(row, serviceId){
 	    		$('#amount_' + row).html(previousAmount);
 	    	} else {
 	    		$('#amount_' + row).html(newAmount);
+	    		updateAmount(serviceId, newAmount);
 	    	}
 	    }
+	});
+}
+
+function updateAmount(serviceId, newAmount){
+	var data = 'service_id=' + serviceId + '&new_amount=' + newAmount + '&action=update_amount';
+	$.ajax({
+		url: servicesUrl + 'price_config_services.php',
+		type: 'POST',
+		data:  data,
+		dataType: 'json',
+		success: function(result){
+			if(result.status === 'success'){
+				bootbox.alert(result.message);
+			}
+		},
+		error: function(){
+			bootbox.alert("failure");
+		} 	        
 	});
 }
