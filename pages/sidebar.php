@@ -44,7 +44,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-rupee"></i>
+              <i class="nav-icon fa fa-bank"></i>
               <p>
                 Wallet
                 <i class="fa fa-angle-right right"></i>
@@ -116,7 +116,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-bank"></i>
               <p>
-                 <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
+               <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
                 Wallet
                 <span id="balance" style="font-weight: bold; float: right;padding-left: 8px; color:white;">₹ <?php echo $walletAmount; ?></span>
                 <i class="fa fa-angle-right right"></i>
