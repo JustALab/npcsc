@@ -135,6 +135,8 @@
     <script src="<?php echo HOMEURL; ?>/assets/plugins/iCheck/icheck.min.js"></script>
     <!-- jQuery Validate -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery-validate/jquery.validate.js"></script>
+    <!-- Bootbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script>
       var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
     </script>

@@ -73,18 +73,18 @@ function photoUpload() {
 							photoDim = true;
 						} else {
 							photoDim = false;
-							alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nYou are using unsupported image dimensions.\nPhoto image measurements should be -\nWidth = 204 pixels\nHeight = 204 pixels");
+							bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nYou are using unsupported image dimensions.\nPhoto image measurements should be -\nWidth = 204 pixels\nHeight = 204 pixels");
 						}
 					} else {
-						alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nBig files are not supported. Photo file size should be less than 9KB.");
+						bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nBig files are not supported. Photo file size should be less than 9KB.");
 					}
 				};
 			}
 		} else {
-			alert("This browser does not support HTML5.");
+			bootbox.alert("This browser does not support HTML5.");
 		}
 	} else {
-		alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nPlease use JPEG or JPEG files. \nPhoto dimension should be 204px X 204px.\nFile size should be less than 9KB.");
+		bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nPlease use JPEG or JPEG files. \nPhoto dimension should be 204px X 204px.\nFile size should be less than 9KB.");
 	}
 }
 
@@ -104,15 +104,15 @@ function signatureUpload() {
 						sigSize = true;
 					} else {
 						sigSize = false;
-						alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nBig files are not supported. Please use signature file less than 9KB.");
+						bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nBig files are not supported. Please use signature file less than 9KB.");
 					}
 				};
 			}
 		} else {
-			alert("This browser does not support HTML5.");
+			bootbox.alert("This browser does not support HTML5.");
 		}
 	} else {
-		alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nOnly JPG or JPEG files are supported in sugnature.");
+		bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nOnly JPG or JPEG files are supported in sugnature.");
 		return false;
 	}
 }
@@ -131,14 +131,14 @@ function documentUpload() {
 					pdfSize = true;
 				} else {
 					pdfSize = false;
-					alert("PDF Size is too big. File size should be less than 1MB.");
+					bootbox.alert("PDF Size is too big. File size should be less than 1MB.");
 				}
 			}
 		} else {
-			alert("This browser does not support HTML5.");
+			bootbox.alert("This browser does not support HTML5.");
 		}
 	} else {
-		alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nOnly pdf files are supported in documents.");
+		bootbox.alert("\nTHIS PAN CARD WILL NOT BE ACCEPTED.\n\nOnly pdf files are supported in documents.");
 	}
 }
 
@@ -162,7 +162,7 @@ function confirmProcessPan(){
         contentType: false,
 		dataType: 'json',
 		success: function(result){
-			alert(result.message);
+			bootbox.alert(result.message);
 			if(result.status === 'success'){
 				clearFields();
 			}

@@ -37,7 +37,7 @@ include '../sidebar.php';
             <div class="form-group">
               <label>Application type :</label>
               <select id="application_type" name="application_type" class="form-control required">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="New Application">New Application</option>
                 <option value="Correction/Change">Correction/Change</option>
               </select>
@@ -49,14 +49,14 @@ include '../sidebar.php';
             <div class="form-group">
               <label>Category of Applicant :</label>
               <select class="form-control required" id="applicant_category" name="applicant_category">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Individual">Individual</option>
               </select>
             </div>
             <div class="form-group">
               <label>Applicant's title :</label>
               <select class="form-control required" id="applicant_title" name="applicant_title">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Shri">Shri</option>
                 <option value="Smt/Mrs">Smt/Mrs</option>
                 <option value="Kumari/Ms">Kumari/Ms</option>
@@ -120,21 +120,21 @@ include '../sidebar.php';
             <div class="form-group">
               <label>Proof of ID :</label>
               <select class="form-control required" id="proof_of_id" name="proof_of_id">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div class="form-group">
               <label>Proof of Address :</label>
               <select class="form-control required" id="proof_of_address" name="proof_of_address">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div class="form-group">
               <label>Proof of Address :</label>
               <select class="form-control required" id="proof_of_dob" name="proof_of_dob">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhaar">Aadhaar</option>
                 <option value="Driving License">Driving License</option>
                 <option value="Birth Certificate">Birth Certificate</option>
@@ -144,7 +144,7 @@ include '../sidebar.php';
             <div class="form-group">
               <label>Gender :</label>
               <select class="form-control required" id="gender" name="gender">
-                <option value="" selected="selected">Select</option>
+                <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
               </select>
@@ -176,7 +176,7 @@ include '../sidebar.php';
             <div class="form-group">
               <label>State/Union Territory :</label>
               <select class="form-control required" id="state_ut" name="state_ut">
-                <option value="" selected="selected">Select State</option>
+                <option value="" selected="selected" disabled="true">Select State</option>
                 <option value="1">ANDAMAN AND NICOBAR ISLANDS</option>
                 <option value="2">ANDHRA PRADESH</option>
                 <option value="3">ARUNACHAL PRADESH</option>
