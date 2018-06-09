@@ -51,8 +51,6 @@
       echo '<script language="javascript">alert("User not available!")</script>';
     }
   }
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,5 +132,7 @@
     <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootbox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
   </body>
 </html>

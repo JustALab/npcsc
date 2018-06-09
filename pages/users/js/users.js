@@ -60,7 +60,7 @@ function registerUser(){
 				data:  data,
 				dataType: 'json',
 				success: function(result){
-					alert(result.message)
+					bootbox.alert(result.message)
 					if(result.status === 'success'){
 						$(':input','#user_registration_form')
 						  .not(':button, :submit, :reset, :hidden')
@@ -70,14 +70,14 @@ function registerUser(){
 					}
 				},
 				error: function(){
-					alert("failure");
+					bootbox.alert("failure");
 				} 	        
 			});
 		}
 	} else {
 		$('#password').val('');
 		$('#confirm_password').val('');
-		alert("Passwords does not match! Try again!");
+		bootbox.alert("Passwords does not match! Try again!");
 	}
 }
 

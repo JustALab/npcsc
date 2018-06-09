@@ -6,7 +6,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">NARPAVI CSC</span>
     </a>
 
 <?php if($_SESSION['user_type'] == 'ADMIN'){ ?>
@@ -47,7 +47,7 @@
               <i class="nav-icon fa fa-rupee"></i>
               <p>
                 Wallet
-                <i class="fa fa-angle-left right"></i>
+                <i class="fa fa-angle-right right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -70,7 +70,7 @@
               <i class="nav-icon fa fa-file-text-o"></i>
               <p>
                 PAN
-                <i class="fa fa-angle-left right"></i>
+                <i class="fa fa-angle-right right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -89,13 +89,15 @@
             </ul>
           </li>
         </ul>
+        <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;"><span style="color:grey">© 2018 </span><a href="http://www.justalab.in" target="_blank">JustALab</a></div>
+          <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div>
       </nav>
       <!-- /. Admin sidebar-menu -->
     </div>
     <!-- /. Admin sidebar -->
   <?php } else { ?>
     <!-- Agent Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar fixed">
       <!-- Agent Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -112,10 +114,13 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-rupee"></i>
+              <i class="nav-icon fa fa-bank"></i>
               <p>
+                 <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
                 Wallet
-                <i class="fa fa-angle-left right"></i>
+                <span id="balance" style="font-weight: bold; float: right;padding-left: 8px; color:white;">₹ <?php echo $walletAmount; ?></span>
+                <i class="fa fa-angle-right right"></i>
+                <?php } ?>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -139,12 +144,13 @@
               </li>
             </ul>
           </li>
+
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fa fa-file-text-o"></i>
               <p>
                 PAN
-                <i class="fa fa-angle-left right"></i>
+                <i class="fa fa-angle-right right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
@@ -163,6 +169,12 @@
             </ul>
           </li>
         </ul>
+
+        
+          <div id="copyright" style="position:absolute;bottom:4px;left:4px;"><span style="color:grey">© 2018 </span><a href="http://www.justalab.in" target="_blank">JustALab</a></div>
+          <div id="version" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div>
+        
+
       </nav>
       <!-- /. Agent sidebar-menu -->
     </div>
