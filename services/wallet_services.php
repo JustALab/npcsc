@@ -4,6 +4,8 @@
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
 
+	include 'common_methods.php';
+
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
 	
@@ -48,35 +50,12 @@
 		return $row['wallet_id'];
 	}
 
-	function getPreviousBalance($walletId){
-		global $dbc;
-		$query = "SELECT amount FROM ".TABLE_WALLET." WHERE wallet_id='$walletId'";
-		$result = mysqli_query($dbc, $query);
-		$row = mysqli_fetch_assoc($result);
-		return $row['amount'];
-	}
-
 	function getRequestAmount($requestId){
 		global $dbc;
 		$query = "SELECT request_amount FROM ".TABLE_WALLET_REQUESTS." WHERE request_id='$requestId'";
 		$result = mysqli_query($dbc, $query);
 		$row = mysqli_fetch_assoc($result);
 		return $row['request_amount'];
-	}
-
-	function updateWalletAmount($walletId, $previousBalance, $requestAmount){
-		global $db;
-		$newBalance = $previousBalance + $requestAmount;
-		$result = $db->updateOperation(TABLE_WALLET, array('amount'=>$newBalance), array('wallet_id'=>$walletId));
-		$result['new_balance'] = $newBalance;
-		return $result;
-	}
-
-	function addWalletTransaction($walletId, $description, $previousBalance, $trancationType, $newBalance){
-		global $db;
-		$transactionData = array('date_time' => date("d-m-Y H:i:s"), 'description' => $description, 'previous_balance' => $previousBalance, 'transaction_type' => $trancationType, 'balance' => $newBalance, 'wallet_id' => $walletId);
-		$result = $db->insertOperation(TABLE_WALLET_TRANS, $transactionData);
-		return $result['status'];
 	}
 
 	function updateStatus(){
@@ -88,12 +67,12 @@
         if($result['status'] == 'success'){
         	if($newStatus == STATUS_APPROVED){
         		$walletId = getWalletIdByRequestId($requestId);
-        		$previousBalance = getPreviousBalance($walletId);
+        		$previousBalance = getWalletBalance($walletId);
         		$requestAmount = getRequestAmount($requestId);
-        		$walletUpdateData = updateWalletAmount($walletId, $previousBalance, $requestAmount);
+        		$walletUpdateData = updateWalletAmount($walletId, $previousBalance, $requestAmount, true);
         		if($walletUpdateData['status'] == 'success'){
         			$description = 'Added money to wallet.';
-        			$transactionStatus = addWalletTransaction($walletId, $description, $previousBalance, TRANSACTION_CREDIT, $walletUpdateData['new_balance']);
+        			$transactionStatus = addWalletTransaction($walletId, $description, $previousBalance, TRANSACTION_CREDIT, $requestAmount, $walletUpdateData['new_balance']);
         		}
         	}
             return array("status"=>"success","message"=>"Wallet request updated successfully.");

@@ -33,6 +33,7 @@
               <th>Description</th>
               <th>Previous Balance</th>
               <th>Transaction Type</th>
+              <th>Amount</th>
               <th>Balance</th>
               <th>Agent ID</th>
               <th>Agent Name</th>
@@ -40,7 +41,7 @@
           </thead>
           <tbody>
             <?php
-              $query = 'SELECT wt.transaction_id, wt.date_time, wt.description, wt.previous_balance, wt.transaction_type, wt.balance, u.user_id, u.name FROM '.TABLE_WALLET_TRANS.' wt, '.TABLE_WALLET.' w, '.TABLE_USERS.' u where wt.wallet_id=w.wallet_id AND w.user_id=u.user_id  ORDER BY transaction_id DESC';
+              $query = 'SELECT wt.transaction_id, wt.date_time, wt.description, wt.previous_balance, wt.transaction_type, wt.balance, wt.amount, u.user_id, u.name FROM '.TABLE_WALLET_TRANS.' wt, '.TABLE_WALLET.' w, '.TABLE_USERS.' u where wt.wallet_id=w.wallet_id AND w.user_id=u.user_id  ORDER BY transaction_id DESC';
               $result = mysqli_query($dbc, $query);
               if(mysqli_num_rows($result) > 0){
                 $rowCount = 0;
@@ -52,6 +53,7 @@
                   echo "<td>".$row['description']."</td>";
                   echo "<td>".$row['previous_balance']."</td>";
                   echo "<td>".$row['transaction_type']."</td>";
+                  echo "<td>".$row['amount']."</td>";
                   echo "<td>".$row['balance']."</td>";
                   echo "<td>".$row['user_id']."</td>";
                   echo "<td>".$row['name']."</td>";

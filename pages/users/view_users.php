@@ -8,7 +8,7 @@
   include '../dbconfig.php';
   include '../../services/constants.php';
 
-  $status = 'Approved';
+  $status = STATUS_APPROVED;
   if(isset($_GET['status'])){
     $status = $_GET['status'];
   }
@@ -28,10 +28,10 @@
           <div class="col-md-4">
             <div class="form-group">
               <select id="user_status" name="user_status" class="form-control">
-                <option value="Pending" <?php echo (($status=='Pending')?'selected="selected"':''); ?>>Pending</option>
-                <option value="Approved" <?php echo (($status=='Approved')?'selected="selected"':''); ?>>Approved</option>
-                <option value="Denied" <?php echo (($status=='Denied')?'selected="selected"':''); ?>>Denied</option>
-                <option value="Blocked" <?php echo (($status=='Blocked')?'selected="selected"':''); ?>>Blocked</option>
+                <option value="Pending" <?php echo (($status==STATUS_PENDING)?'selected="selected"':''); ?>>Pending</option>
+                <option value="Approved" <?php echo (($status==STATUS_APPROVED)?'selected="selected"':''); ?>>Approved</option>
+                <option value="Denied" <?php echo (($status==STATUS_DENIED)?'selected="selected"':''); ?>>Denied</option>
+                <option value="Blocked" <?php echo (($status==STATUS_BLOCKED)?'selected="selected"':''); ?>>Blocked</option>
               </select>
             </div>
           </div>

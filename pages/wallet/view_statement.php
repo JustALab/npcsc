@@ -33,6 +33,7 @@
               <th>Description</th>
               <th>Previous Balance</th>
               <th>Transaction Type</th>
+              <th>Amount</th>
               <th>Balance</th>
             </tr>
           </thead>
@@ -50,6 +51,7 @@
                   echo "<td>".$row['description']."</td>";
                   echo "<td>".$row['previous_balance']."</td>";
                   echo "<td>".$row['transaction_type']."</td>";
+                  echo "<td>".$row['amount']."</td>";
                   echo "<td>".$row['balance']."</td>";
                   echo "</tr>";
                 }

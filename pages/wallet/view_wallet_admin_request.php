@@ -30,13 +30,13 @@
           <h3 class="card-title">Request for Amount ₹ <?php echo $row['request_amount']; ?></h3>
 
           <div class="card-tools">  
-            <?php if($row['status'] == 'Pending'){ ?>
+            <?php if($row['status'] == STATUS_PENDING){ ?>
               <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
             <?php } ?>
-            <?php if($row['status'] == 'Approved'){ ?>
+            <?php if($row['status'] == STATUS_APPROVED){ ?>
               <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
             <?php } ?>
-            <?php if($row['status'] == 'Denied'){ ?>
+            <?php if($row['status'] == STATUS_DENIED){ ?>
               <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
           <?php } ?>
           </div>
