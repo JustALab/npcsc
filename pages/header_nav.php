@@ -58,13 +58,13 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
-<div class="wrapper">
+<div class="wrapper fixed">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-info navbar-dark border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-money" style="font-size:24px"></i></a>
+        <!-- <a class="nav-link" href="#"><i class="fa fa-money" style="font-size:24px"></i></a> -->
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
@@ -73,16 +73,16 @@
         <a href="#" class="nav-link">Contact</a>
       </li> -->
     <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#">
           Wallet Balance: 
         </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" style="padding: 0px;">
-          <span style="font-size: 24px;">₹ <span id="wallet_balance"><?php echo $walletAmount; ?></span></span>
-        </a>
-      </li>
+      </li> -->
+      <!-- <li class="nav-item"> -->
+        <!-- <a class="nav-link" href="#" style="padding: 0px;"> -->
+          <!-- <span style="font-size: 24px;">₹ <span id="wallet_balance"><?php echo $walletAmount; ?></span></span> -->
+        <!-- </a> -->
+      <!-- </li> -->
     <?php } ?>
     </ul>
 
@@ -117,13 +117,14 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
+          <a href="#" class="dropdown-item" style="color:#17a2b8 !important">
             <i class="fa fa-gear mr-2"></i> Profile & Settings
           </a>
           <div class="dropdown-divider"></div>
-          <a href="<?php echo HOMEURL; ?>/pages/logout.php" class="dropdown-item">
+          <a href="<?php echo HOMEURL; ?>/pages/logout.php" class="dropdown-item" style="color:#17a2b8 !important">
             <i class="fa fa-close mr-2"></i> Logout
           </a>
+        </div>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
