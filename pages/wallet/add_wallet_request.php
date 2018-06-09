@@ -28,7 +28,7 @@
                <div class="row">
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group">
-                        <label>Narpavi CSC Bank :</label>
+                        <label>Narpavi Bank(To which bank you transferred)</label>
                         <select id="to_bank_name" name="to_bank_name" class="form-control required">
                            <option value="" selected="selected">Select</option>
                            <?php 
@@ -41,7 +41,7 @@
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group">
-                        <label>Transaction Type:</label>
+                        <label>Transaction Type</label>
                         <select id="transaction_type" name="transaction_type" class="form-control required">
                            <option value="" selected="selected">Select</option>
                            <?php 
@@ -56,13 +56,13 @@
                <div class="row">
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group" id="pan_number_correction_div">
-                        <label>Wallet Request Amount:</label>
+                        <label>Wallet Request Amount</label>
                         <input type="number" id="request_amount" name="request_amount" class="form-control required" placeholder="Wallet Request Amount">
                      </div>
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group">
-                        <label>Date:</label>
+                        <label>Date</label>
                         <div class="input-group">
                            <div class="input-group-prepend">
                               <span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -75,7 +75,7 @@
                <div class="row">
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group">
-                        <label>Bank Name:</label>
+                        <label>Bank Name</label>
                         <select id="bank_name" name="bank_name" class="form-control required">
                            <option value="" selected="selected">Select</option>
                            <?php 
@@ -88,7 +88,7 @@
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-4 col-sm-offset-2">
                      <div class="form-group">
-                        <label>Reference Number:</label>
+                        <label>Reference Number</label>
                         <input type="text" id="reference_no" name="reference_no" class="form-control required" placeholder="Reference Number">
                      </div>
                   </div>
