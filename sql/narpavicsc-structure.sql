@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 08, 2018 at 05:21 PM
+-- Generation Time: Jun 09, 2018 at 08:58 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -127,7 +127,7 @@ CREATE TABLE `wallet_requests` (
   `request_date` varchar(10) NOT NULL,
   `bank_name` varchar(30) NOT NULL,
   `reference_no` varchar(20) NOT NULL,
-  `status` varchar(20) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
   `wallet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -139,11 +139,10 @@ CREATE TABLE `wallet_requests` (
 
 CREATE TABLE `wallet_transactions` (
   `transaction_id` int(11) NOT NULL,
-  `date_time` datetime NOT NULL,
+  `date_time` varchar(20) NOT NULL,
   `description` varchar(150) NOT NULL,
   `previous_balance` varchar(15) NOT NULL,
-  `credit` varchar(15) NOT NULL,
-  `debit` varchar(15) NOT NULL,
+  `transaction_type` varchar(6) NOT NULL,
   `balance` varchar(15) NOT NULL,
   `wallet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -233,12 +232,12 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `wallet_requests`
 --
 ALTER TABLE `wallet_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `wallet_transactions`
 --
 ALTER TABLE `wallet_transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
