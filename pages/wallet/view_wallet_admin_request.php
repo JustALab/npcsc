@@ -126,13 +126,13 @@
           <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
               <div class="form-group">
-                <label>Email:</label>
+                <label>Email</label>
                 <input type="text" id="" name="" class="form-control" disabled value="<?php echo $userRow['email']; ?>">
               </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
               <div class="form-group">
-                <label>Mobile:</label>
+                <label>Mobile</label>
                 <input type="text" id="" name="" class="form-control" disabled value="<?php echo $userRow['mobile']; ?>">
               </div>
             </div>
@@ -140,13 +140,13 @@
           <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4">
               <div class="form-group">
-                <label>PAN Number:</label>
+                <label>PAN Number</label>
                 <input type="text" id="" name="" class="form-control" disabled value="<?php echo $userRow['pan_no']; ?>">
               </div>
             </div>
             <div class="col-sm-12 col-md-4 col-lg-4">
               <div class="form-group">
-                <label>Aadhaar Number:</label>
+                <label>Aadhaar Number</label>
                 <input type="text" id="" name="" class="form-control" disabled value="<?php echo $userRow['aadhaar_no']; ?>">
               </div>
             </div>
@@ -154,7 +154,7 @@
           <div class="row">
             <div class="col-sm-12 col-xs-12 col-md-8 col-lg-8">
               <div class="form-group">
-                <label>Address :</label>
+                <label>Address</label>
                 <textarea id="" name="" class="form-control" disabled><?php echo $userRow['address']; ?></textarea>
               </div>
             </div>
