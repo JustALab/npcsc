@@ -64,7 +64,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-bars"></i></a>
+        <a class="nav-link" href="#"><i class="fa fa-money" style="font-size:24px"></i></a>
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
@@ -79,8 +79,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">
-          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $walletAmount; ?></span></span>
+        <a class="nav-link" href="#" style="padding: 0px;">
+          <span style="font-size: 24px;">₹ <span id="wallet_balance"><?php echo $walletAmount; ?></span></span>
         </a>
       </li>
     <?php } ?>
