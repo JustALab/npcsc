@@ -5,6 +5,7 @@ if($_SESSION['user_type'] == 'ADMIN'){
 }
 include '../header_nav.php';
 include '../sidebar.php';
+include 'pan_config.php';
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -132,7 +133,7 @@ include '../sidebar.php';
               </select>
             </div>
             <div class="form-group">
-              <label>Proof of Address :</label>
+              <label>Proof of DOB :</label>
               <select class="form-control required" id="proof_of_dob" name="proof_of_dob">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhaar">Aadhaar</option>
@@ -177,44 +178,11 @@ include '../sidebar.php';
               <label>State/Union Territory :</label>
               <select class="form-control required" id="state_ut" name="state_ut">
                 <option value="" selected="selected" disabled="true">Select State</option>
-                <option value="1">ANDAMAN AND NICOBAR ISLANDS</option>
-                <option value="2">ANDHRA PRADESH</option>
-                <option value="3">ARUNACHAL PRADESH</option>
-                <option value="4">ASSAM</option>
-                <option value="5">BIHAR</option>
-                <option value="6">CHANDIGARH</option>
-                <option value="7">DADRA AND NAGAR HAVELI</option>
-                <option value="8">DAMAN AND DIU</option>
-                <option value="9">DELHI</option>
-                <option value="10">GOA</option>
-                <option value="11">GUJARAT</option>
-                <option value="12">HARYANA</option>
-                <option value="13">HIMACHAL PRADESH</option>
-                <option value="14">JAMMU AND KASHMIR</option>
-                <option value="15">KARNATAKA</option>
-                <option value="16">KERALA</option>
-                <option value="17">LAKHSWADEEP</option>
-                <option value="18">MADHYA PRADESH</option>
-                <option value="19">MAHARASHTRA</option>
-                <option value="20">MANIPUR</option>
-                <option value="21">MEGHALAYA</option>
-                <option value="22">MIZORAM</option>
-                <option value="23">NAGALAND</option>
-                <option value="24">ORISSA</option>
-                <option value="25">PONDICHERRY</option>
-                <option value="26">PUNJAB</option>
-                <option value="27">RAJASTHAN</option>
-                <option value="28">SIKKIM</option>
-                <option value="29">TAMILNADU</option>
-                <option value="30">TRIPURA</option>
-                <option value="31">UTTAR PRADESH</option>
-                <option value="32">WEST BENGAL</option>
-                <option value="33">CHHATISHGARH</option>
-                <option value="34">UTTRAKHAND</option>
-                <option value="35">JHARKHAND</option>
-                <option value="36">TELANGANA</option>
-                <option value="99">ADDRESS OF DEFENCE EMPLOYEES</option>
-                <option value="99">FOREIGN ADDRESS</option>
+                <?php 
+                  foreach ($indianStates as $key => $value) {
+                    echo "<option value='$key'>$value</option>";
+                  }
+                ?>
               </select>
             </div>
             <div class="form-group">
@@ -241,7 +209,7 @@ include '../sidebar.php';
         <div class="card-footer">
           <div class="row">
             <div class="col-sm-4">
-              <button type="button" class="btn btn-block btn-success" onclick="submitRequest();">Process</button>
+              <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
             </div>
             <div class="col-sm-4">
               <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
@@ -251,6 +219,7 @@ include '../sidebar.php';
       </div>
       <input type="hidden" name="action" id="action" value="process_pan">
       <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+      <input type="hidden" name="wallet_id" id="wallet_id" value="<?php echo $_SESSION['wallet_id']; ?>">
       <!-- /.card -->
   </form>
 </section>

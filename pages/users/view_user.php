@@ -24,16 +24,16 @@
           <h3 class="card-title"><?php echo $row['name']; ?></h3>
 
           <div class="card-tools">
-          <?php if($row['status'] == 'Approved'){ ?>
+          <?php if($row['status'] == STATUS_APPROVED){ ?>
             <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
           <?php } ?>
-          <?php if($row['status'] == 'Denied'){ ?>
+          <?php if($row['status'] == STATUS_DENIED){ ?>
             <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
           <?php } ?>
-          <?php if($row['status'] == 'Pending'){ ?>
+          <?php if($row['status'] == STATUS_PENDING){ ?>
             <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
           <?php } ?>
-          <?php if($row['status'] == 'Blocked'){ ?>
+          <?php if($row['status'] == STATUS_BLOCKED){ ?>
             <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
           <?php } ?>
           </div>
@@ -82,24 +82,24 @@
         <?php if($row['status'] == 'Pending'){ ?>
           <div id="approve_reject_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, 'Denied');">Deny</button>
+              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, 'Approved');">Approve</button>
+              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
             </div>
           </div>
         <?php } ?>
         <?php if($row['status'] == 'Approved'){ ?>
           <div id="block_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, 'Blocked');">Block</button>
+              <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_BLOCKED.'\''; ?>);">Block</button>
             </div>
           </div>
         <?php } ?>
         <?php if($row['status'] == 'Blocked'){ ?>
           <div id="block_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, 'Approved');">Unblock</button>
+              <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Unblock</button>
             </div>
           </div>
         <?php } ?>

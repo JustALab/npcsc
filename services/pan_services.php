@@ -4,9 +4,7 @@
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
 
-	define('PHOTO_PATH', '/store/photos/');
-	define('SIGNATURE_PATH', '/store/signatures/');
-	define('DOC_PATH', '/store/documents/');
+    include 'common_methods.php';
 
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
@@ -64,15 +62,31 @@
     			$output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
     		}
     	}
+
+        $walletId = $_POST['wallet_id'];
+        $serviceId = 1;
+        $servicePrice = getServicePrice($serviceId);
+        $userWallerBalance = getWalletBalance($walletId);
+
+        if(compareServicePrice($userWallerBalance, $servicePrice)){
+            $result = $db->insertOperation(TABLE_PAN_APP, $panFormElements);
+            //file_put_contents("formlog.log", print_r( $result, true ));
+            if($result['status'] == 'success'){
+                $lastInsertId = $result['last_insert_id'];
+                //deduce amount from wallet
+                $walletUpdateResult = updateWalletAmount($walletId, $userWallerBalance, $servicePrice, false);
+                if($walletUpdateResult['status'] == 'success'){
+                    $description = 'Amount deduced for PAN application. Application No.: ' . $lastInsertId;
+                    addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                }
+                return array("status"=>"success","message"=>"New PAN application request submitted successfully.", 'application_no'=> $lastInsertId);
+            } else {
+                return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
+            }
+        } else {
+            return array("status"=>"failure","message"=>"Wallet balance is low!! Application not submitted. Please add money to your wallet.");
+        }
     	
-    	$result = $db->insertOperation('pan_application',$panFormElements);
-    	//file_put_contents("formlog.log", print_r( $result, true ));
-    	if($result['status'] == 'success'){
-    		$lastInsertId = $result['last_insert_id'];
-    		return array("status"=>"success","message"=>"New PAN application request submitted successfully.");
-    	} else {
-    		return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
-    	}
 	}
 
 ?>
