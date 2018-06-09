@@ -4,10 +4,10 @@
 date_default_timezone_set('Asia/Calcutta');
 	
 if(!defined('HOMEURL'))
-	define('HOMEURL', 'http://localhost:8888/npcsc');
+	define('HOMEURL', 'http://localhost/npcsc');
 
 if(!defined('SERVICES_URL'))
-	define('SERVICES_URL', 'http://localhost:8888/npcsc/services/');
+	define('SERVICES_URL', 'http://localhost/npcsc/services/');
 
 //date_default_timezone_set(TIMEZONE);
 // This file establishes a connection to MySQL 
@@ -16,7 +16,7 @@ if(!defined('SERVICES_URL'))
 //Set the configuration of your MySQL server
 $db_servername = 'localhost';
 $db_username = 'root';
-$db_password = 'root';
+$db_password = '';
 $db_name = 'narpavicsc';
 
 // Connect to MySQL:

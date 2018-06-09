@@ -107,7 +107,7 @@
             </div>
             <div class="row">
               <p class="col-6">
-                <a href="#" class="forg">Forgot password</a>
+                <a href="#" class="forg" onclick="forgotDialog()">Forgot password</a>
               </p>
               <p class="col-6 reg">
                 <a href="<?php echo HOMEURL; ?>/pages/users/register.php" class="reg"><b>Register</b></a>
@@ -134,5 +134,30 @@
     <script src="<?php echo HOMEURL; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Bootbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
+    <script type="text/javascript">
+      function forgotDialog(){
+          var dialog = bootbox.dialog({
+              message: '<p>Enter your registered Email ID</p><input type="email" id="forgot-email" name="forgot-email" class="form-control" placeholder="Email">',
+              closeButton: true,
+              buttons: {
+                ok: {
+                    label: "Send Verification Code",
+                    className: 'btn-info',
+                    callback: function(result){
+                        var emailID = $('#forgot-email')[0].value;
+                        // validate the email ID
+                        var isValid = true; // hardcoded
+                        if(isValid){
+                          bootbox.alert("Temporary password will be sent to your registered Email ID");
+                        }else{
+                          bootbox.alert("Not a valid Email ID");
+                        } 
+                    }
+                }
+              }
+          });
+      }
+    </script>
   </body>
 </html>
