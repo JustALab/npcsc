@@ -4,6 +4,11 @@
       header('Location: '. HOMEURL);
       exit();
   }
+
+  $walletQuery = "SELECT amount FROM wallet WHERE user_id='".$_SESSION['user_id']."'";
+  $walletResult = mysqli_query($dbc, $walletQuery);
+  $walletAmount =  mysqli_fetch_assoc($walletResult)['amount'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,7 +80,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $_SESSION['wallet_amount']; ?></span></span>
+          <span style="font-size: 22px; margin-left:-10px; padding-top: -10px;">₹ <span id="wallet_balance"><?php echo $walletAmount; ?></span></span>
         </a>
       </li>
     <?php } ?>

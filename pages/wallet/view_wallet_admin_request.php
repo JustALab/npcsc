@@ -1,5 +1,5 @@
 <?php session_start();
-  if($_SESSION['user_type'] == 'ADMIN'){
+  if($_SESSION['user_type'] != 'ADMIN'){
     echo '<script>history.go(-1);</script>';
     exit();
   }
@@ -82,6 +82,19 @@
           <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
         </div>
         <!-- /.card-body -->
+        <div class="card-footer">
+        <?php if($row['status'] == 'Pending'){ ?>
+          <div id="approve_reject_row" class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-danger" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Denied');">Deny</button>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Approved');">Approve</button>
+            </div>
+          </div>
+        <?php } ?>
+        </div>
+        <!-- /.card-footer-->
       </div>
       <!-- /.card -->
 
@@ -96,7 +109,7 @@
   <script>
     var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
   </script>
-  <script type="text/javascript" src="js/wallet.js">
+  <script type="text/javascript" src="js/wallet_admin.js">
   </script>
   <?php 
     include '../footer.php';
