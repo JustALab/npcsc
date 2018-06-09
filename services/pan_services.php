@@ -79,7 +79,7 @@
                     $description = 'Amount deduced for PAN application. Application No.: ' . $lastInsertId;
                     addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
                 }
-                return array("status"=>"success","message"=>"New PAN application request submitted successfully.");
+                return array("status"=>"success","message"=>"New PAN application request submitted successfully.", 'application_no'=> $lastInsertId);
             } else {
                 return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
             }

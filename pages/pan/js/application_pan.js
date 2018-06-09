@@ -192,7 +192,9 @@ function confirmProcessPan() {
         success: function(result) {
             bootbox.alert(result.message);
             if (result.status === 'success') {
-                clearFields();
+            	bootbox.alert(result.message, function(){
+	                window.location = 'view_pan.php?application_no=' + result.application_no;
+            	});
             }
         },
         error: function() {
