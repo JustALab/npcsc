@@ -119,7 +119,7 @@
   <script>
     var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
   </script>
-  <script type="text/javascript" src="<?php echo HOMEURL; ?>/pages/users/js/users.js">
+  <script type="text/javascript" src="<?php echo HOMEURL; ?>/pages/users/js/users_admin.js">
   </script>
   <?php 
     include '../footer.php';
