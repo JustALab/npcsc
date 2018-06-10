@@ -87,14 +87,14 @@
           <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
         </div>
         <!-- /.card-body -->
-        <?php if($row['status'] == 'Pending'){ ?>
+        <?php if($row['status'] == STATUS_PENDING){ ?>
         <!-- <div class="card-footer"> -->
           <div id="approve_reject_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Denied');">Deny</button>
+              <button class="btn btn-block btn-danger" onclick="updateRequestStatus(<?php echo $requestId; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Approved');">Approve</button>
+              <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
             </div>
           </div>
         <!-- </div> -->
