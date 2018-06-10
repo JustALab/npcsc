@@ -1,10 +1,15 @@
 $(function() {
     //Datemask dd/mm/yyyy
-    $('#application_date').inputmask('dd/mm/yyyy', {
-        'placeholder': 'dd/mm/yyyy'
-    });
+    // $('#application_date').inputmask('dd/mm/yyyy', {
+    //     'placeholder': 'dd/mm/yyyy'
+    // });
     $('#dob').inputmask('dd/mm/yyyy', {
-        'placeholder': 'dd/mm/yyyy'
+        'placeholder': 'dd/mm/yyyy',
+    });
+
+    $('#application_date').datepicker({
+        dateFormat: "dd/mm/yyyy",
+        maxDate: "Now"
     });
 
     $('#pan_application_form').validate({
