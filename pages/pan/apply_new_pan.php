@@ -13,6 +13,7 @@ include 'pan_config.php';
 <section class="content">
   <!-- Default box -->
   <form id="pan_application_form" name="pan_application_form">
+    <br />
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Apply New PAN</h3>
@@ -27,7 +28,7 @@ include 'pan_config.php';
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
             <div class="form-group">
-              <label>Date :</label>
+              <label>Date</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -36,7 +37,7 @@ include 'pan_config.php';
               </div>
             </div>
             <div class="form-group">
-              <label>Application type :</label>
+              <label>Application type</label>
               <select id="application_type" name="application_type" class="form-control required">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="New Application">New Application</option>
@@ -44,18 +45,18 @@ include 'pan_config.php';
               </select>
             </div>
             <div class="form-group" id="pan_number_correction_div">
-              <label>PAN Number:</label>
+              <label>PAN Number</label>
               <input type="text" id="pan_number" name="pan_number" class="form-control required" placeholder="PAN Number">
             </div>
             <div class="form-group">
-              <label>Category of Applicant :</label>
+              <label>Category of Applicant</label>
               <select class="form-control required" id="applicant_category" name="applicant_category">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Individual">Individual</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Applicant's title :</label>
+              <label>Applicant's title</label>
               <select class="form-control required" id="applicant_title" name="applicant_title">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Shri">Shri</option>
@@ -65,7 +66,7 @@ include 'pan_config.php';
               </select>
             </div>
             <div class="form-group">
-              <label>Applicant Name :</label>
+              <label>Applicant Name</label>
               <div class="row">
                 <div class="col-4">
                   <input type="text" id="applicant_fname" name="applicant_fname" class="form-control required" placeholder="First Name">
@@ -79,7 +80,7 @@ include 'pan_config.php';
               </div>
             </div>
             <div class="form-group">
-              <label>Father's Name :</label>
+              <label>Father's Name</label>
               <div class="row">
                 <div class="col-4">
                   <input type="text" id="father_fname" name="father_fname" class="form-control required" placeholder="First Name">
@@ -93,11 +94,11 @@ include 'pan_config.php';
               </div>
             </div>
             <div class="form-group">
-              <label>Name of Card:</label>
+              <label>Name of Card</label>
               <input type="text" id="name_on_card" name="name_on_card" class="form-control required" placeholder="Name on Card">
             </div>
             <div class="form-group">
-              <label>Date of Birth :</label>
+              <label>Date of Birth</label>
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -107,7 +108,7 @@ include 'pan_config.php';
               <!-- /.input group -->
             </div>
             <div class="form-group">
-              <label>Contact Details:</label>
+              <label>Contact Details</label>
               <input type="text" id="contact_details" name="contact_details" class="form-control required" placeholder="Contact Details">
             </div>
             <div class="form-group">
@@ -115,25 +116,25 @@ include 'pan_config.php';
               <input type="text" id="email" name="email" class="form-control required" placeholder="Email">
             </div>
             <div class="form-group">
-              <label>Name as per Aadhaar:</label>
+              <label>Name as per Aadhaar</label>
               <input type="text" id="name_as_per_aadhaar" name="name_as_per_aadhaar" class="form-control required" placeholder="Name as per Aadhaar">
             </div>
             <div class="form-group">
-              <label>Proof of ID :</label>
+              <label>Proof of ID</label>
               <select class="form-control required" id="proof_of_id" name="proof_of_id">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Proof of Address :</label>
+              <label>Proof of Address</label>
               <select class="form-control required" id="proof_of_address" name="proof_of_address">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhar">Aadhar</option>
               </select>
             </div>
             <div class="form-group">
-              <label>Proof of DOB :</label>
+              <label>Proof of DOB</label>
               <select class="form-control required" id="proof_of_dob" name="proof_of_dob">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Aadhaar">Aadhaar</option>
@@ -143,7 +144,7 @@ include 'pan_config.php';
               </select>
             </div>
             <div class="form-group">
-              <label>Gender :</label>
+              <label>Gender</label>
               <select class="form-control required" id="gender" name="gender">
                 <option value="" selected="selected" disabled="true">Select</option>
                 <option value="Male">Male</option>
@@ -151,31 +152,31 @@ include 'pan_config.php';
               </select>
             </div>
             <div class="form-group">
-              <label>Aadhaar Number:</label>
+              <label>Aadhaar Number</label>
               <input type="number" id="aadhaar_no" name="aadhaar_no" class="form-control required" placeholder="Aadhar Number">
             </div>
             <div class="form-group">
-              <label>Flat/Door/Block No.:</label>
+              <label>Flat/Door/Block No.</label>
               <input type="text" id="flat_door_block_no" name="flat_door_block_no" class="form-control required" placeholder="Flat/Door/Block No.">
             </div>
             <div class="form-group">
-              <label>Premises/Building/Village:</label>
+              <label>Premises/Building/Village</label>
               <input type="text" id="premises_building_village" name="premises_building_village" class="form-control required" placeholder="Premises/Building/Village">
             </div>
             <div class="form-group">
-              <label>Road/Street/Lane/Post Office:</label>
+              <label>Road/Street/Lane/Post Office</label>
               <input type="text" id="road_street_lane_postoffice" name="road_street_lane_postoffice" class="form-control required" placeholder="Road/Street/Lane/Post Office">
             </div>
             <div class="form-group">
-              <label>Area/Taluk/Subdivision:</label>
+              <label>Area/Taluk/Subdivision</label>
               <input type="text" id="area_taluk_subdivision" name="area_taluk_subdivision" class="form-control required" placeholder="Area/Taluk/Subdivision">
             </div>
             <div class="form-group">
-              <label>Town/District:</label>
+              <label>Town/District</label>
               <input type="text" id="town_district" name="town_district" class="form-control required" placeholder="Town/District">
             </div>
             <div class="form-group">
-              <label>State/Union Territory :</label>
+              <label>State/Union Territory</label>
               <select class="form-control required" id="state_ut" name="state_ut">
                 <option value="" selected="selected" disabled="true">Select State</option>
                 <?php 
@@ -186,7 +187,7 @@ include 'pan_config.php';
               </select>
             </div>
             <div class="form-group">
-              <label>PIN Code:</label>
+              <label>PIN Code</label>
               <input type="number" id="pin_code" name="pin_code" class="form-control required" placeholder="PIN Code">
             </div>
             <div class="form-group">
@@ -206,16 +207,21 @@ include 'pan_config.php';
             </div>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-sm-4">
-              <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
-            </div>
-            <div class="col-sm-4">
-              <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
-            </div>
+        <div class="card">
+          <div class="overlay" id="loading_spinner">
+            <i class="fa fa-refresh fa-spin"></i>
           </div>
         </div>
+        <div class="row" id="apply_pan_controls_div">
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
+          </div>
+        </div><!-- 
+        <div class="card-footer">
+        </div> -->
       </div>
       <input type="hidden" name="action" id="action" value="process_pan">
       <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">

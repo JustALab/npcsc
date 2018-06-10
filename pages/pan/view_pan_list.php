@@ -31,7 +31,6 @@
                 <option value="Pending" <?php echo (($status==STATUS_PENDING)?'selected="selected"':''); ?>>Pending</option>
                 <option value="Approved" <?php echo (($status==STATUS_APPROVED)?'selected="selected"':''); ?>>Approved</option>
                 <option value="Denied" <?php echo (($status==STATUS_DENIED)?'selected="selected"':''); ?>>Denied</option>
-                <option value="Blocked" <?php echo (($status==STATUS_BLOCKED)?'selected="selected"':''); ?>>Blocked</option>
               </select>
             </div>
           </div>

@@ -78,8 +78,8 @@
           <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-        <?php if($row['status'] == 'Pending'){ ?>
+        <!-- <div class="card-footer"> -->
+        <?php if($row['status'] == STATUS_PENDING){ ?>
           <div id="approve_reject_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
               <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
@@ -89,21 +89,21 @@
             </div>
           </div>
         <?php } ?>
-        <?php if($row['status'] == 'Approved'){ ?>
+        <?php if($row['status'] == STATUS_APPROVED){ ?>
           <div id="block_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
               <button class="btn btn-block btn-danger" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_BLOCKED.'\''; ?>);">Block</button>
             </div>
           </div>
         <?php } ?>
-        <?php if($row['status'] == 'Blocked'){ ?>
+        <?php if($row['status'] == STATUS_BLOCKED){ ?>
           <div id="block_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
               <button class="btn btn-block btn-success" onclick="updateUserStatus(<?php echo $userId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Unblock</button>
             </div>
           </div>
         <?php } ?>
-        </div>
+        <!-- </div> -->
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
@@ -119,7 +119,7 @@
   <script>
     var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
   </script>
-  <script type="text/javascript" src="<?php echo HOMEURL; ?>/pages/users/js/users.js">
+  <script type="text/javascript" src="<?php echo HOMEURL; ?>/pages/users/js/users_admin.js">
   </script>
   <?php 
     include '../footer.php';

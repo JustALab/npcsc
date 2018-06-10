@@ -18,6 +18,7 @@
 <div class="content-wrapper">
    <!-- Main content -->
    <section class="content">
+    <br />
       <div class="card">
          <div class="card-header">
             <h3 class="card-title">Status</h3>

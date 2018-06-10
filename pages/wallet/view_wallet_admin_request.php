@@ -87,17 +87,17 @@
           <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
         </div>
         <!-- /.card-body -->
-        <?php if($row['status'] == 'Pending'){ ?>
-        <div class="card-footer">
+        <?php if($row['status'] == STATUS_PENDING){ ?>
+        <!-- <div class="card-footer"> -->
           <div id="approve_reject_row" class="row">
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Denied');">Deny</button>
+              <button class="btn btn-block btn-danger" onclick="updateRequestStatus(<?php echo $requestId; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
             </div>
             <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, 'Approved');">Approve</button>
+              <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
             </div>
           </div>
-        </div>
+        <!-- </div> -->
         <?php } ?>
         <!-- /.card-footer-->
       </div>
@@ -108,16 +108,16 @@
           <h3 class="card-title">Agent Name: <?php echo $userRow['name']; ?></h3>
 
           <div class="card-tools">
-          <?php if($userRow['status'] == 'Approved'){ ?>
+          <?php if($userRow['status'] == STATUS_APPROVED){ ?>
             <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
           <?php } ?>
-          <?php if($userRow['status'] == 'Denied'){ ?>
+          <?php if($userRow['status'] == STATUS_DENIED){ ?>
             <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
           <?php } ?>
-          <?php if($userRow['status'] == 'Pending'){ ?>
+          <?php if($userRow['status'] == STATUS_PENDING){ ?>
             <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
           <?php } ?>
-          <?php if($userRow['status'] == 'Blocked'){ ?>
+          <?php if($userRow['status'] == STATUS_BLOCKED){ ?>
             <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
           <?php } ?>
           </div>

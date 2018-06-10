@@ -38,6 +38,7 @@ $(function() {
             $('#pan_number_correction_div').hide();
         }
     });
+    $('#loading_spinner').hide();
 
     $('#pan_table').DataTable();
 
@@ -45,7 +46,20 @@ $(function() {
         loadPage();
     });
 
+    bindNumberEvents('pan_number');
+    bindNumberEvents('pin_code');
+    bindNumberEvents('aadhaar_no');
+
 });
+
+function bindNumberEvents(elementId){
+    //prevent arrow key events when focussed on a number input
+    document.getElementById(elementId).addEventListener('keydown', function(e) {
+        if (e.which === 38 || e.which === 40) {
+            e.preventDefault();
+        }
+    });
+}
 
 (function($) {
     $.fn.serializefiles = function() {
@@ -169,6 +183,8 @@ function processPan() {
 		    },
 		    callback: function (result) {
 		        if(result){
+                    $('#apply_pan_controls_div').hide();
+                    $('#loading_spinner').show();
 		        	confirmProcessPan();;
 		        }
 		    }

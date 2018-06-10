@@ -7,6 +7,8 @@ $(function() {
         'placeholder': 'dd/mm/yyyy'
     });
 
+    $('#pan_table').DataTable();
+
     $('#pan_status').on('change', function() {
         loadPage();
     });
