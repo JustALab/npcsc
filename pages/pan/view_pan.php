@@ -23,8 +23,11 @@
     <div class="card-header">
       <h3 class="card-title">PAN Application No: <?php echo $row['application_no']; ?></h3>
       <div class="card-tools">
-        <?php if($row['status'] == STATUS_APPROVED){ ?>
-        <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
+        <?php if($row['receipt_file_name'] != '') { ?>
+          <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
+        <?php } ?>
+        <?php if($row['status'] == STATUS_APPROVED && $row['receipt_file_name'] == ''){ ?>
+          <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
         <?php } ?>
         <?php if($row['status'] == STATUS_DENIED){ ?>
         <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>

@@ -22,9 +22,11 @@
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">PAN Application No: <?php echo $row['application_no']; ?></h3>
-
           <div class="card-tools">
-          <?php if($row['status'] == STATUS_APPROVED){ ?>
+          <?php if($row['receipt_file_name'] != '') { ?>
+            <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
+          <?php } ?>
+          <?php if($row['status'] == STATUS_APPROVED && $row['receipt_file_name'] == ''){ ?>
             <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_DENIED){ ?>
@@ -224,7 +226,41 @@
         <!-- </div> -->
         <?php } ?>
       </div>
+    </div>
       <!-- /.card -->
+
+      <?php if($row['status'] == STATUS_APPROVED) { ?>
+        <form id="receipt_form" name="receipt_form">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">Receipt</h3>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <div class="">
+                            <input type="file" required="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
+                            <!-- <label class="custom-file-label" for="receipt_document">Choose file</label> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                      <button class="btn btn-success btn-block" onclick="uploadReceipt();">Upload</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" name="application_no" value="<?php echo $applicationNo; ?>">
+          <input type="hidden" name="action" value="upload_receipt">
+        </form>
+      <?php } ?>
 
     </section>
     <!-- /.content -->
@@ -233,10 +269,7 @@
 
   <?php 
     include '../footer_imports.php';
-  ?>  
-  <script>
-    var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
-  </script>
+  ?>
   <script type="text/javascript" src="js/application_pan_admin.js"></script>
   <?php 
     include '../footer.php';

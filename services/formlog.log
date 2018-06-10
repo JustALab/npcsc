@@ -1,13 +1,5 @@
 Array
 (
-    [user_id] => 1
-    [name] => Ramu Ramasamy
-    [email] => rram.ramasamy@gmail.com
-    [password] => $2y$12$1StY/GJKjbmr62UOdhH4gexPGhbIXkuktM3UNGS85pQ8Eaq9j4VwS
-    [mobile] => 9894130821
-    [aadhaar_no] => 123456789101
-    [pan_number] => BDKPR6053E
-    [address] => No. 11, Annai Velankanni Nagar, Thondamuthur Road
-    [status] => PENDING
-    [user_location] => 
+    [status] => success
+    [affected_rows] => 0
 )

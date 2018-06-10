@@ -19,5 +19,6 @@
     define('PHOTO_PATH', 'store/photos/');
     define('SIGNATURE_PATH', 'store/signatures/');
     define('DOC_PATH', 'store/documents/');
+    define('RECEIPTS_PATH', 'store/receipts/');
 
 ?>

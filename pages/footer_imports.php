@@ -14,6 +14,10 @@
     </div>
     <!-- ./wrapper -->
 
+
+    <script>
+        var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
+    </script>
     <!-- jQuery -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->

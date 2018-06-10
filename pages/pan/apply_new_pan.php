@@ -235,9 +235,6 @@ include 'pan_config.php';
 <?php 
   include '../footer_imports.php';
   ?>
-<script>
-  var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
-</script>
 <script type="text/javascript" src="js/application_pan.js"></script>
 <?php 
   include '../footer.php';
