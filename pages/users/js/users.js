@@ -34,7 +34,20 @@ $(document).ready(function () {
 	$('#user_status').on('change', function(){
 		loadPage();
 	});
+
+	bindNumberEvents('mobile');
+	bindNumberEvents('pan_no');
+	bindNumberEvents('aadhaar_no');
 });
+
+function bindNumberEvents(elementId){
+    //prevent arrow key events when focussed on a number input
+    document.getElementById(elementId).addEventListener('keydown', function(e) {
+        if (e.which === 38 || e.which === 40) {
+            e.preventDefault();
+        }
+    });
+}
 
 function isPassowrdMatching(){
 	var pwd = $('#password').val();

@@ -14,7 +14,18 @@ $(function () {
     loadPage();
   });
 
+  bindNumberEvents('request_amount');
+
 });
+
+function bindNumberEvents(elementId){
+    //prevent arrow key events when focussed on a number input
+    document.getElementById(elementId).addEventListener('keydown', function(e) {
+        if (e.which === 38 || e.which === 40) {
+            e.preventDefault();
+        }
+    });
+}
 
 function clearFields(){
   $(':input','#add_wallet_request_form')

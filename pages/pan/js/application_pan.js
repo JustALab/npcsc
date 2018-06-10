@@ -45,7 +45,20 @@ $(function() {
         loadPage();
     });
 
+    bindNumberEvents('pan_number');
+    bindNumberEvents('pin_code');
+    bindNumberEvents('aadhaar_no');
+
 });
+
+function bindNumberEvents(elementId){
+    //prevent arrow key events when focussed on a number input
+    document.getElementById(elementId).addEventListener('keydown', function(e) {
+        if (e.which === 38 || e.which === 40) {
+            e.preventDefault();
+        }
+    });
+}
 
 (function($) {
     $.fn.serializefiles = function() {
