@@ -76,8 +76,6 @@
             </div>
           </div>
           <input type="hidden" name="user_id" value="<?php echo $userId; ?>">
-        </div>
-        <!-- /.card-body -->
         <!-- <div class="card-footer"> -->
         <?php if($row['status'] == STATUS_PENDING){ ?>
           <div id="approve_reject_row" class="row">
@@ -103,8 +101,8 @@
             </div>
           </div>
         <?php } ?>
-        <!-- </div> -->
-        <!-- /.card-footer-->
+        </div>
+        <!-- /.card-body -->
       </div>
       <!-- /.card -->
 

@@ -85,8 +85,6 @@
             </div>
           </div>
           <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
-        </div>
-        <!-- /.card-body -->
         <?php if($row['status'] == STATUS_PENDING){ ?>
         <!-- <div class="card-footer"> -->
           <div id="approve_reject_row" class="row">
@@ -97,9 +95,9 @@
               <button class="btn btn-block btn-success" onclick="updateRequestStatus(<?php echo $requestId; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
             </div>
           </div>
-        <!-- </div> -->
         <?php } ?>
-        <!-- /.card-footer-->
+        </div>
+        <!-- /.card-body -->
       </div>
       <!-- /.card -->
 
