@@ -40,6 +40,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/plugins/datatables/dataTables.bootstrap4.css">
+  <!-- Bootstrap-datepicker -->
+  <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/plugins/datepicker/bootstrap-datepicker.css">
+  
   
   <style type="text/css">
     .my-error-class {

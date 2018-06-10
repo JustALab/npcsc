@@ -1,7 +1,12 @@
 $(function () {
   //Datemask dd/mm/yyyy
-  $('#request_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
- 
+  // $('#request_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
+  
+  $('#request_date').datepicker({
+        dateFormat: "dd/mm/yyyy",
+        maXDate:"Now"
+    });
+
   $('#add_wallet_request_form').validate({
     errorClass: "my-error-class"
   });

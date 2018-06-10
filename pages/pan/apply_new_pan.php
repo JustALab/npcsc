@@ -33,7 +33,7 @@ include 'pan_config.php';
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                 </div>
-                <input type="text" id="application_date" name="application_date" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                <input type="text" id="application_date" name="application_date" class="form-control required">
               </div>
             </div>
             <div class="form-group">
