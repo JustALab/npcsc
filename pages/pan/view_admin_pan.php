@@ -211,9 +211,18 @@
             </div>
           </div>
         </div>
-        <!-- <div class="card-footer">
-        
-        </div> -->
+       <?php if($row['status'] == STATUS_PENDING){ ?>
+        <!-- <div class="card-footer"> -->
+          <div id="approve_reject_row" class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-danger" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-success" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
+            </div>
+          </div>
+        <!-- </div> -->
+        <?php } ?>
       </div>
       <!-- /.card -->
 
@@ -225,8 +234,10 @@
   <?php 
     include '../footer_imports.php';
   ?>  
-  <script type="text/javascript">
+  <script>
+    var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
   </script>
+  <script type="text/javascript" src="js/application_pan_admin.js"></script>
   <?php 
     include '../footer.php';
   ?>

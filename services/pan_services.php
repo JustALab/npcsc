@@ -20,6 +20,9 @@
 	    case 'process_pan':
 	        $finaloutput = processPan();
 	    break;
+        case 'update_status':
+            $finaloutput = updateStatus();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -88,5 +91,17 @@
         }
     	
 	}
+
+    function updateStatus(){
+        global $db;
+        $applicationNo = $_POST['application_no'];
+        $newStatus = $_POST['new_status'];
+        $result = $db->updateOperation(TABLE_PAN_APP, array('status'=>$newStatus), array('application_no'=>$applicationNo));
+        // file_put_contents("formlog.log", print_r( $result, true ));
+        if($result['status'] == 'success'){
+            return array("status"=>"success","message"=>"PAN Application updated successfully.");
+        }
+        return array("status"=>"failure","message"=>"PAN Application update failure.");
+    }
 
 ?>

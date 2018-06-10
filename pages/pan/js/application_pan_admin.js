@@ -34,3 +34,40 @@ function loadPage() {
     }
     this.document.location.href = url;
 }
+
+function updatePanStatus(applicationNo, newStatus){
+    bootbox.confirm({
+        message: "Are you sure want to update the status of this PAN Application?",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result){
+                confirmUpdatePanStatus(applicationNo, newStatus);
+            }
+        }
+    });
+}
+
+function confirmUpdatePanStatus(applicationNo, newStatus){
+    var data = 'application_no=' + applicationNo + '&new_status=' + newStatus + '&action=update_status';
+    $.ajax({
+        url: servicesUrl + 'pan_services.php',
+        type: 'POST',
+        data:  data,
+        dataType: 'json',
+        success: function(result){
+            location.reload();
+        },
+        error: function(){
+            bootbox.alert("failure");
+        }           
+    });
+}
