@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 09, 2018 at 08:58 AM
+-- Generation Time: Jun 10, 2018 at 07:21 AM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.1
 
@@ -143,6 +143,7 @@ CREATE TABLE `wallet_transactions` (
   `description` varchar(150) NOT NULL,
   `previous_balance` varchar(15) NOT NULL,
   `transaction_type` varchar(6) NOT NULL,
+  `amount` varchar(20) NOT NULL,
   `balance` varchar(15) NOT NULL,
   `wallet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -207,7 +208,7 @@ ALTER TABLE `wallet_transactions`
 -- AUTO_INCREMENT for table `pan_application`
 --
 ALTER TABLE `pan_application`
-  MODIFY `application_no` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `application_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `price_config`
 --
@@ -222,7 +223,7 @@ ALTER TABLE `services`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `wallet`
 --
@@ -232,12 +233,12 @@ ALTER TABLE `wallet`
 -- AUTO_INCREMENT for table `wallet_requests`
 --
 ALTER TABLE `wallet_requests`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `wallet_transactions`
 --
 ALTER TABLE `wallet_transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- Constraints for dumped tables
 --
