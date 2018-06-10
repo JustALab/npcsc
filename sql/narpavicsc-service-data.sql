@@ -15,15 +15,15 @@ SET time_zone = "+00:00";
 --
 
 --
--- Dumping data for table `price_config`
---
-
-INSERT INTO `price_config` (`price_config_id`, `service_id`, `amount`) VALUES
-(1, 1, '200');
-
---
 -- Dumping data for table `services`
 --
 
 INSERT INTO `services` (`service_id`, `service_name`) VALUES
 (1, 'PAN Application');
+
+--
+-- Dumping data for table `price_config`
+--
+
+INSERT INTO `price_config` (`price_config_id`, `service_id`, `amount`) VALUES
+(1, 1, '200');
