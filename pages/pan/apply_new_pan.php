@@ -13,6 +13,7 @@ include 'pan_config.php';
 <section class="content">
   <!-- Default box -->
   <form id="pan_application_form" name="pan_application_form">
+    <br />
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Apply New PAN</h3>
@@ -206,16 +207,21 @@ include 'pan_config.php';
             </div>
           </div>
         </div>
-        <div class="card-footer">
-          <div class="row">
-            <div class="col-sm-4">
-              <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
-            </div>
-            <div class="col-sm-4">
-              <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
-            </div>
+        <div class="card">
+          <div class="overlay" id="loading_spinner">
+            <i class="fa fa-refresh fa-spin"></i>
           </div>
         </div>
+        <div class="row" id="apply_pan_controls_div">
+          <div class="col-sm-4">
+            <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
+          </div>
+          <div class="col-sm-4">
+            <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
+          </div>
+        </div><!-- 
+        <div class="card-footer">
+        </div> -->
       </div>
       <input type="hidden" name="action" id="action" value="process_pan">
       <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">

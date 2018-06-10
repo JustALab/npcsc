@@ -38,6 +38,7 @@ $(function() {
             $('#pan_number_correction_div').hide();
         }
     });
+    $('#loading_spinner').hide();
 
     $('#pan_table').DataTable();
 
@@ -182,6 +183,8 @@ function processPan() {
 		    },
 		    callback: function (result) {
 		        if(result){
+                    $('#apply_pan_controls_div').hide();
+                    $('#loading_spinner').show();
 		        	confirmProcessPan();;
 		        }
 		    }
