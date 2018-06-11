@@ -27,12 +27,55 @@
         <div class="card-body">
           admin dashboard
         </div>
+      </div>
         <!-- /.card-body -->
         <!-- <div class="card-footer">
           Footer
         </div> -->
         <!-- /.card-footer-->
+
+        <div class="row">
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-primary">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-address-card-o"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Total PAN Applied</span>
+            <span class="info-box-number">123</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
       </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-danger">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-star-o"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Pending PAN Applications</span>
+            <span class="info-box-number">23</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-success">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-bank"></i></span>
+          <div class="info-box-content">
+            <?php if($_SESSION['user_type'] != 'USER'){ ?>
+              <span class="info-box-text">Wallet Request Pending</span>
+              <span class="info-box-number"><?php echo '23'; ?></span>
+             <?php } ?>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+    </div>
+
+      
       <!-- /.card -->
 
     </section>
