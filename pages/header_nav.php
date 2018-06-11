@@ -61,13 +61,13 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
-<div class="wrapper fixed">
+<div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand bg-info navbar-dark border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <!-- <a class="nav-link" href="#"><i class="fa fa-money" style="font-size:24px"></i></a> -->
+        <a class="nav-link" href="#" data-widget="pushmenu"><i class="fa fa-bars"></i></a>
       </li>
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
