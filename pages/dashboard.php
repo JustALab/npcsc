@@ -15,7 +15,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Dashboard</h3>
+          <h3 class="card-title"><span style="font-weight: bold">Dashboard</span></h3>
 
           <!-- <div class="card-tools">
             <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -25,7 +25,7 @@
           </div> -->
         </div>
         <div class="card-body">
-          dashboard
+          Important announcements goes here
         </div>
         <!-- /.card-body -->
         <!-- <div class="card-footer">
@@ -35,11 +35,50 @@
       </div>
       <!-- /.card -->
 
+    <div class="row">
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-primary">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-address-card-o"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Total PAN Applied</span>
+            <span class="info-box-number">98</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-danger">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-star-o"></i></span>
+          <div class="info-box-content">
+            <span class="info-box-text">Pending PAN Applications</span>
+            <span class="info-box-number">12</span>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="info-box bg-success">
+          <!-- Apply any bg-* class to to the icon to color it -->
+          <span class="info-box-icon "><i class="fa fa-rupee"></i></span>
+          <div class="info-box-content">
+            <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
+            <span class="info-box-text">Wallet Balance</span>
+            <span class="info-box-number">₹ <?php echo $walletAmount; ?></span>
+             <?php } ?>
+          </div>
+          <!-- /.info-box-content -->
+        </div>
+      </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
   <?php 
     include 'footer_imports.php';
   ?>  
