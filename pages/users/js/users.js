@@ -73,14 +73,9 @@ function registerUser(){
 				data:  data,
 				dataType: 'json',
 				success: function(result){
-					bootbox.alert(result.message)
-					if(result.status === 'success'){
-						$(':input','#user_registration_form')
-						  .not(':button, :submit, :reset, :hidden')
-						  .val('')
-						  .prop('checked', false)
-						  .prop('selected', false);
-					}
+					bootbox.alert(result.message, function() {
+						window.location = 'http://narpavicsc.com';
+					});
 				},
 				error: function(){
 					bootbox.alert("failure");
