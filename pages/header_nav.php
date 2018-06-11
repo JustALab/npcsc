@@ -120,7 +120,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item" style="color:#17a2b8 !important">
+          <a href="<?php echo HOMEURL; ?>/pages/users/profile_settings.php?user_id=<?php echo $_SESSION['user_id']; ?>" class="dropdown-item" style="color:#17a2b8 !important">
             <i class="fa fa-gear mr-2"></i> Profile & Settings
           </a>
           <div class="dropdown-divider"></div>

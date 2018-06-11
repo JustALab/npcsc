@@ -24,6 +24,12 @@
         case 'update_status':
             $finaloutput = updateStatus();
         break;
+        case 'update_profile':
+            $finaloutput = updateProfile();
+        break;
+        case 'update_password':
+            $finaloutput = updatePassword();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -90,6 +96,50 @@
             return array("status"=>"success","message"=>"User status successfully updated.");
         }
         return array("status"=>"failure","message"=>"User status update failure.");
+    }
+
+    function updateProfile(){
+        global $db;
+        $userId = $_POST['user_id'];
+        $mobile = $_POST['edit_mobile'];
+        $address = $_POST['edit_address'];
+        $result = $db->updateOperation(TABLE_USERS, array('mobile' => $mobile, 'address' => $address), array('user_id' => $userId));
+        if($result['status'] == 'success'){
+            return array("status"=>"success","message"=>"Profile successfully updated.");
+        }
+        return array("status"=>"failure","message"=>"Profile update failure.");
+    }
+
+    function compareOldPassword($userId, $oldPassword){
+        global $dbc;
+        $query = "SELECT password FROM ".TABLE_USERS." WHERE user_id='$userId'";
+        $result = mysqli_query($dbc, $query);
+        $password = mysqli_fetch_assoc($result)['password'];
+
+        if(password_verify($oldPassword, $password)){
+            file_put_contents("formlog.log", print_r( true, true ));
+
+            return true;
+        }
+        file_put_contents("formlog.log", print_r( $password, true ));
+        return false;
+    }
+
+    function updatePassword(){
+        global $db, $dbc;
+        $userId = $_POST['user_id'];
+        $oldPassword = mysqli_real_escape_string($dbc,trim($_POST['old_password']));
+        $newPassword = mysqli_real_escape_string($dbc,trim($_POST['new_password']));
+        $options = array('cost' => 12);
+        $newPassword = password_hash($newPassword, PASSWORD_BCRYPT, $options);
+        if(compareOldPassword($userId, $oldPassword)){
+            $result = $db->updateOperation(TABLE_USERS, array('password' => $newPassword), array('user_id' => $userId));
+            if($result['status'] == 'success'){
+                return array("status"=>"success","message"=>"Password successfully updated.");
+            }
+            return array("status"=>"failure","message"=>"Password update failure.");
+        }
+        return array("status"=>"failure","message"=>"Entered old password does mot match!");
     }
 
 ?>
