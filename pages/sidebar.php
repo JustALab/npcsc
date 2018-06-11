@@ -1,12 +1,13 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link bg-info">
-      <img src="<?php echo HOMEURL; ?>/assets/dist/img/AdminLTELogo.png"
+    <a href="#" class="brand-link bg-info" data-widget="pushmenu">
+      <!-- <img src="<?php echo HOMEURL; ?>/assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">NARPAVI CSC</span>
+           style="opacity: .8"> -->
+           <i class="nav-link fa fa-bars"></i>
+      <span class="brand-text font-weight-light" style="font-size: 1rem; position:absolute;top:16px;right:8px;">V1.0.0</span>
     </a>
 
 <?php if($_SESSION['user_type'] == 'ADMIN'){ ?>
@@ -90,7 +91,7 @@
           </li>
         </ul>
         <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;"><span style="color:grey">© 2018 </span><a href="http://www.justalab.in" target="_blank">JustALab</a></div>
-          <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div>
+          <!-- <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div> -->
       </nav>
       <!-- /. Admin sidebar-menu -->
     </div>
@@ -172,7 +173,7 @@
 
         
           <div id="copyright" style="position:absolute;bottom:4px;left:4px;"><span style="color:grey">© 2018 </span><a href="http://www.justalab.in" target="_blank">JustALab</a></div>
-          <div id="version" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div>
+          <!-- <div id="version" style="position:absolute;bottom:4px;right:4px;color:grey;">V1.0.0</div> -->
         
 
       </nav>

@@ -66,9 +66,24 @@
   <nav class="main-header navbar navbar-expand bg-info navbar-dark border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
+
+
+
       <li class="nav-item">
-        <a class="nav-link" href="#" data-widget="pushmenu"><i class="fa fa-bars"></i></a>
+        <!-- <a class="nav-link" href="#" data-widget="pushmenu"><i class="fa fa-bars"></i></a> -->
       </li>
+
+    <li class="nav-item">
+       <a class="nav-link" href="#" onclick="goBack()"><i class="fa fa-arrow-left"></i></a>
+    </li>
+
+    <a href="#" class="logo" style="font-size:1.5rem">
+      <!-- <span class="logo-mini"><b>N</b>ARPAVI</span> -->
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>NARPAVI</b> CSC</span>
+</a>
+
+
       <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="../../index3.html" class="nav-link">Home</a>
       </li>

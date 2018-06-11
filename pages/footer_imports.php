@@ -47,3 +47,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <!-- Bootstrap-Datepicker -->
     <script src="<?php echo HOMEURL; ?>/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
+
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
