@@ -95,10 +95,10 @@
                </div>
                <div class="row">
                   <div class="col-sm-4 col-md-6 col-lg-4">
-                    <button type="button" class="btn btn-block btn-success" onclick="submitRequest();">Submit Request</button>
+                    <button type="button" class="btn btn-block btn-primary" onclick="submitRequest();">Submit Request</button>
                   </div>
                   <div class="col-sm-4 col-md-6 col-lg-4">
-                    <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
+                    <button type="button" onclick="clearFields();" class="btn btn-block btn-secondary">Reset</button>
                   </div>
                 </div>
                <input type="hidden" name="action" id="action" value="add_wallet_amount">

@@ -214,10 +214,10 @@ include 'pan_config.php';
         </div>
         <div class="row" id="apply_pan_controls_div">
           <div class="col-sm-4">
-            <button type="button" class="btn btn-block btn-success" onclick="processPan();">Process</button>
+            <button type="button" class="btn btn-block btn-primary" onclick="processPan();">Process</button>
           </div>
           <div class="col-sm-4">
-            <button type="button" onclick="clearFields();" class="btn btn-block btn-warning">Reset</button>
+            <button type="button" onclick="clearFields();" class="btn btn-block btn-secondary">Clear</button>
           </div>
         </div><!-- 
         <div class="card-footer">
