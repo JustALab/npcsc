@@ -19,4 +19,4 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `users` (`user_id`, `user_type`, `name`, `email`, `password`, `mobile`, `aadhaar_no`, `pan_no`, `address`, `status`, `user_location`) VALUES
-(1, 'ADMIN', 'Ramu Ramasamy', 'rram.ramasamy@gmail.com', '$2y$12$eKyduenWfZjQQLBTgJU/9u0V9XGDQot54zWrhtehhnaRCpkT0NssC', '9894130821', '123456789010', 'BDKPR6053E', 'No. 11, Annai Velankanni Nagar, Thondamuthur Road', 'Approved', NULL);
+(1, 'ADMIN', 'Ramu Ramasamy', 'rram.ramasamy@gmail.com', '$2y$12$eLEdjyhZKyUh57vt.NQ/zeOHm.curE7spGNdD8ph5V.zHJkB.YQUa', '9894130821', '123456789010', 'BDKPR6053E', 'No. 11, Annai Velankanni Nagar, Thondamuthur Road', 'Approved', NULL);
