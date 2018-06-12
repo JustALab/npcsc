@@ -5,85 +5,64 @@
   }
   include 'header_nav.php';
   include 'sidebar.php';
-?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
+  include 'dbconfig.php';
+  include '../services/constants.php';
 
-      <br />
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title"><span style="font-weight: bold">Dashboard</span></h3>
-
-          <!-- <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div> -->
-        </div>
-        <div class="card-body">
-          Important announcements goes here
-        </div>
-        <!-- /.card-body -->
-        <!-- <div class="card-footer">
-          Footer
-        </div> -->
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
-
+  $pendingPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_PENDING.'" AND user_id="'.$_SESSION['user_id'].'"';
+  $pendingPanAppResult = mysqli_query($dbc, $pendingPanAppQuery);
+  $pendingPanAppCount = mysqli_fetch_assoc($pendingPanAppResult)['count'];
+  
+  $pendingWalletReqQuery = 'SELECT count(*) as "count" FROM '.TABLE_WALLET_REQUESTS.' WHERE status="'.STATUS_PENDING.'" AND wallet_id="'.$_SESSION['wallet_id'].'"';
+  $pendingWalletReqResult = mysqli_query($dbc, $pendingWalletReqQuery);
+  $pendingWalletReqCount = mysqli_fetch_assoc($pendingWalletReqResult)['count'];
+  ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <br />
     <div class="row">
+      <div class="col-lg-4 col-6">
+        <!-- small card -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3><?php echo $pendingPanAppCount; ?></h3>
 
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="info-box bg-primary">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon "><i class="fa fa-address-card-o"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Total PAN Applied</span>
-            <span class="info-box-number">98</span>
+            <p>Pending PAN Applications</p>
           </div>
-          <!-- /.info-box-content -->
+          <div class="icon">
+            <i class="fa fa-address-card-o"></i>
+          </div>
+          <a href="<?php echo HOMEURL.'/pages/pan/view_pan_list.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
+            More info <i class="fa fa-arrow-circle-right"></i>
+          </a>
         </div>
       </div>
+      <div class="col-lg-4 col-6">
+        <!-- small card -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3><?php echo $pendingWalletReqCount; ?></h3>
 
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="info-box bg-danger">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon "><i class="fa fa-star-o"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Pending PAN Applications</span>
-            <span class="info-box-number">12</span>
+            <p>Pending Wallet Requests</p>
           </div>
-          <!-- /.info-box-content -->
-        </div>
-      </div>
-
-      <div class="col-sm-12 col-md-6 col-lg-4">
-        <div class="info-box bg-success">
-          <!-- Apply any bg-* class to to the icon to color it -->
-          <span class="info-box-icon "><i class="fa fa-rupee"></i></span>
-          <div class="info-box-content">
-            <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
-            <span class="info-box-text">Wallet Balance</span>
-            <span class="info-box-number">₹ <?php echo $walletAmount; ?></span>
-             <?php } ?>
+          <div class="icon">
+            <i class="fa fa-bank"></i>
           </div>
-          <!-- /.info-box-content -->
+          <a href="<?php echo HOMEURL.'/pages/wallet/view_wallet_requests.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
+            More info <i class="fa fa-arrow-circle-right"></i>
+          </a>
         </div>
       </div>
     </div>
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php 
-    include 'footer_imports.php';
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php 
+  include 'footer_imports.php';
   ?>  
-  <script type="text/javascript">
-  </script>
-  <?php 
-    include 'footer.php';
+<script type="text/javascript"></script>
+<?php 
+  include 'footer.php';
   ?>
