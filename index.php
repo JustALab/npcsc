@@ -99,11 +99,21 @@
           <form id="login_form" name="login_form" action="index.php" method="POST">
             <div class="form-group has-feedback">
               <label>Email :</label>
-              <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+              </div>
             </div>
             <div class="form-group has-feedback">
               <label>Password :</label>
-              <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                </div>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+              </div>
             </div>
             <div class="row">
               <p class="col-6">
