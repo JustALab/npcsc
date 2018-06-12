@@ -70,17 +70,17 @@
 
 
       <li class="nav-item">
-        <!-- <a class="nav-link" href="#" data-widget="pushmenu"><i class="fa fa-bars"></i></a> -->
+        <a class="nav-link" href="#" data-widget="pushmenu"><i class="fa fa-bars"></i></a>
       </li>
 
     <li class="nav-item">
-       <a class="nav-link" href="#" onclick="goBack()"><i class="fa fa-arrow-left"></i></a>
+       <!-- <a class="nav-link" href="#" onclick="goBack()"><i class="fa fa-arrow-left"></i></a> -->
     </li>
 
     <a href="#" class="logo" style="font-size:1.5rem">
       <!-- <span class="logo-mini"><b>N</b>ARPAVI</span> -->
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>NARPAVI</b> CSC</span>
+      <!-- <span class="logo-lg"><b>NARPAVI</b> CSC</span> -->
 </a>
 
 
