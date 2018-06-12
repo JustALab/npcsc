@@ -117,11 +117,8 @@
         $password = mysqli_fetch_assoc($result)['password'];
 
         if(password_verify($oldPassword, $password)){
-            file_put_contents("formlog.log", print_r( true, true ));
-
             return true;
         }
-        file_put_contents("formlog.log", print_r( $password, true ));
         return false;
     }
 
