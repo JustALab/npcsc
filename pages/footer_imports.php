@@ -49,7 +49,7 @@
     <script src="<?php echo HOMEURL; ?>/assets/plugins/datepicker/bootstrap-datepicker.js"></script>
 
     <script>
-    function goBack() {
-        window.history.back();
+    function comingsoon() {
+        bootbox.alert("This feature is coming soon");
     }
     </script>

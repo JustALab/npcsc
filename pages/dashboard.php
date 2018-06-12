@@ -54,6 +54,30 @@
           </a>
         </div>
       </div>
+
+
+      <div class="col-lg-4 col-6">
+        <!-- small card -->
+        <div class="small-box bg-success">
+          <div class="inner">
+
+            <h3>
+              <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
+                <span>₹ <?php echo $walletAmount; ?></span>
+                <?php } ?>
+            </h3>
+
+            <p>Wallet Balance</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-rupee"></i>
+          </div>
+          <a href="<?php echo HOMEURL.'/pages/wallet/add_wallet_request.php'?>" class="small-box-footer">
+            Add new request <i class="fa fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+
     </div>
   </section>
   <!-- /.content -->

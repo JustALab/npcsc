@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link bg-info">
+    <a href="<?php echo HOMEURL; ?>/pages/main_dashboard.php" class="brand-link bg-info">
       <!-- <img src="<?php //echo HOMEURL; ?>/assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
