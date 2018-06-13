@@ -101,18 +101,18 @@
               <label>Email :</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
                 </div>
-                <input type="email" id="email" name="email" class="form-control" placeholder="Email">
+                <input type="email" required id="email" name="email" class="form-control" placeholder="Email">
               </div>
             </div>
             <div class="form-group has-feedback">
               <label>Password :</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  <span class="input-group-text"><i class="fa fa-key"></i></span>
                 </div>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" required id="password" name="password" class="form-control" placeholder="Password">
               </div>
             </div>
             <div class="row">
