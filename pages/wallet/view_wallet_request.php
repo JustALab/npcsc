@@ -20,70 +20,74 @@
     <section class="content">
       <br />
       <!-- Default box -->
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Request for Amount ₹ <?php echo $row['request_amount']; ?></h3>
+      <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Request for Amount ₹ <?php echo $row['request_amount']; ?></h3>
 
-          <div class="card-tools">  
-            <?php if($row['status'] == STATUS_PENDING){ ?>
-              <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
-            <?php } ?>
-            <?php if($row['status'] == STATUS_APPROVED){ ?>
-              <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
-            <?php } ?>
-            <?php if($row['status'] == STATUS_DENIED){ ?>
-              <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
-          <?php } ?>
+              <div class="card-tools">  
+                <?php if($row['status'] == STATUS_PENDING){ ?>
+                  <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
+                <?php } ?>
+                <?php if($row['status'] == STATUS_APPROVED){ ?>
+                  <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
+                <?php } ?>
+                <?php if($row['status'] == STATUS_DENIED){ ?>
+                  <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
+              <?php } ?>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Narpavi Bank</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $narpaviBanks[$row['to_bank_name']]; ?>">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Transaction Type</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $transactionType[$row['transaction_type']]; ?>">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Wallet Request Amount</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['request_amount']; ?>">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['request_date']; ?>">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Bank Name</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $banks[$row['bank_name']]; ?>">
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                  <div class="form-group">
+                    <label>Reference Number</label>
+                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['reference_no']; ?>">
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
+            </div>
+            <!-- /.card-body -->
           </div>
+          <!-- /.card -->
         </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Narpavi Bank</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $narpaviBanks[$row['to_bank_name']]; ?>">
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Transaction Type</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $transactionType[$row['transaction_type']]; ?>">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Wallet Request Amount</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['request_amount']; ?>">
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Date</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['request_date']; ?>">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Bank Name</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $banks[$row['bank_name']]; ?>">
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-4 col-lg-4">
-              <div class="form-group">
-                <label>Reference Number</label>
-                <input type="text" id="" name="" class="form-control" disabled value="<?php echo $row['reference_no']; ?>">
-              </div>
-            </div>
-          </div>
-          <input type="hidden" name="user_id" value="<?php echo $requestId; ?>">
-        </div>
-        <!-- /.card-body -->
       </div>
-      <!-- /.card -->
 
     </section>
     <!-- /.content -->
