@@ -60,13 +60,9 @@
         <!-- small card -->
         <div class="small-box bg-success">
           <div class="inner">
-
             <h3>
-              <?php if($_SESSION['user_type'] != 'ADMIN'){ ?>
-                <span>₹ <?php echo $walletAmount; ?></span>
-                <?php } ?>
+              <span>₹ <?php echo $walletAmount; ?></span>
             </h3>
-
             <p>Wallet Balance</p>
           </div>
           <div class="icon">

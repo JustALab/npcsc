@@ -1,7 +1,11 @@
 <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?php echo HOMEURL; ?>/pages/main_dashboard.php" class="brand-link bg-info">
+    <?php if($_SESSION['user_type'] == 'ADMIN'){ ?>
+      <a href="<?php echo HOMEURL; ?>/pages/dashboard_admin.php" class="brand-link bg-info">
+    <?php } else { ?>
+      <a href="<?php echo HOMEURL; ?>/pages/home.php" class="brand-link bg-info">
+    <?php } ?>
       <!-- <img src="<?php //echo HOMEURL; ?>/assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
@@ -19,7 +23,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
             <a href="<?php echo HOMEURL; ?>/pages/dashboard_admin.php" class="nav-link">
-              <i class="nav-icon fa fa-dashboard"></i>
+              <i class="nav-icon fa fa-tasks"></i>
               <p>
                 Dashboard
                 <!-- <i class="right fa fa-angle-left"></i> -->
@@ -104,8 +108,17 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview">
+            <a href="<?php echo HOMEURL; ?>/pages/home.php" class="nav-link">
+              <i class="nav-icon fa fa-home"></i>
+              <p>
+                Home
+                <!-- <i class="right fa fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
             <a href="<?php echo HOMEURL; ?>/pages/dashboard.php" class="nav-link">
-              <i class="nav-icon fa fa-dashboard"></i>
+              <i class="nav-icon fa fa-tasks"></i>
               <p>
                 Dashboard
                 <!-- <i class="right fa fa-angle-left"></i> -->

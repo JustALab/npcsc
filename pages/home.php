@@ -1,20 +1,18 @@
 <?php session_start();
   if($_SESSION['user_type'] == 'ADMIN'){
-    echo '<script>history.go(-1);</script>';
-    exit();
-  }
+     echo '<script>history.go(-1);</script>';
+     exit();
+   }
+   
   include 'header_nav.php';
   include 'sidebar.php';
   include 'dbconfig.php';
   include '../services/constants.php';
 
-  $pendingPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_PENDING.'" AND user_id="'.$_SESSION['user_id'].'"';
-  $pendingPanAppResult = mysqli_query($dbc, $pendingPanAppQuery);
-  $pendingPanAppCount = mysqli_fetch_assoc($pendingPanAppResult)['count'];
+  $approvedPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';
+  $approvedPanAppResult = mysqli_query($dbc, $approvedPanAppQuery);
+  $approvedPanAppCount = mysqli_fetch_assoc($approvedPanAppResult)['count'];
   
-  $pendingWalletReqQuery = 'SELECT count(*) as "count" FROM '.TABLE_WALLET_REQUESTS.' WHERE status="'.STATUS_PENDING.'" AND wallet_id="'.$_SESSION['wallet_id'].'"';
-  $pendingWalletReqResult = mysqli_query($dbc, $pendingWalletReqQuery);
-  $pendingWalletReqCount = mysqli_fetch_assoc($pendingWalletReqResult)['count'];
   ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -27,7 +25,7 @@
         <div class="small-box bg-primary">
           <div class="inner">
             <h3>PAN Card</h3>
-            <p>Total PANs applied: 28</p>
+            <p>Total PANs applied: <?php echo $approvedPanAppCount; ?></p>
           </div>
           <div class="icon">
             <i class="fa fa-address-card-o"></i>
@@ -45,7 +43,7 @@
         <div class="small-box bg-success">
           <div class="inner">
             <h3>Passport</h3>
-            <p>Total Passports applied: 07</p>
+            <p>Total Passports applied: </p>
           </div>
           <div class="icon">
             <i class="fa fa-address-book-o"></i>
