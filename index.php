@@ -34,7 +34,7 @@
           if($_SESSION['user_type'] == 'ADMIN'){
             header('Location: pages/dashboard_admin.php');
           } else {
-            header('Location: pages/dashboard.php');
+            header('Location: pages/home.php');
           }
           exit();
         } else if($row['status'] == "Denied"){
