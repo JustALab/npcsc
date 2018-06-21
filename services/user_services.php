@@ -38,7 +38,7 @@
 
     function registerUser(){
         global $db, $form;
-        $regFormElements = array("name" => "name", "email" => "email", "password" => "password", "mobile" => "mobile", "aadhaar_no" => "aadhaar_no", "pan_no" => "pan_no", "address" => "address");
+        $regFormElements = array("name" => "name", "email" => "email", "password" => "password", "mobile" => "mobile", "aadhaar_no" => "aadhaar_no", "pan_no" => "pan_no", "address" => "address", "user_location" => "user_location");
         $regFormElements = $form->getFormValues($regFormElements, $_POST);
         $options = array('cost' => 12);
         $regFormElements['password'] = password_hash($regFormElements['password'], PASSWORD_BCRYPT, $options);

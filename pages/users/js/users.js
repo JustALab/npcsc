@@ -27,13 +27,10 @@ $(document).ready(function () {
 	   }
 	 });
 
-	$(function () {
-	    $('#users_table').DataTable();
-	});
-
-	$('#user_status').on('change', function(){
-		loadPage();
-	});
+	$.getJSON("https://api.ipify.org?format=json", function (data) {
+        $("#ip").val(data.ip);
+        getUserLocation();
+    });
 
 	bindNumberEvents('mobile');
 	bindNumberEvents('pan_no');
@@ -87,4 +84,22 @@ function registerUser(){
 		$('#confirm_password').val('');
 		bootbox.alert("Passwords does not match! Try again!");
 	}
+}
+
+function getUserLocation(){
+	var ip = $("#ip").val();
+	var ipStackAccessKey = 'e0eb52db5b9925aff281176fe15dffe4';
+	var url = 'http://api.ipstack.com/'+ip+'?access_key='+ipStackAccessKey+'&format=1';
+	$.ajax({
+		url: url,
+		type: 'GET',
+		dataType: 'json',
+		success: function(result){
+			var location = result.city + ', ' + result.region_name + ', ' + result.country_name + '.';
+			$('#user_location').val(location);
+		},
+		error: function(){
+			bootbox.alert("failure");
+		} 	        
+	});
 }

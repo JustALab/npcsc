@@ -156,6 +156,14 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-sm-12 col-md-6">
+                	<div class="form-group">
+	                    <label>Location :</label>
+	                    <input type="text" id="" name="" class="form-control" disabled value="<?php echo $userRow['user_location']; ?>">
+	                  </div>
+               	</div>
+              </div>
+              <div class="row">
                 <div class="col-sm-12 col-md-12">
                   <div class="form-group">
                     <label>Address</label>
