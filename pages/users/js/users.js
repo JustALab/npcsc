@@ -71,7 +71,7 @@ function registerUser(){
 				dataType: 'json',
 				success: function(result){
 					bootbox.alert(result.message, function() {
-						window.location = 'http://narpavicsc.com';
+						window.close();
 					});
 				},
 				error: function(){
@@ -90,6 +90,7 @@ function getUserLocation(){
 	var ip = $("#ip").val();
 	var ipStackAccessKey = 'e0eb52db5b9925aff281176fe15dffe4';
 	var url = 'http://api.ipstack.com/'+ip+'?access_key='+ipStackAccessKey+'&format=1';
+	console.log(url);
 	$.ajax({
 		url: url,
 		type: 'GET',

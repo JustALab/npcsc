@@ -11,6 +11,9 @@
 
   include 'pages/dbconfig.php';
 
+  //replace https in url
+  $homeUrl = str_replace('https', 'http', HOMEURL);
+
   if(isset($_POST['login_button'])){
     $email = mysqli_real_escape_string($dbc,trim($_POST['email']));
     $password = mysqli_real_escape_string($dbc,trim($_POST['password']));
@@ -52,6 +55,7 @@
     }
   }
 ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -120,7 +124,7 @@
                 <a href="#" class="forg" onclick="forgotDialog()">Forgot password</a>
               </p>
               <p class="col-6 reg">
-                <a href="<?php echo HOMEURL; ?>/pages/users/register.php" class="reg"><b>Register</b></a>
+                <a href="<?php echo $homeUrl; ?>/pages/users/register.php" target="_blank" class="reg"><b>Register</b></a>
               </p>
             </div>
             <!-- /.col -->

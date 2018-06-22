@@ -140,7 +140,7 @@
     <!-- Bootbox -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
     <script>
-      var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
+      var servicesUrl = <?php echo "'".str_replace('https', 'http', SERVICES_URL)."'" ?>;
     </script>
     <script src="js/users.js"></script>
     <script type="text/javascript">
