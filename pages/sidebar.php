@@ -4,7 +4,7 @@
     <?php if($_SESSION['user_type'] == 'ADMIN'){ ?>
       <a href="<?php echo HOMEURL; ?>/pages/dashboard_admin.php" class="brand-link bg-info">
     <?php } else { ?>
-      <a href="<?php echo HOMEURL; ?>/pages/home.php" class="brand-link bg-info">
+      <a href="<?php echo HOMEURL; ?>" class="brand-link bg-info">
     <?php } ?>
       <!-- <img src="<?php //echo HOMEURL; ?>/assets/dist/img/AdminLTELogo.png"
            alt="AdminLTE Logo"

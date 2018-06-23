@@ -47,7 +47,7 @@
 </head>
 <body class="bg-light">
 
-
+<?php if(!isset($_SESSION['login']) || $_SESSION['login'] != 'yes') { ?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
 	<ul class="navbar-nav">
 	    <li class="nav-item ">
@@ -58,6 +58,7 @@
 	    </li>
 	</ul>
 </nav>
+<?php } ?>
 
 <div class="container-fluid">
 
