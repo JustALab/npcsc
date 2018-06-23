@@ -97,7 +97,7 @@
       <div class="card">
         <div class="card-body login-card-body">
           <p class="login-box-msg Sign"><b>Sign in</b></p>
-          <form id="login_form" name="login_form" action="index.php" method="POST">
+          <form id="login_form" name="login_form" action="login.php" method="POST">
             <div class="form-group has-feedback">
               <label>Email :</label>
               <div class="input-group">
