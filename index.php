@@ -310,7 +310,7 @@
 
 
 
-<div class="footer text-secondary" style="font-weight: 200;font-size: 13px">&copy NarpaviCSC 2018. Powered by <a href="http://justalab.in/" target="blank">JustALab</a></div>
+<div class="footer text-secondary" style="font-weight: 200;font-size: 13px"> &copy NarpaviCSC 2018. Powered by <a href="http://justalab.in/" target="blank">JustALab.</a> v1.1.0</div>
 </div>
 
 
