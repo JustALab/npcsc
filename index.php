@@ -1,238 +1,322 @@
 <?php session_start();
-
-  include 'pages/dbconfig.php';
   
-  if(isset($_SESSION['login'])){
-    if($_SESSION['user_type'] == 'ADMIN'){
-      header('Location: pages/dashboard_admin.php');
-    } else {
-      header('Location: pages/dashboard.php');
-    }
-    exit();
-  }
+  include 'pages/dbconfig.php';
 
-  if(isset($_POST['login_button'])){
-    $email = mysqli_real_escape_string($dbc,trim($_POST['email']));
-    $password = mysqli_real_escape_string($dbc,trim($_POST['password']));
-    $query = "SELECT * FROM users WHERE email = '$email'";
-    $result = mysqli_query($dbc, $query);
-    if(mysqli_num_rows($result)>0) {
-      $row = mysqli_fetch_assoc($result);
-      if(password_verify($password, $row['password'])){
-        $_SESSION['username'] = ucwords($row['name']); 
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['user_id'] = $row['user_id'];
-        $_SESSION['user_type'] = $row['user_type'];
-        if($row['status'] == "Approved"){
-          $walletQuery = "SELECT * FROM wallet WHERE user_id='".$row['user_id']."'";
-          $walletResult = mysqli_query($dbc, $walletQuery);
-          if(mysqli_num_rows($walletResult) > 0){
-            $walletRow = mysqli_fetch_assoc($walletResult);
-            $_SESSION['wallet_id'] = $walletRow['wallet_id'];
-          }
-          $_SESSION['login'] = 'yes';
-          if($_SESSION['user_type'] == 'ADMIN'){
-            header('Location: pages/dashboard_admin.php');
-          } else {
-            header('Location: pages/home.php');
-          }
-          exit();
-        } else if($row['status'] == "Denied"){
-          echo '<script language="javascript">alert("User rejected by Admin.")</script>';
-        } else if($row['status'] == "Blocked"){
-          echo '<script language="javascript">alert("User blocked by Admin.")</script>';
-        } else {
-          echo '<script language="javascript">alert("User not yet approved by Admin. Please kindly wait for approval.")</script>';
-        }
-      } else {
-        echo '<script language="javascript">alert("Wrong password!")</script>';
-      }
-    } else {
-      echo '<script language="javascript">alert("User not available!")</script>';
-    }
-  }
 ?>
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Narpavi | Log in</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/dist/css/adminlte.min.css">
-    <!-- iCheck -->
-    <link rel="stylesheet" href="<?php echo HOMEURL; ?>/assets/plugins/iCheck/square/blue.css">
-    <!-- Google Font: Source Sans Pro -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-    <style>
-      .Sign{
-      font-size: 22px;
-      }
-      .reg {
-      text-align: right;
-      color: black;
-      }
-      .forg{
-      color: black; 
-      }
-      .btn-1{
-      margin-top: 10px;
-      margin-bottom: 15px;
-      }    
-    </style>
-  </head>
-  <body class="hold-transition login-page">
-    <div class="login-box">
-      <div class="login-logo">
-        <a href=""><b>Narpavi CSC</b></a>
-      </div>
-      <!-- /.login-logo -->
-      <div class="card">
-        <div class="card-body login-card-body">
-          <p class="login-box-msg Sign"><b>Sign in</b></p>
-          <form id="login_form" name="login_form" action="index.php" method="POST">
-            <div class="form-group has-feedback">
-              <label>Email :</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
-                </div>
-                <input type="email" required id="email" name="email" class="form-control" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group has-feedback">
-              <label>Password :</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-key"></i></span>
-                </div>
-                <input type="password" required id="password" name="password" class="form-control" placeholder="Password">
-              </div>
-            </div>
-            <div class="row">
-              <p class="col-6">
-                <a href="#" class="forg" onclick="forgotDialog()">Forgot password</a>
-              </p>
-              <p class="col-6 reg">
-                <a href="<?php echo str_replace('https', 'http', HOMEURL); ?>/pages/users/register.php" target="_blank" class="reg"><b>Register</b></a>
-              </p>
-            </div>
-            <!-- /.col -->
-            <input type="hidden" name="action" value="login_user">
-            <div class="row btn-1">
-              <div class="col-12">
-                <button type="submit" name="login_button" onclick="" class="btn bg-info btn-block btn-flat">Log In</button>
-              </div>
-              <!-- /.col -->
-            </div>
-          </form>
-          <!-- /.social-auth-links -->
-        </div>
-        <!-- /.login-card-body -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Narpavi CSC</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="aviewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+  <style>
+    .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+
+    .section{
+      text-align: justify;
+      height:270px;
+    }
+
+    @keyframes blink{
+      0%{}
+      50%{background-color: red;border:red 1px solid;}
+      100%{}
+    }
+
+    #register{
+      animation-name: blink;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+  </style>
+
+</head>
+<body class="bg-light">
+
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
+	<ul class="navbar-nav">
+	    <li class="nav-item ">
+	      <a id="login" class="nav-link text-white" href="<?php echo HOMEURL; ?>/login.php" style="margin-right:8px;">Login</a>
+	    </li>
+	    <li class="nav-item">
+        <a href="<?php echo str_replace('https', 'http', HOMEURL); ?>/pages/users/register.php" target="_blank"><button id="register" class="btn btn-success">Register</button></a>
+	    </li>
+	</ul>
+</nav>
+
+<div class="container-fluid">
+
+<!-- Title Text -->
+<div class="jumbotron jumbotron-fluid bg-light text-center">
+  <div class="container">
+    <h1><i class="fa fa-diamond"></i> Narpavi<span style="font-weight: bold;">CSC</span></h1> 
+    <p>Portal to make your online services ease.</p> 
+  </div>
+</div>
+
+<hr>
+
+<!-- Service Cards -->
+<div class="row bg-light">
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-primary">
+      <div class="card-body text-center">
+        <i class="fa fa-address-card card-title" style="font-size: 48px;"></i><br>
+        <h3>PAN Card</h3>
+        <a href="#" class="btn btn-primary">Apply now</a>
       </div>
     </div>
-    <!-- /.login-box -->
-    <!-- jQuery -->
-    <script src="<?php echo HOMEURL; ?>/assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="<?php echo HOMEURL; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootbox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+  </div>
 
-    <script type="text/javascript">
-      var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
-      var isValidEmail = false;
-      var resetPasswordStatus = 0;
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-success">
+      <div class="card-body text-center">
+        <i class="fa fa-address-book card-title" style="font-size: 48px;"></i><br>
+        <h3>Passport</h3>
+        <a href="#" class="btn btn-success">Apply now</a>
+      </div>
+    </div>
+  </div>
 
-      function forgotDialog(){
-          var dialog = bootbox.dialog({
-              message: '<p>Enter your registered Email ID</p><input type="email" id="forgot-email" name="forgot-email" class="form-control" placeholder="Email">',
-              closeButton: true,
-              buttons: {
-                ok: {
-                    label: "Reset Password",
-                    className: 'btn-info',
-                    callback: function(result){
-                        var emailId = $('#forgot-email')[0].value;
-                        validateEmail(emailId);
-                        if(isValidEmail){
-                          resetPassword(emailId);
-                          if(resetPasswordStatus == 1) {
-                            bootbox.alert("Your password has been sent to your registered Email ID");
-                          } else {
-                            bootbox.alert("Unknown error. Please contact admin.");
-                          }
-                        }else{
-                          bootbox.alert("Your Email ID is not registered with us.");
-                        } 
-                    }
-                }
-              }
-          });
-      }
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-warning">
+      <div class="card-body text-center">
+        <i class="fa fa-mobile card-title" style="font-size: 48px;"></i><br>
+        <h3>Recharge</h3>
+        <a href="#" class="btn btn-warning">Recharge now</a>
+      </div>
+    </div>
+  </div>
 
-      function validateEmail(emailId){
-        var data = 'email=' + emailId + '&action=validate_email';
-        $.ajax({
-          url: servicesUrl + 'user_services.php',
-          type: 'POST',
-          data:  data,
-          dataType: 'json',
-          async : false,
-          success: function(result){
-            if(result.status == 'success'){
-              setIsValidEmail(true);
-            } else {
-              setIsValidEmail(false);
-            }
-          },
-          error: function(){
-            bootbox.alert("failure");
-          }           
-        });
-      }
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-secondary">
+      <div class="card-body text-center">
+        <i class="fa fa-bus card-title" style="font-size: 48px;"></i><br>
+        <h3>Bus Ticket</h3>
+        <a href="#" class="btn btn-secondary">Book now</a>
+      </div>
+    </div>
+  </div>
 
-      function setIsValidEmail(isValid){
-        isValidEmail = isValid;
-      }
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-danger">
+      <div class="card-body text-center">
+       <i class="fa fa-train card-title" style="font-size: 48px;"></i><br>
+        <h3>Train Ticket</h3>
+        <a href="#" class="btn btn-danger">Reserve now</a>
+      </div>
+    </div>
+  </div>
 
-      function resetPassword(emailId){
-        var data = 'email=' + emailId + '&action=reset_password';
-        $.ajax({
-          url: servicesUrl + 'user_services.php',
-          type: 'POST',
-          data:  data,
-          dataType: 'json',
-          async : false,
-          success: function(result){
-            if(result.status = 'success'){
-              setResetPasswordStatus(1);
-            } else {
-              setResetPasswordStatus(0);
-            }
-          },
-          error: function(){
-            bootbox.alert("password reset failure");
-          }           
-        });
-      }
 
-      function setResetPasswordStatus(status){
-        resetPasswordStatus = status;
-      }
-    </script>
-    <script type="text/javascript">
-		var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || 
-		{widgetcode:"5c3123b1392b384720adf04bb0efc2b7ed466ada3db386bd07111fe7ec765a16", values:{},ready:function(){}};
-		var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;
-		s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");
-	</script>
-  </body>
+  <div class="col-sm-6 col-md-4 col-lg-2">
+    <div class="card text-info">
+      <div class="card-body text-center">
+        <i class="fa fa-plane card-title" style="font-size: 48px;"></i><br>
+        <h3>Flight Ticket</h3>
+        <a href="#" class="btn btn-info">Book now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<!-- Announcement -->
+<!-- <div class="row"> -->
+  <!-- News -->
+  <!-- <div class="col-sm-12 col-md-4 col-lg-4">
+  	<div class="card bg-dark">
+    <div class="card-body text-white"><i class="fa fa-globe fa-lg"></i> News & Activities</div>
+    <div class="card" style="max-height: 200px;min-height: 200px;">
+    <marquee behavior="scroll" direction="up" onmouseover="this.stop();"
+           onmouseout="this.start();">
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is a paragraph. This is a second line of paragraph.</li>
+      <li class="list-group-item">Second item</li>
+      <li class="list-group-item">Third item</li>
+      <li class="list-group-item">Third item</li>
+    </ul>
+  </marquee>
+  </div>
+  </div>
+  </div> -->
+
+  <!-- Updates -->
+  <!-- <div class="col-sm-12 col-md-4 col-lg-4">
+  	<div class="card bg-dark">
+    <div class="card-body text-white"><i class="fa fa-bolt fa-lg"></i> Updates</div>
+    <div class="card" style="max-height: 200px;min-height: 200px;">
+    <marquee behavior="scroll" direction="up" onmouseover="this.stop();"
+           onmouseout="this.start();">
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is a paragraph. This is a second line of paragraph.</li>
+      <li class="list-group-item">Second item</li>
+      <li class="list-group-item">Third item</li>
+    </ul>
+  </marquee>
+  </div>
+  </div>
+  </div> -->
+
+  <!-- Feedback -->
+  <!-- <div class="col-sm-12 col-md-4 col-lg-4">
+    <div class="card bg-dark">
+    <div class="card-body text-white"><i class="fa fa-group fa-lg"></i> Customer Feedback</div>
+    <div class="card" style="max-height: 200px;min-height: 200px;">
+    <marquee behavior="scroll" direction="up" onmouseover="this.stop();"
+           onmouseout="this.start();">
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">This is a paragraph. This is a second line of paragraph.</li>
+      <li class="list-group-item">Second item</li>
+      <li class="list-group-item">Third item</li>
+    </ul>
+  </marquee>
+  </div>
+  </div>
+  </div> -->
+<!-- </div> -->
+
+
+<!-- About Header-->
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/about.jpg);background-position: 0% 60%;background-blend-mode: overlay;">
+  <h3>About NarpaviCSC</h3>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+
+<!-- About Content -->
+<div id="about" class="section container">
+  <ul>
+    <br>
+    <li>NarpaviCSC Started in 2018, Headquartered in Madurai.</li><br>
+    <li>NarpaviCSC is a network of Common Service Centre’s to facilitate e-Services accessible to 92% Citizens who still doesn’t have internet or online banking facilities.</li><br>
+    <li>NarpaviCSC Network – we have established many centres across the State and due to continuous success of our e-Services Business Owners we are planning to increase</li>
+  </ul>
+</div>
+
+
+<!-- Why Header -->
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/why.jpg);background-position: 0% 20%;background-blend-mode: overlay;">
+  <h3>Why NarpaviCSC ?</h3>
+  <p>NarpaviCSC enables you to be a proud independent e-BO(e-Services Business Owner) to serve your society and arn money</p> 
+</div>
+
+<!-- Why content -->
+<div id="why" class="section container">
+  <div class="row" style="font-size: 13px;">
+    
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <h6 style="font-weight: bold">E-BO SERVICES</h6>
+      <ul>
+        <li>OneStop for all e-Services</li><br>
+        <li>Service Guarantee</li><br>
+        <li>Essential day-day Services</li><br>
+        <li>Hands on Training</li><br>
+        <li>Customer Profiling</li><br>
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <h6 style="font-weight: bold">E-BO SUPPORT</h6>
+      <ul>
+        <li>Technical Support</li><br>
+        <li>Marketing Support</li><br>
+        <li>Business Facilitation</li><br>
+        <li>e-BO Growth Planning</li><br>
+        <li>New Service Support</li><br>
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <h6 style="font-weight: bold">E-BO VISIBILITY</h6>
+      <ul>
+        <li>Servicing your own Citizens</li><br>
+        <li>Creating Awareness</li><br>
+        <li>Cross & Upselling Platform </li><br>
+        <li>Bringing People together</li><br>
+        <li>Recognition in your Society</li><br>
+      </ul>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-3">
+      <h6 style="font-weight: bold">E-BO BENEFITS</h6>
+      <ul>
+        <li>Double Earnings</li><br>
+        <li>Quick Growth</li><br>
+        <li>Futuristic Business</li><br>
+        <li>Low Investment</li><br>
+        <li>High Returns</li><br>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Who Header -->
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/apply.jpg);background-position: 15% 55%;background-blend-mode: overlay;">
+  <h3>Who can apply ?</h3>
+  <p>NarpaviCSC welcomes applications from the following</p> 
+</div>
+<!-- Who Content -->
+<div id="who" class="section container" >
+  <ul style="list-style-type: none;">
+    <br>
+    <li><i class="fa fa-check-square"></i>  Highly motivated business aspirants (any degree) with Computer skills. OR </li><br>
+    <li><i class="fa fa-check-square"></i>  Existing retail business owners with PC Skills who would like to expand their business profits. OR</li><br>
+    <li><i class="fa fa-check-square"></i>  Ex-Service Men, Women Entrepreneurs, Differently Abled Graduates with PC Skills.</li><br>
+    <br>
+    <a href="#"><button class="btn btn-primary">Click here to Apply</button></a>
+  </ul>
+</div>
+
+
+
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/madurai.jpg);background-position: 0% 50%;background-blend-mode: overlay;">
+  <h3>Contact us</h3>
+  <p>Glad to help you with any question that might arise, give your feedback where we can do the best for you.</p> 
+</div>
+<div id="contact" class="section container" style="font-size: 15px">
+
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-6">
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-6" style="border: dashed 1px lightgrey;padding: 8px">
+    <i class="fa fa-globe"></i><b> Address: </b>
+    <p>NarpaviCSC Pvt. Ltd,<br>
+    No.1, XXX Street, YYY Nagar<br>
+    Madurai - 654 321</p>
+    <br>
+    <p><i class="fa fa-phone"></i>  +91 98765 43210</p>
+    <p><i class="fa fa-envelope-o"></i>  info@narpavicsc.com</p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="footer text-secondary" style="font-weight: 200;font-size: 13px">&copy NarpaviCSC 2018. Powered by <a href="http://justalab.in/" target="blank">JustALab</a></div>
+</div>
+
+
+</body>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </html>
