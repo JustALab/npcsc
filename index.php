@@ -78,7 +78,7 @@
       <div class="card-body text-center">
         <i class="fa fa-address-card card-title" style="font-size: 48px;"></i><br>
         <h3>PAN Card</h3>
-        <a href="#" class="btn btn-primary">Apply now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-primary">Apply now</a>
       </div>
     </div>
   </div>
@@ -88,7 +88,7 @@
       <div class="card-body text-center">
         <i class="fa fa-address-book card-title" style="font-size: 48px;"></i><br>
         <h3>Passport</h3>
-        <a href="#" class="btn btn-success">Apply now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-success">Apply now</a>
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
       <div class="card-body text-center">
         <i class="fa fa-mobile card-title" style="font-size: 48px;"></i><br>
         <h3>Recharge</h3>
-        <a href="#" class="btn btn-warning">Recharge now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-warning">Recharge now</a>
       </div>
     </div>
   </div>
@@ -108,7 +108,7 @@
       <div class="card-body text-center">
         <i class="fa fa-bus card-title" style="font-size: 48px;"></i><br>
         <h3>Bus Ticket</h3>
-        <a href="#" class="btn btn-secondary">Book now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-secondary">Book now</a>
       </div>
     </div>
   </div>
@@ -118,7 +118,7 @@
       <div class="card-body text-center">
        <i class="fa fa-train card-title" style="font-size: 48px;"></i><br>
         <h3>Train Ticket</h3>
-        <a href="#" class="btn btn-danger">Reserve now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-danger">Reserve now</a>
       </div>
     </div>
   </div>
@@ -129,7 +129,7 @@
       <div class="card-body text-center">
         <i class="fa fa-plane card-title" style="font-size: 48px;"></i><br>
         <h3>Flight Ticket</h3>
-        <a href="#" class="btn btn-info">Book now</a>
+        <a href="<?php echo HOMEURL; ?>/login.php" class="btn btn-info">Book now</a>
       </div>
     </div>
   </div>
@@ -194,7 +194,7 @@
 
 
 <!-- About Header-->
-<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/about.jpg);background-position: 0% 60%;background-blend-mode: overlay;">
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(assets/about.jpg);background-position: 0% 60%;background-blend-mode: overlay;">
   <h3>About NarpaviCSC</h3>
   <p>Resize this responsive page to see the effect!</p> 
 </div>
@@ -211,7 +211,7 @@
 
 
 <!-- Why Header -->
-<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/why.jpg);background-position: 0% 20%;background-blend-mode: overlay;">
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(assets/why.jpg);background-position: 0% 20%;background-blend-mode: overlay;">
   <h3>Why NarpaviCSC ?</h3>
   <p>NarpaviCSC enables you to be a proud independent e-BO(e-Services Business Owner) to serve your society and arn money</p> 
 </div>
@@ -269,7 +269,7 @@
 
 
 <!-- Who Header -->
-<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/apply.jpg);background-position: 15% 55%;background-blend-mode: overlay;">
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(assets/apply.jpg);background-position: 15% 55%;background-blend-mode: overlay;">
   <h3>Who can apply ?</h3>
   <p>NarpaviCSC welcomes applications from the following</p> 
 </div>
@@ -281,13 +281,13 @@
     <li><i class="fa fa-check-square"></i>  Existing retail business owners with PC Skills who would like to expand their business profits. OR</li><br>
     <li><i class="fa fa-check-square"></i>  Ex-Service Men, Women Entrepreneurs, Differently Abled Graduates with PC Skills.</li><br>
     <br>
-    <a href="#"><button class="btn btn-primary">Click here to Apply</button></a>
+    <a href="<?php echo str_replace('https', 'http', HOMEURL); ?>/pages/users/register.php" target="_blank"><button class="btn btn-primary" >Click here to Apply</button></a>
   </ul>
 </div>
 
 
 
-<div class="jumbotron text-center bg-dark text-white" style="background-image: url(../assets/madurai.jpg);background-position: 0% 50%;background-blend-mode: overlay;">
+<div class="jumbotron text-center bg-dark text-white" style="background-image: url(assets/madurai.jpg);background-position: 0% 50%;background-blend-mode: overlay;">
   <h3>Contact us</h3>
   <p>Glad to help you with any question that might arise, give your feedback where we can do the best for you.</p> 
 </div>
@@ -310,7 +310,7 @@
 
 
 
-<div class="footer text-secondary" style="font-weight: 200;font-size: 13px"> &copy NarpaviCSC 2018. Powered by <a href="http://justalab.in/" target="blank">JustALab.</a> v1.1.0</div>
+<div class="footer text-secondary" style="font-weight: 200;font-size: 13px"> &copy NarpaviCSC 2018. Powered by <a href="http://justalab.in/" target="_blank">JustALab.</a> v1.1.0</div>
 </div>
 
 

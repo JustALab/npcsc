@@ -4,7 +4,7 @@
 date_default_timezone_set('Asia/Calcutta');
 	
 if(!defined('HOMEURL'))
-	define('HOMEURL', 'http://localhost:8888/npcsc');
+	define('HOMEURL', 'http://localhost/npcsc');
 
 if(!defined('SERVICES_URL'))
 	define('SERVICES_URL', 'http://localhost:8888/npcsc/services/');
