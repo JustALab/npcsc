@@ -1,4 +1,6 @@
 <?php session_start();
+
+  include 'pages/dbconfig.php';
   
   if(isset($_SESSION['login'])){
     if($_SESSION['user_type'] == 'ADMIN'){
@@ -8,11 +10,6 @@
     }
     exit();
   }
-
-  include 'pages/dbconfig.php';
-
-  //replace https in url
-  $homeUrl = str_replace('https', 'http', HOMEURL);
 
   if(isset($_POST['login_button'])){
     $email = mysqli_real_escape_string($dbc,trim($_POST['email']));
@@ -124,7 +121,7 @@
                 <a href="#" class="forg" onclick="forgotDialog()">Forgot password</a>
               </p>
               <p class="col-6 reg">
-                <a href="<?php echo $homeUrl; ?>/pages/users/register.php" target="_blank" class="reg"><b>Register</b></a>
+                <a href="<?php echo str_replace('https', 'http', HOMEURL); ?>/pages/users/register.php" target="_blank" class="reg"><b>Register</b></a>
               </p>
             </div>
             <!-- /.col -->
@@ -150,27 +147,85 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
     <script type="text/javascript">
+      var servicesUrl = <?php echo "'".SERVICES_URL."'" ?>;
+      var isValidEmail = false;
+      var resetPasswordStatus = 0;
+
       function forgotDialog(){
           var dialog = bootbox.dialog({
               message: '<p>Enter your registered Email ID</p><input type="email" id="forgot-email" name="forgot-email" class="form-control" placeholder="Email">',
               closeButton: true,
               buttons: {
                 ok: {
-                    label: "Send Verification Code",
+                    label: "Reset Password",
                     className: 'btn-info',
                     callback: function(result){
-                        var emailID = $('#forgot-email')[0].value;
-                        // validate the email ID
-                        var isValid = true; // hardcoded
-                        if(isValid){
-                          bootbox.alert("Temporary password will be sent to your registered Email ID");
+                        var emailId = $('#forgot-email')[0].value;
+                        validateEmail(emailId);
+                        if(isValidEmail){
+                          resetPassword(emailId);
+                          if(resetPasswordStatus == 1) {
+                            bootbox.alert("Your password has been sent to your registered Email ID");
+                          } else {
+                            bootbox.alert("Unknown error. Please contact admin.");
+                          }
                         }else{
-                          bootbox.alert("Not a valid Email ID");
+                          bootbox.alert("Your Email ID is not registered with us.");
                         } 
                     }
                 }
               }
           });
+      }
+
+      function validateEmail(emailId){
+        var data = 'email=' + emailId + '&action=validate_email';
+        $.ajax({
+          url: servicesUrl + 'user_services.php',
+          type: 'POST',
+          data:  data,
+          dataType: 'json',
+          async : false,
+          success: function(result){
+            if(result.status == 'success'){
+              setIsValidEmail(true);
+            } else {
+              setIsValidEmail(false);
+            }
+          },
+          error: function(){
+            bootbox.alert("failure");
+          }           
+        });
+      }
+
+      function setIsValidEmail(isValid){
+        isValidEmail = isValid;
+      }
+
+      function resetPassword(emailId){
+        var data = 'email=' + emailId + '&action=reset_password';
+        $.ajax({
+          url: servicesUrl + 'user_services.php',
+          type: 'POST',
+          data:  data,
+          dataType: 'json',
+          async : false,
+          success: function(result){
+            if(result.status = 'success'){
+              setResetPasswordStatus(1);
+            } else {
+              setResetPasswordStatus(0);
+            }
+          },
+          error: function(){
+            bootbox.alert("password reset failure");
+          }           
+        });
+      }
+
+      function setResetPasswordStatus(status){
+        resetPasswordStatus = status;
       }
     </script>
     <script type="text/javascript">

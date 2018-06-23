@@ -30,6 +30,12 @@
         case 'update_password':
             $finaloutput = updatePassword();
         break;
+        case 'validate_email':
+            $finaloutput = validateEmail();
+        break;
+        case 'reset_password':
+            $finaloutput = resetPassword();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -137,6 +143,53 @@
             return array("status"=>"failure","message"=>"Password update failure.");
         }
         return array("status"=>"failure","message"=>"Entered old password does mot match!");
+    }
+
+    function validateEmail(){
+        global $dbc;
+        $email = $_POST['email'];
+        $query = 'SELECT * FROM '.TABLE_USERS.' WHERE email="'.$email.'"';
+        // file_put_contents("formlog.log", print_r( $query, true ));
+        $result = mysqli_query($dbc, $query);
+        if(mysqli_num_rows($result) > 0){
+            return array("status"=>"success");
+        }
+        return array("status"=>"failure");
+    }
+
+    function randomPassword(){
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array(); //remember to declare $pass as an array
+        $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
+        for ($i = 0; $i < 8; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
+        return implode($pass); //turn the array into a string
+    }
+
+    function resetPassword(){
+        global $db, $dbc;
+        $email = $_POST['email'];
+        $newPassword = randomPassword();
+        // file_put_contents("formlog.log", print_r( $newPassword, true ));
+        $options = array('cost' => 12);
+        $newPasswordHash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
+        $result = $db->updateOperation(TABLE_USERS, array('password' => $newPasswordHash), array('email' => $email));
+        if($result['status'] == 'success'){
+            sendMail($newPassword, $email);
+            return array("status"=>"success","message"=>"Password successfully updated.");
+        }
+        return array("status"=>"failure","message"=>"Password update failure.");
+    }
+
+    function sendMail($newPassword, $toEmail){ 
+        $senderName = 'Narpavi CSC';
+        $senderEmail = 'admin@narpavicsc.com';
+        $subject = 'Your New Password';
+        $message = 'Please login and change this password. Your new password is ' .$newPassword. '';
+        $headers = 'From: ' . $senderEmail;
+        mail($toEmail, $subject, $message, $headers);
     }
 
 ?>
