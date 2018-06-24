@@ -12,9 +12,18 @@
   }
 
   if(isset($_POST['login_button'])){
-    $email = mysqli_real_escape_string($dbc,trim($_POST['email']));
+    $userId = mysqli_real_escape_string($dbc,trim($_POST['user_id']));
     $password = mysqli_real_escape_string($dbc,trim($_POST['password']));
-    $query = "SELECT * FROM users WHERE email = '$email'";
+
+    if(checkLength($userId) && checkUpperCase($userId)){
+      $userId = removeLpad($userId);
+    } else {
+      echo '<script language="javascript">alert("Invalid user ID!")</script>';
+      echo '<script language="javascript">location.href = "'.HOMEURL.'/login.php";</script>';
+      exit();
+    }
+
+    $query = "SELECT * FROM users WHERE user_id = '$userId'";
     $result = mysqli_query($dbc, $query);
     if(mysqli_num_rows($result)>0) {
       $row = mysqli_fetch_assoc($result);
@@ -51,6 +60,25 @@
       echo '<script language="javascript">alert("User not available!")</script>';
     }
   }
+
+  function checkLength($userId){
+    if(strlen($userId) == 13) {
+      return true;
+    }
+    return false;
+  }
+
+  function checkUpperCase($userId){
+    if(strtoupper($userId) == $userId){
+      return true;
+    }
+    return false;
+  }
+
+  function removeLpad($userId){
+    return substr($userId, 7);
+  }
+
 ?>
 
 <!DOCTYPE html>
@@ -99,19 +127,19 @@
           <p class="login-box-msg Sign"><b>Sign in</b></p>
           <form id="login_form" name="login_form" action="login.php" method="POST">
             <div class="form-group has-feedback">
-              <label>Email :</label>
+              <label>User Id :</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="email" required id="email" name="email" class="form-control" placeholder="Email">
+                <input type="text" required id="user_id" name="user_id" class="form-control" placeholder="User ID">
               </div>
             </div>
             <div class="form-group has-feedback">
               <label>Password :</label>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
                 </div>
                 <input type="password" required id="password" name="password" class="form-control" placeholder="Password">
               </div>
