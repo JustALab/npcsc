@@ -3,7 +3,7 @@
 	require '../pages/dbconfig.php';
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
-    require 'common_method.php';
+    require 'common_methods.php';
 
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
