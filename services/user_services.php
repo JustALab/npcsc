@@ -116,7 +116,9 @@
         $senderEmail = 'admin@narpavicsc.com';
         $subject = 'Your New Account Activated';
         $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is ' . addUserIdPadding($userId) . '. Please use this ID to login into the portal.';
-        $headers = 'From: ' . $senderEmail;
+        $headers = 'From: ' . $senderEmail . "\r\n";
+        $headers .= "Reply-To: admin@narpavicsc.com\r\n";
+        $headers .= "Return-Path: admin@narpavicsc.com\r\n";
         mail($toEmail, $subject, $message, $headers);
     }
 
@@ -204,7 +206,9 @@
         $senderEmail = 'admin@narpavicsc.com';
         $subject = 'Your New Password';
         $message = 'Please login and change this password. Your new password is ' .$newPassword. '';
-        $headers = 'From: ' . $senderEmail;
+        $headers = 'From: ' . $senderEmail . "\r\n";
+        $headers .= "Reply-To: admin@narpavicsc.com\r\n";
+        $headers .= "Return-Path: admin@narpavicsc.com\r\n";
         mail($toEmail, $subject, $message, $headers);
     }
 
