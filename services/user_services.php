@@ -107,7 +107,7 @@
               createWalletForUser($userId);  
               $toEmail = getEmailByUserId($userId);
               $subject = 'Your New Account Activated';
-              $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is <b>' . addUserIdPadding($userId) . '</b>. Please use this ID to login into the portal.';;
+              $message = 'Welcome to Narpavi Common Services Center portal. Your registration has been approved. Your Narpavi CSC User ID is <b>' . addUserIdPadding($userId) . '</b>. Please use this ID to login into the portal.';
               sendMailToUser($toEmail, $subject, $message);
             }
             return array("status"=>"success","message"=>"User status successfully updated.");
