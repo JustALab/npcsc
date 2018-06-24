@@ -50,5 +50,12 @@
 		$userId = str_pad($userId, 6, "0",STR_PAD_LEFT);
 		return 'NARPAVI' . $userId;
 	}
+
+	function getEmailByUserId($userId){
+		global $dbc;
+		$query = "SELECT email FROM ".TABLE_USERS." WHERE user_id='$userId'";
+		$result = mysqli_query($dbc, $query);
+		return mysqli_fetch_assoc($result)['email'];
+	}
 	
 ?>

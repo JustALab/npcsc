@@ -4,6 +4,12 @@
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
     require 'common_methods.php';
+    require '../assets/php_mailer/src/PHPMailer.php';
+    require '../assets/php_mailer/src/SMTP.php';
+    require '../assets/php_mailer/src/Exception.php';
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
@@ -99,27 +105,14 @@
         if($result['status'] == 'success'){
             if($oldStatus == STATUS_PENDING && $newStatus == STATUS_APPROVED){
               createWalletForUser($userId);  
-              sendMailToUser($userId);
+              $toEmail = getEmailByUserId($userId);
+              $subject = 'Your New Account Activated';
+              $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is <b>' . addUserIdPadding($userId) . '</b>. Please use this ID to login into the portal.';;
+              sendMailToUser($toEmail, $subject, $message);
             }
             return array("status"=>"success","message"=>"User status successfully updated.");
         }
         return array("status"=>"failure","message"=>"User status update failure.");
-    }
-
-    function sendMailToUser($userId){
-        global $dbc;
-        $query = 'SELECT email FROM '.TABLE_USERS.' WHERE user_id="'.$userId.'"';
-        $result = mysqli_query($dbc, $query);
-        $toEmail = mysqli_fetch_assoc($result)['email'];
-
-        $senderName = 'Narpavi CSC';
-        $senderEmail = 'admin@narpavicsc.com';
-        $subject = 'Your New Account Activated';
-        $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is ' . addUserIdPadding($userId) . '. Please use this ID to login into the portal.';
-        $headers = 'From: ' . $senderEmail . "\r\n";
-        $headers .= "Reply-To: admin@narpavicsc.com\r\n";
-        $headers .= "Return-Path: admin@narpavicsc.com\r\n";
-        mail($toEmail, $subject, $message, $headers);
     }
 
     function updateProfile(){
@@ -195,21 +188,31 @@
         $newPasswordHash = password_hash($newPassword, PASSWORD_BCRYPT, $options);
         $result = $db->updateOperation(TABLE_USERS, array('password' => $newPasswordHash), array('email' => $email));
         if($result['status'] == 'success'){
-            sendMail($newPassword, $email);
+            $subject = 'Your New Password';
+            $message = 'Please login and change this password. Your new password is <b>' .$newPassword. '</b>.';
+            sendMailToUser($email, $subject, $message);
             return array("status"=>"success","message"=>"Password successfully updated.");
         }
         return array("status"=>"failure","message"=>"Password update failure.");
     }
 
-    function sendMail($newPassword, $toEmail){ 
-        $senderName = 'Narpavi CSC';
-        $senderEmail = 'admin@narpavicsc.com';
-        $subject = 'Your New Password';
-        $message = 'Please login and change this password. Your new password is ' .$newPassword. '';
-        $headers = 'From: ' . $senderEmail . "\r\n";
-        $headers .= "Reply-To: admin@narpavicsc.com\r\n";
-        $headers .= "Return-Path: admin@narpavicsc.com\r\n";
-        mail($toEmail, $subject, $message, $headers);
+    function sendMailToUser($toEmail, $subject, $message){
+        $mail = new PHPMailer(true);                            
+        try {
+            $mail->setFrom('no-reply@narpavicsc.com', 'Narpavi CSC');
+            $mail->addAddress($toEmail, '');     // Add a recipient
+            $mail->addReplyTo('no-reply@narpavicsc.com', 'no-reply');
+
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $message;
+
+            if(!$mail->send()){
+                file_put_contents("php_mailer_error.log",print_r($e, true), FILE_APPEND | LOCK_EX);
+            } 
+        } catch (Exception $e) {
+            file_put_contents("php_mailer_error.log",print_r($e, true), FILE_APPEND | LOCK_EX);
+        }
     }
 
 ?>
