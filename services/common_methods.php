@@ -45,5 +45,10 @@
 	function compareServicePrice($walletBalance, $servicePrice){
 		return $walletBalance >= $servicePrice;
 	}
+
+	function addUserIdPadding($userId){
+		$userId = str_pad($userId, 6, "0",STR_PAD_LEFT);
+		return 'NARPAVI' . $userId;
+	}
 	
 ?>

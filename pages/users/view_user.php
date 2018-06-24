@@ -7,6 +7,7 @@
   include '../sidebar.php';
   include '../dbconfig.php';
   include '../../services/constants.php';
+  include '../../services/common_methods.php';
 
   $userId = $_GET['user_id'];
   $query = "SELECT * FROM ".TABLE_USERS." WHERE user_id='$userId'";
@@ -23,7 +24,7 @@
         <div class="col-sm-12 col-md-8 cpl-lg-8">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title"><?php echo $row['name']; ?></h3>
+              <h3 class="card-title"><?php echo $row['name'] .' - ' . addUserIdPadding($row['user_id']); ?></h3>
 
               <div class="card-tools">
               <?php if($row['status'] == STATUS_APPROVED){ ?>

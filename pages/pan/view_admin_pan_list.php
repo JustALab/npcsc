@@ -7,6 +7,7 @@
   include '../sidebar.php';
   include '../dbconfig.php';
   include '../../services/constants.php';
+  include '../../services/common_methods.php';
   
   $status = STATUS_PENDING;
   if(isset($_GET['status'])){
@@ -74,7 +75,7 @@
                   echo "<td>".$row['application_date']."</td>";
                   echo "<td>".$row['dob']."</td>";
                   echo "<td>".$row['contact_details']."</td>";
-                  echo "<td>".$row['user_id']."</td>";
+                  echo "<td>".addUserIdPadding($row['user_id'])."</td>";
                   echo "<td>".$row['name']."</td>";
                   // echo "<td>".$row['user_location']."</td>";
                   echo "<td><a href='view_admin_pan.php?application_no=".$row['application_no']."'>View</a></td>";

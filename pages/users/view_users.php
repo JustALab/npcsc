@@ -7,6 +7,7 @@
   include '../sidebar.php';
   include '../dbconfig.php';
   include '../../services/constants.php';
+  include '../../services/common_methods.php';
 
   $status = STATUS_APPROVED;
   if(isset($_GET['status'])){
@@ -67,7 +68,7 @@
                   while($row = mysqli_fetch_assoc($result)){
                     echo "<tr>";
                     echo "<td>".++$rowCount."</td>";
-                    echo "<td>".$row['user_id']."</td>";
+                    echo "<td>".addUserIdPadding($row['user_id'])."</td>";
                     echo "<td>".$row['name']."</td>";
                     echo "<td>".$row['mobile']."</td>";
                     // echo "<td>".$row['user_location']."</td>";

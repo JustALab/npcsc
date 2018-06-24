@@ -8,6 +8,7 @@
    include '../dbconfig.php';
    include '../../services/constants.php';
    include 'bank_config.php';
+   include '../../services/common_methods.php';
    
    $status = STATUS_PENDING;
    if(isset($_GET['status'])){
@@ -69,7 +70,7 @@
                          echo "<tr>";
                          echo "<td>".++$rowCount."</td>";
                          echo "<td>".$row['request_id']."</td>";
-                         echo "<td>".$row['user_id']."</td>";
+                         echo "<td>".addUserIdPadding($row['user_id'])."</td>";
                          echo "<td>".$row['name']."</td>";
                          echo "<td>".$narpaviBanks[$row['to_bank_name']]."</td>";
                          echo "<td>".$row['request_amount']."</td>";

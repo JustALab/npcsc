@@ -8,6 +8,7 @@
   include '../dbconfig.php';
   include '../../services/constants.php';
   include 'bank_config.php';
+  include '../../services/common_methods.php';
 
   $requestId = $_GET['request_id'];
   $query = "SELECT u.user_id, u.name, wr.request_id, wr.to_bank_name, wr.transaction_type, wr.request_amount, wr.request_date, wr.bank_name, wr.bank_name, wr.reference_no, wr.status FROM ".TABLE_WALLET_REQUESTS." wr, ".TABLE_WALLET." w, ".TABLE_USERS." u WHERE wr.wallet_id=w.wallet_id AND w.user_id=u.user_id AND request_id='$requestId'";
@@ -109,7 +110,7 @@
         <div class="col-sm-12 col-md-8 col-lg-8">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Agent Name: <?php echo $userRow['name']; ?></h3>
+              <h3 class="card-title"><?php echo $userRow['name'] . ' - ' . addUserIdPadding($userRow['user_id']); ?></h3>
 
               <div class="card-tools">
               <?php if($userRow['status'] == STATUS_APPROVED){ ?>
