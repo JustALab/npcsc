@@ -98,10 +98,25 @@
         if($result['status'] == 'success'){
             if($oldStatus == STATUS_PENDING && $newStatus == STATUS_APPROVED){
               createWalletForUser($userId);  
+              sendMailToUser($userId);
             }
             return array("status"=>"success","message"=>"User status successfully updated.");
         }
         return array("status"=>"failure","message"=>"User status update failure.");
+    }
+
+    function sendMailToUser($userId){
+        global $dbc;
+        $query = 'SELECT email FROM '.TABLE_USERS.' WHERE user_id="'.$userId.'"';
+        $result = mysqli_query($dbc, $query);
+        $toEmail = mysqli_fetch_assoc($result)['email'];
+
+        $senderName = 'Narpavi CSC';
+        $senderEmail = 'admin@narpavicsc.com';
+        $subject = 'Your New Account Activated';
+        $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is ' . $userId . '. Please use this ID to login into the portal.';
+        $headers = 'From: ' . $senderEmail;
+        mail($toEmail, $subject, $message, $headers);
     }
 
     function updateProfile(){
