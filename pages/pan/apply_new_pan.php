@@ -6,6 +6,7 @@ if($_SESSION['user_type'] == 'ADMIN'){
 include '../header_nav.php';
 include '../sidebar.php';
 include 'pan_config.php';
+include '../../services/constants.php';
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -17,12 +18,9 @@ include 'pan_config.php';
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Apply New PAN</h3>
-        <!-- <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-            <i class="fa fa-minus"></i></button>
-          <button type="button" class="btn btn-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-            <i class="fa fa-times"></i></button>
-          </div> -->
+        <div class="card-tools">
+          <a href="<?php echo HOMEURL.'/services/'.PAN_FORM49_PATH; ?>" target="_blank">View Form 49A</a>
+        </div>
       </div>
       <div class="card-body">
         <div class="row">

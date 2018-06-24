@@ -23,6 +23,11 @@
     <div class="card">
       <div class="card-header">
         <h3 class="card-title">Status</h3>
+        <div class="card-tools">
+          <div class="card-tools">
+            <a href="<?php echo HOMEURL.'/services/'.PAN_FORM49_PATH; ?>" target="_blank">View Form 49A</a>
+          </div>
+        </div>
       </div>
       <div class="card-body">
         <div class="row">

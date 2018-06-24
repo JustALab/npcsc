@@ -20,5 +20,8 @@
     define('SIGNATURE_PATH', 'store/signatures/');
     define('DOC_PATH', 'store/documents/');
     define('RECEIPTS_PATH', 'store/receipts/');
+    define('FORM_DOCS_PATH', 'store/form_docs/');
+
+    define('PAN_FORM49_PATH', 'store/form_docs/Form49A.pdf');
 
 ?>
