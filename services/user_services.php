@@ -3,6 +3,7 @@
 	require '../pages/dbconfig.php';
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
+    require 'common_method.php';
 
 	$db = new DBWrapper($dbc);
 	$form = new FormWrapper();
@@ -114,7 +115,7 @@
         $senderName = 'Narpavi CSC';
         $senderEmail = 'admin@narpavicsc.com';
         $subject = 'Your New Account Activated';
-        $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is ' . $userId . '. Please use this ID to login into the portal.';
+        $message = 'Welcome to Narpavi Common Services Center portal. Your Narpavi CSC User ID is ' . addUserIdPadding($userId) . '. Please use this ID to login into the portal.';
         $headers = 'From: ' . $senderEmail;
         mail($toEmail, $subject, $message, $headers);
     }
