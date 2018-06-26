@@ -7,7 +7,7 @@ if(!defined('HOMEURL'))
 	define('HOMEURL', 'http://localhost/npcsc');
 
 if(!defined('SERVICES_URL'))
-	define('SERVICES_URL', 'http://localhost:8888/npcsc/services/');
+	define('SERVICES_URL', 'http://localhost/npcsc/services/');
 
 //date_default_timezone_set(TIMEZONE);
 // This file establishes a connection to MySQL 

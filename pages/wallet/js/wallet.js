@@ -3,9 +3,13 @@ $(function () {
   // $('#request_date').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' });
   
   $('#request_date').datepicker({
-        dateFormat: "dd/mm/yyyy",
-        maXDate:"Now"
+        format: "dd/mm/yyyy",
+        endDate:new Date()
     });
+
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $('#request_date').datepicker('setDate', today);
 
   $('#add_wallet_request_form').validate({
     errorClass: "my-error-class"

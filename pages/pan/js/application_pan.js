@@ -1,16 +1,20 @@
 $(function() {
     //Datemask dd/mm/yyyy
-    // $('#application_date').inputmask('dd/mm/yyyy', {
-    //     'placeholder': 'dd/mm/yyyy'
-    // });
+    
     $('#dob').inputmask('dd/mm/yyyy', {
         'placeholder': 'dd/mm/yyyy',
     });
 
+
     $('#application_date').datepicker({
-        dateFormat: "dd/mm/yyyy",
-        maxDate: "Now"
+        format: "dd/mm/yyyy",
+        endDate: new Date(),todayHighlight: 1
     });
+
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    $('#application_date').datepicker('setDate', today);
+
 
     $('#pan_application_form').validate({
         errorClass: "my-error-class",
