@@ -47,18 +47,22 @@
 </head>
 <body class="bg-light">
 
-<?php if(!isset($_SESSION['login']) || $_SESSION['login'] != 'yes') { ?>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">
-	<ul class="navbar-nav">
+  <ul class="navbar-nav">
+    <?php if(!isset($_SESSION['login']) || $_SESSION['login'] != 'yes') { ?>
 	    <li class="nav-item ">
 	      <a id="login" class="nav-link text-white" href="<?php echo HOMEURL; ?>/login.php" style="margin-right:8px;">Login</a>
 	    </li>
 	    <li class="nav-item">
         <a href="<?php echo str_replace('https', 'http', HOMEURL); ?>/pages/users/register.php" target="_blank"><button id="register" class="btn btn-success">Register</button></a>
 	    </li>
-	</ul>
+    <?php } else { ?>
+      <li class="nav-item ">
+        <a id="login" class="nav-link text-white" href="<?php echo HOMEURL; ?>/pages/logout.php" style="margin-right:8px;">Logout</a>
+      </li>
+    <?php } ?>
+  </ul>
 </nav>
-<?php } ?>
 
 <div class="container-fluid">
 

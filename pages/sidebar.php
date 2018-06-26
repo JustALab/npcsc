@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <?php if($_SESSION['user_type'] == 'ADMIN'){ ?>
-      <a href="<?php echo HOMEURL; ?>/pages/dashboard_admin.php" class="brand-link bg-info">
+      <a href="<?php echo HOMEURL; ?>" class="brand-link bg-info">
     <?php } else { ?>
       <a href="<?php echo HOMEURL; ?>" class="brand-link bg-info">
     <?php } ?>
