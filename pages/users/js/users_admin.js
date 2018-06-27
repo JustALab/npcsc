@@ -66,7 +66,7 @@ function confirmUpdateStatus(userId, newStatus){
 			// });
 		},
 		error: function(){
-			bootbox.alert("failure");
+			location.reload();
 		} 	        
 	});
 }

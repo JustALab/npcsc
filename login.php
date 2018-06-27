@@ -192,11 +192,6 @@
                         validateEmail(emailId);
                         if(isValidEmail){
                           resetPassword(emailId);
-                          if(resetPasswordStatus == 1) {
-                            bootbox.alert("Your password has been sent to your registered Email ID");
-                          } else {
-                            bootbox.alert("Unknown error. Please contact admin.");
-                          }
                         }else{
                           bootbox.alert("Your Email ID is not registered with us.");
                         } 
@@ -241,13 +236,17 @@
           async : false,
           success: function(result){
             if(result.status = 'success'){
-              setResetPasswordStatus(1);
+              bootbox.alert("Your password has been sent to your registered Email ID");
             } else {
-              setResetPasswordStatus(0);
+              bootbox.alert("Unknown error. Please contact admin.");
             }
           },
-          error: function(){
-            bootbox.alert("password reset failure");
+          error: function(result){
+            if(result.status = 'success'){
+              bootbox.alert("Your password has been sent to your registered Email ID");
+            } else {
+              bootbox.alert("Unknown error. Please contact admin.");
+            }
           }           
         });
       }
