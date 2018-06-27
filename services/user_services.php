@@ -4,6 +4,7 @@
 	require 'dbwrapper_mysqli.php';
 	require 'constants.php';
     require 'common_methods.php';
+    require 'config/mail_config.php';
     require '../assets/php_mailer/src/PHPMailer.php';
     require '../assets/php_mailer/src/SMTP.php';
     require '../assets/php_mailer/src/Exception.php';
@@ -111,8 +112,9 @@
               sendMailToUser($toEmail, $subject, $message);
             }
             return array("status"=>"success","message"=>"User status successfully updated.");
+        } else {
+            return array("status"=>"failure","message"=>"User status update failure.");
         }
-        return array("status"=>"failure","message"=>"User status update failure.");
     }
 
     function updateProfile(){
@@ -191,17 +193,28 @@
             $subject = 'Your New Password';
             $message = 'Please login and change this password. Your new password is <b>' .$newPassword. '</b>.';
             sendMailToUser($email, $subject, $message);
-            return array("status"=>"success","message"=>"Password successfully updated.");
+            $output = array("status"=>"success","message"=>"Password successfully updated.");
+        } else {
+            $output = array("status"=>"failure","message"=>"Password update failure.");
         }
-        return array("status"=>"failure","message"=>"Password update failure.");
+        return $output;
     }
 
     function sendMailToUser($toEmail, $subject, $message){
         $mail = new PHPMailer(true);                            
         try {
-            $mail->setFrom('no-reply@narpavicsc.com', 'Narpavi CSC');
+            //Server settings
+            $mail->SMTPDebug = 1;                                 
+            $mail->isSMTP();                                      
+            $mail->Host = MAIL_HOST;
+            $mail->SMTPAuth = true;                               
+            $mail->Username = MAIL_ADDR;                 
+            $mail->Password = MAIL_PWD;                          
+            $mail->SMTPSecure = 'ssl';                            
+            $mail->Port = 465;     
+
+            $mail->setFrom(MAIL_ADDR, 'Narpavi CSC');
             $mail->addAddress($toEmail, '');     // Add a recipient
-            $mail->addReplyTo('no-reply@narpavicsc.com', 'no-reply');
 
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = $subject;
