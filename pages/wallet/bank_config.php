@@ -1,6 +1,6 @@
 <?php 
 	
-	$narpaviBanks = array('1'=>'State Bank of India', '2' => 'HDFC Bank');
+	$narpaviBanks = array('1'=>'State Bank of India', '2' => 'Indian Overseas Bank', '3' => 'Canara Bank');
 
 	$transactionType = array('1'=>'Online Transfer','2'=>'NEFT / RTGS / IMPS','3'=>'Cheque / DD');
 
