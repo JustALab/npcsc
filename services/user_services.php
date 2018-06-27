@@ -61,7 +61,7 @@
             //file_put_contents("formlog.log", print_r( $regFormElements, true ));
             if($result['status'] == 'success'){
                 $lastInsertId = $result['last_insert_id'];
-                return array("status"=>"success","message"=>"User registered successfully. Please wait for approval.");
+                return array("status"=>"success","message"=>"User registered successfully. <br />Your Narpavi User ID is <b><span style='color:red;'>".addUserIdPadding($result['last_insert_id'])."</span></b>. Please note down this user ID for login in the future. <br/>You can login after approval. <br /> You will receive mail after approval by the admin. Please check your inbox or <b><span style='color:red;'>SPAM</span></b> folder for mail.");
             } else {
                 return array("status"=>"failure","message"=>"User registration failure.");
             }
@@ -204,17 +204,18 @@
         $mail = new PHPMailer(true);                            
         try {
             //Server settings
-            $mail->SMTPDebug = 1;                                 
-            $mail->isSMTP();                                      
-            $mail->Host = MAIL_HOST;
-            $mail->SMTPAuth = true;                               
-            $mail->Username = MAIL_ADDR;                 
-            $mail->Password = MAIL_PWD;                          
-            $mail->SMTPSecure = 'ssl';                            
-            $mail->Port = 465;     
+            // $mail->SMTPDebug = 1;                                 
+            // $mail->isSMTP();                                      
+            // $mail->Host = MAIL_HOST;
+            // $mail->SMTPAuth = true;                               
+            // $mail->Username = MAIL_ADDR;                 
+            // $mail->Password = MAIL_PWD;                          
+            // $mail->SMTPSecure = 'ssl';                            
+            // $mail->Port = 465;     
 
             $mail->setFrom(MAIL_ADDR, 'Narpavi CSC');
             $mail->addAddress($toEmail, '');     // Add a recipient
+            $mail->addReplyTo('no-reply@narpavicsc.com', 'No-Reply');
 
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = $subject;

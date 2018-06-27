@@ -236,17 +236,13 @@
           async : false,
           success: function(result){
             if(result.status = 'success'){
-              bootbox.alert("Your password has been sent to your registered Email ID");
+              bootbox.alert("Your password has been sent to your registered Email ID. If no mail received in inbox, please check <span style='color:red;'><b>SPAM</b></span> folder.");
             } else {
               bootbox.alert("Unknown error. Please contact admin.");
             }
           },
           error: function(result){
-            if(result.status = 'success'){
-              bootbox.alert("Your password has been sent to your registered Email ID");
-            } else {
               bootbox.alert("Unknown error. Please contact admin.");
-            }
           }           
         });
       }
