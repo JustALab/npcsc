@@ -20,7 +20,7 @@ $(function() {
         errorClass: "my-error-class",
         rules: {
             pan_number: {
-                mixlength: 10,
+                minlength: 10,
                 maxlength: 10
             },
             pin_code: {
