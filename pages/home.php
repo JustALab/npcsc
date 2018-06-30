@@ -25,10 +25,11 @@
         <div class="small-box bg-default">
           <div class="inner">
             <h2>Bank Details</h2>
-            <h5>Name &nbsp;: Narpavi Communications</h5>
-            <h5>Account No :149002000000816</h5>
-            <h5>IFSC code &nbsp;&nbsp; :IOBA0001490  </h5>
-            <h5>Branch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :Melur  </h5>
+            <h5>Name : Narpavi Communications</h5>
+            <h5>Account No : 149002000000816</h5>
+            <h5>IFSC code : IOBA0001490  </h5>
+            <h5>Branch : Melur  </h5>
+            <h5 style="color: red;">Mobile : 90929 31221</h5>
           </div>
         </div>
       </div>
@@ -37,10 +38,11 @@
         <div class="small-box bg-default">
           <div class="inner">
             <h2>Bank Details</h2>
-            <h5>Name &nbsp;: Radhakrishnan Rajendran</h5>
-            <h5>Account No :37775039498</h5>
-            <h5>IFSC code &nbsp;&nbsp; :SBIN0000258  </h5>
-            <h5>Branch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :Melur  </h5>
+            <h5>Name : Radhakrishnan Rajendran</h5>
+            <h5>Account No : 37775039498</h5>
+            <h5>IFSC code : SBIN0000258  </h5>
+            <h5>Branch :Melur  </h5>
+            <h5 style="color: red;">Mobile : 90929 31221</h5>
           </div>
         </div>
       </div>
@@ -49,10 +51,11 @@
         <div class="small-box bg-default">
           <div class="inner">
             <h2>Bank Details</h2>
-            <h5>Name &nbsp;: Radhakrishnan Rajendran</h5>
-            <h5>Account No :3419101015446</h5>
-            <h5>IFSC code &nbsp;&nbsp; :CNRB0003419  </h5>
-            <h5>Branch &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :Melur  </h5>
+            <h5>Name : Radhakrishnan Rajendran</h5>
+            <h5>Account No: 3419101015446</h5>
+            <h5>IFSC code : CNRB0003419  </h5>
+            <h5>Branch : Melur  </h5>
+            <h5 style="color: red;">Mobile : 90929 31221</h5>
           </div>
         </div>
       </div>

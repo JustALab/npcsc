@@ -7,7 +7,7 @@ function editAmount(row, serviceId){
 	    inputType: 'number',
 	    callback: function (newAmount) {
 	    	var previousAmount = $('#amount_' + row).html();
-	    	if(newAmount == ''){
+	    	if(newAmount === '' || newAmount == null){
 	    		$('#amount_' + row).html(previousAmount);
 	    	} else {
 	    		$('#amount_' + row).html(newAmount);

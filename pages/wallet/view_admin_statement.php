@@ -6,6 +6,7 @@
   include '../header_nav.php';
   include '../sidebar.php';
   include '../../services/constants.php';
+  include '../../services/common_methods.php';
   ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -55,7 +56,7 @@
                   echo "<td>".$row['transaction_type']."</td>";
                   echo "<td>".$row['amount']."</td>";
                   echo "<td>".$row['balance']."</td>";
-                  echo "<td>".$row['user_id']."</td>";
+                  echo "<td>".addUserIdPadding($row['user_id'])."</td>";
                   echo "<td>".$row['name']."</td>";
                   echo "</tr>";
                 }
