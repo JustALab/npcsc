@@ -57,13 +57,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo HOMEURL; ?>/pages/wallet/view_wallet_admin_requests.php" class="nav-link">
-                  <i class="fa fa-file nav-icon"></i>
+                  <i class="fa fa-file-text-o nav-icon"></i>
                   <p>View Wallet Requests</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo HOMEURL; ?>/pages/wallet/view_admin_statement.php" class="nav-link">
-                  <i class="fa fa-file nav-icon"></i>
+                  <i class="fa fa-file-text-o nav-icon"></i>
                   <p>View Statement</p>
                 </a>
               </li>
@@ -170,13 +170,36 @@
               <li class="nav-item">
                 <a href="<?php echo HOMEURL; ?>/pages/pan/apply_new_pan.php" class="nav-link">
                   <i class="fa fa-plus-square nav-icon"></i>
-                  <p>Apply New PAN</p>
+                  <p>Apply PAN</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo HOMEURL; ?>/pages/pan/view_pan_list.php" class="nav-link">
                   <i class="fa fa-file nav-icon"></i>
                   <p>View PAN</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-newspaper-o"></i>
+              <p>
+                Passport
+                <i class="fa fa-angle-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_application.php" class="nav-link">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Apply Passport</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/pan/view_passport_list.php" class="nav-link">
+                  <i class="fa fa-file-text-o nav-icon"></i>
+                  <p>View Passport</p>
                 </a>
               </li>
             </ul>
