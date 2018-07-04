@@ -329,3 +329,9 @@ ALTER TABLE `wallet_requests`
 --
 ALTER TABLE `wallet_transactions`
   ADD CONSTRAINT `wallet_transactions_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`wallet_id`);
+
+--
+-- Constraints for table `passport_application`
+--
+ALTER TABLE `passport_application`
+  ADD CONSTRAINT `passport_application_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
