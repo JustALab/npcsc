@@ -59,9 +59,6 @@
           </div>
         </div>
       </div>
-
-
-
     </div>
     <div class="row">
       <div class="col-lg-3 col-6">
@@ -165,6 +162,48 @@
         </div>
       </div>
 
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <a target="_blank" href="https://my.pcloud.com/publink/show?code=XZAFpV7ZrXIiLaQtzmuMhO2p8ecd0jKKUm8V">
+          <div class="small-box bg-default">
+            <div class="inner" style="text-align: center;">
+              <h4>PHOTO/SIGN CROPER</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+       <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <a target="_blank" href="https://www.microsoft.com/net/download/thank-you/net471?survey=false">
+          <div class="small-box bg-default">
+            <div class="inner" style="text-align: center;">
+              <h4>Dot Net framework 4.7.1</h4>
+            </div>
+          </div>
+        </a>
+      </div>
+       <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <a target="_blank" href="https://github.com/cyanfish/naps2/releases/download/v5.6.2/naps2-5.6.2-setup.msi">
+          <div class="small-box bg-default">
+            <div class="inner" style="text-align: center;">
+              <h4>NAPS 2 PDF SCANNING</h4>          
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <a target="_blank" href="https://anydesk.com/download">
+          <div class="small-box bg-default">
+            <div class="inner" style="text-align: center;">
+              <h4>ANY DESK</h4>          
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
   <!-- /.content -->
