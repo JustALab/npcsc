@@ -148,6 +148,63 @@ CREATE TABLE `wallet_transactions` (
   `wallet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `passport_application`
+--
+
+CREATE TABLE `passport_application` (
+  `application_no` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
+  `service_type` varchar(30) NOT NULL,
+  `application_type` varchar(30) NOT NULL,
+  `dob` varchar(10) NOT NULL,
+  `validity` varchar(20) NOT NULL,
+  `no_of_pages` varchar(20) NOT NULL,
+  `mobile_no` varchar(10) NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `father_name` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `mother_name` varchar(50) NOT NULL,
+  `place_of_birth` varchar(50) NOT NULL,
+  `state_of_birth` varchar(30) NOT NULL,
+  `gender` varchar(15) NOT NULL,
+  `permanent_address` text NOT NULL,
+  `marital_status` varchar(20) DEFAULT NULL,
+  `educational_qualification` varchar(80) DEFAULT NULL,
+  `employment_type` varchar(50) DEFAULT NULL,
+  `since_staying_from` varchar(4) NOT NULL,
+  `district_of_birth` varchar(50) NOT NULL,
+  `area_police_station_name` varchar(100) NOT NULL,
+  `email_id` varchar(50) NOT NULL,
+  `age_id_proof` varchar(30) NOT NULL,
+  `age_id_proof_file_name` varchar(50) NOT NULL,
+  `address_proof` varchar(50) NOT NULL,
+  `address_proof_file_name` varchar(50) NOT NULL,
+  `aadhaar_no` varchar(12) NOT NULL,
+  `old_passport_no` varchar(15) DEFAULT NULL,
+  `date_of_issue` varchar(10) DEFAULT NULL,
+  `date_of_expiry` varchar(10) DEFAULT NULL,
+  `place_of_issue` varchar(50) DEFAULT NULL,
+  `file_no` varchar(15) DEFAULT NULL,
+  `old_passport_copy_file_name` varchar(50) DEFAULT NULL,
+  `old_passport_no_child` varchar(15) DEFAULT NULL,
+  `date_of_issue_child` varchar(10) DEFAULT NULL,
+  `date_of_expiry_child` varchar(10) DEFAULT NULL,
+  `place_of_issue_child` varchar(50) DEFAULT NULL,
+  `file_no_child` varchar(15) DEFAULT NULL,
+  `old_passport_child_copy_file_name` varchar(50) DEFAULT NULL,
+  `parent_passport` varchar(10) DEFAULT NULL,
+  `parent_passport_no` varchar(15) DEFAULT NULL,
+  `date_of_issue_parent` varchar(10) DEFAULT NULL,
+  `date_of_expiry_parent` varchar(10) DEFAULT NULL,
+  `place_of_issue_parent` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`application_no`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Indexes for dumped tables
 --
@@ -272,3 +329,9 @@ ALTER TABLE `wallet_requests`
 --
 ALTER TABLE `wallet_transactions`
   ADD CONSTRAINT `wallet_transactions_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`wallet_id`);
+
+--
+-- Constraints for table `passport_application`
+--
+ALTER TABLE `passport_application`
+  ADD CONSTRAINT `passport_application_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
