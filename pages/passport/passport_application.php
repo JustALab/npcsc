@@ -297,6 +297,7 @@ include '../../services/constants.php';
 
       <div class="card">
       <div class="card-body">
+
       <div class="row">
           <div class="col-sm-4">
             <div class="form-group">
@@ -307,25 +308,172 @@ include '../../services/constants.php';
             <div class="col-sm-4">
             <div class="form-group">
                   <label>Date of Issue</label>
-                  <div class="input-group-prepend">
+                  <div class="input-group">
+                      <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                       </div>
                       <input type="text" id="date_of_issue" name="date_of_issue" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
-                </div>
+                    </div>
+              </div>
             </div>
             <div class="col-sm-4">
             <div class="form-group">
-                  <label>DOB</label>
-                  <input type="number" id="file_no" name="file_no" class="form-control required" placeholder="Old Passport Number">
+                  <label>Date of Expiry</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="text" id="date_of_expiry" name="date_of_expiry" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div>
                 </div>
             </div>
           </div>
 
-
+          <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                  <label>File Number</label>
+                  <input type="number" id="file_no" name="file_no" class="form-control required" placeholder="File Number">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Place of Issue</label>
+                  <input type="text" id="place_of_issue" name="place_of_issue" class="form-control required" placeholder="Place of Issue">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Upload Old Passport Copy</label>
+                  <div class="input-group">
+                      <input type="file" class="required" id="old_passport_copy_file" name="old_passport_copy_file"  accept=".jpg,.JPG,.JPEG,.jpeg">
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
     </div>
+
+
+    <div class="card">
+      <div class="card-body">
+        <h5>Enter Child's old Passport Details</h5>
+        <br>
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Old Passport Number</label>
+                  <input type="number" id="old_passport_no_child" name="old_passport_no_child" class="form-control required" placeholder="Old Passport Number">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Date of Issue</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="text" id="date_of_issue_child" name="date_of_issue_child" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Date of Expiry</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="text" id="date_of_expiry_child" name="date_of_expiry_child" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                  <label>File Number</label>
+                  <input type="number" id="file_no_child" name="file_no_child" class="form-control required" placeholder="File Number">
+                </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Place of Issue</label>
+                  <input type="text" id="place_of_issue_child" name="place_of_issue_child" class="form-control required" placeholder="Place of Issue">
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Upload Old Passport Copy</label>
+                  <div class="input-group">
+                      <input type="file" class="required" id="old_passport_child_copy_file" name="old_passport_copy_file"  accept=".jpg,.JPG,.JPEG,.jpeg">
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
     </div>
 
-
+    <div class="card">
+      <div class="card-body">
+        <h5>Enter Father/Mother Passport Details</h5>
+        <br>
+      <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Select Parent passport</label>
+                  <select id="parent_passport" name="parent_passport" class="form-control required">
+                    <option value="" selected="selected" disabled="true">Select</option>
+                    <option value="Father">Father</option>
+                    <option value="Mother">Mother</option>
+                   
+                    </select>
+                </div>
+              </div>
+            
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Passport Number</label>
+                  <input type="number" id="parent_passport_no" name="parent_passport_no" class="form-control required" placeholder="Passport Number">
+                </div>
+            </div>
+            
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Date of Expiry</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="text" id="date_of_expiry_parent" name="date_of_expiry_parent" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div>
+                </div>
+            </div>
+          </div>
+      
+          <div class="row">
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Date of Issue</label>
+                  <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                      </div>
+                      <input type="text" id="date_of_issue_parent" name="date_of_issue_parent" class="form-control required" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask>
+                    </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+            <div class="form-group">
+                  <label>Place of Issue</label>
+                  <input type="text" id="place_of_issue_parent" name="place_of_issue_parent" class="form-control required" placeholder="Place of Issue">
+              </div>
+            </div>
+            
+          </div>
+      </div>
+    </div>
             
         
     
