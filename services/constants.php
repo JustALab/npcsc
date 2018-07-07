@@ -15,12 +15,20 @@
     define('TABLE_SERVICES', 'services');
     define('TABLE_PRICE_CONFIG', 'price_config');
     define('TABLE_PAN_APP', 'pan_application');
+    define('TABLE_PASSPORT_APP', 'passport_application');
 
     define('PHOTO_PATH', 'store/photos/');
     define('SIGNATURE_PATH', 'store/signatures/');
     define('DOC_PATH', 'store/documents/');
     define('RECEIPTS_PATH', 'store/receipts/');
     define('FORM_DOCS_PATH', 'store/form_docs/');
+    define('AGE_PROOFS_PATH', 'store/passport/age_proofs/');
+    define('ADDRESS_PROOFS_PATH', 'store/passport/address_proofs/');
+    define('OLD_PASSPORT_COPY_PATH', 'store/passport/old_passports_copy/');
+    define('OLD_PASSPORT_CHILD_COPY_PATH', 'store/passport/old_passports_child_copy/');
+
+    define('PAN_SERVICE', 1);
+    define('PASSPORT_SERVICE', 2);
 
     define('PAN_FORM49_PATH', 'store/form_docs/Form49A.pdf');
 
