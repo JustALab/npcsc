@@ -194,7 +194,7 @@ function processPan() {
 		        if(result){
                     $('#apply_pan_controls_div').hide();
                     $('#loading_spinner').show();
-		        	confirmProcessPan();;
+		        	confirmProcessPan();
 		        }
 		    }
 		});
