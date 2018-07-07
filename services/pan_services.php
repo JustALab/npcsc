@@ -87,7 +87,7 @@
                 }
                 return array("status"=>"success","message"=>"New PAN application request submitted successfully.", 'application_no'=> $lastInsertId);
             } else {
-                return array("status"=>"failure","message"=>"Pre Arrival Request not created successfully.");
+                return array("status"=>"failure","message"=>"PAN application submission failure.");
             }
         } else {
             return array("status"=>"failure","message"=>"Wallet balance is low!! Application not submitted. Please add money to your wallet.");
