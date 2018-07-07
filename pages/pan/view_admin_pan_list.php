@@ -68,7 +68,7 @@
           </thead>
           <tbody>
             <?php
-              $query = "SELECT pan.application_no, pan.application_date, pan.applicant_fname, pan.dob, pan.contact_details, u.user_id, u.name FROM ".TABLE_PAN_APP." pan, ".TABLE_USERS." u WHERE pan.user_id=u.user_id AND pan.status='".$status."'";
+              $query = "SELECT pan.application_no, pan.application_date, pan.applicant_fname, pan.dob, pan.contact_details, u.user_id, u.name FROM ".TABLE_PAN_APP." pan, ".TABLE_USERS." u WHERE pan.user_id=u.user_id AND pan.status='".$status."' ORDER BY pan.application_no DESC";
               $result = mysqli_query($dbc, $query);
               if(mysqli_num_rows($result) > 0){
                 $rowCount = 0;

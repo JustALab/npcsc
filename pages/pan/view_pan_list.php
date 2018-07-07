@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             <?php
-                $query = 'SELECT * FROM '.TABLE_PAN_APP.' WHERE user_id="'.$_SESSION['user_id'].'" AND status="'.$status.'"';
+                $query = 'SELECT * FROM '.TABLE_PAN_APP.' WHERE user_id="'.$_SESSION['user_id'].'" AND status="'.$status.'" ORDER BY application_no DESC';
                 $result = mysqli_query($dbc, $query);
                 if(mysqli_num_rows($result) > 0){
                   $rowCount = 0;
