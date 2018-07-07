@@ -70,7 +70,7 @@
     	}
 
         $walletId = $_POST['wallet_id'];
-        $serviceId = 1;
+        $serviceId = PAN_SERVICE;
         $servicePrice = getServicePrice($serviceId);
         $userWallerBalance = getWalletBalance($walletId);
 
