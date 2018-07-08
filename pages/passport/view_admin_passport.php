@@ -432,6 +432,22 @@
       </div>
     </div>
     <?php } ?>
+    
+    <?php if($row['status'] == STATUS_PENDING){ ?>
+      <div class="card">
+        <div class="card-body">
+           <div id="approve_reject_row" class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-danger" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-4">
+              <button class="btn btn-block btn-success" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
+            </div>
+          </div> 
+        </div>
+      </div>
+    <?php } ?>
+    </div>
   </section>
     <!-- /.content -->
   </div>
@@ -440,7 +456,7 @@
   <?php 
     include '../footer_imports.php';
   ?>
-  <script type="text/javascript" src="js/application_pan_admin.js"></script>
+  <script type="text/javascript" src="js/application_passport_admin.js"></script>
   <?php 
     include '../footer.php';
   ?>

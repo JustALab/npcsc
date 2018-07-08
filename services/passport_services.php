@@ -21,6 +21,9 @@
 	    case 'process_paassport':
 	        $finaloutput = processPassport();
 	    break;
+        case 'update_status':
+            $finaloutput = updateStatus();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -99,5 +102,17 @@
         	return array("status"=>"failure","message"=>"Wallet balance is low!! Application not submitted. Please add money to your wallet.");
         }
 	}
+
+    function updateStatus(){
+        global $db;
+        $applicationNo = $_POST['application_no'];
+        $newStatus = $_POST['new_status'];
+        $result = $db->updateOperation(TABLE_PASSPORT_APP, array('status'=>$newStatus), array('application_no'=>$applicationNo));
+        // file_put_contents("formlog.log", print_r( $result, true ));
+        if($result['status'] == 'success'){
+            return array("status"=>"success","message"=>"Passport Application updated successfully.");
+        }
+        return array("status"=>"failure","message"=>"Passport Application update failure.");
+    }   
 
 ?>
