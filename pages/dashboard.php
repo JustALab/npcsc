@@ -5,7 +5,6 @@
   }
   include 'header_nav.php';
   include 'sidebar.php';
-  include 'dbconfig.php';
   include '../services/constants.php';
 
   $pendingPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_PENDING.'" AND user_id="'.$_SESSION['user_id'].'"';

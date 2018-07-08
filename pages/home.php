@@ -6,7 +6,6 @@
    
   include 'header_nav.php';
   include 'sidebar.php';
-  include 'dbconfig.php';
   include '../services/constants.php';
 
   $approvedPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';

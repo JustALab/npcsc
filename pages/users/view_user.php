@@ -5,7 +5,6 @@
   }
   include '../header_nav.php';
   include '../sidebar.php';
-  include '../dbconfig.php';
   include '../../services/constants.php';
   include '../../services/common_methods.php';
 

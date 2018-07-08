@@ -5,7 +5,6 @@
   // }
   include '../header_nav.php';
   include '../sidebar.php';
-  include '../dbconfig.php';
   include '../../services/constants.php';
   
   $userId = $_GET['user_id'];
