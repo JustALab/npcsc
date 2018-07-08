@@ -35,9 +35,6 @@
         <?php if($row['status'] == STATUS_PENDING){ ?>
         <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
         <?php } ?>
-        <?php if($row['status'] == STATUS_BLOCKED){ ?>
-        <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
-        <?php } ?>
       </div>
     </div>
     <div class="card-body">
