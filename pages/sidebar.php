@@ -92,6 +92,23 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-newspaper-o"></i>
+              <p>
+                Passport
+                <i class="fa fa-angle-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/view_admin_passport_list.php" class="nav-link">
+                  <i class="fa fa-file-text-o nav-icon"></i>
+                  <p>View Passport</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
         <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;">Powered by <a href="http://www.justalab.in" target="_blank">JustALab</a></div>
           <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;">v1.1</div>
