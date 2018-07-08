@@ -249,9 +249,6 @@ function loadPage() {
         case 'Denied':
             url += 'Denied';
             break;
-        case 'Blocked':
-            url += 'Blocked';
-            break;
     }
     this.document.location.href = url;
 }
