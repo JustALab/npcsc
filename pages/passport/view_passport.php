@@ -20,7 +20,7 @@
     <br />
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">PAN Application No: <?php echo $row['application_no']; ?></h3>
+        <h3 class="card-title">Passport Application No: <?php echo $row['application_no']; ?></h3>
         <div class="card-tools">
           <?php if($row['receipt_file_name'] != '') { ?>
           <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
@@ -381,7 +381,7 @@
     <?php if($row['service_type'] == 'Children' || $row['service_type'] == 'Children Renewal') { ?>
     <div class="card" id="parent_passport_details_card">
       <div class="card-header">
-        <h5>Enter Father/Mother Passport Details</h5>
+        <h5>Father/Mother Passport Details</h5>
       </div>
       <div class="card-body">
         <br>
