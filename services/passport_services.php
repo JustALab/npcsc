@@ -24,6 +24,9 @@
         case 'update_status':
             $finaloutput = updateStatus();
         break;
+        case 'upload_receipt':
+            $finaloutput = uploadReceipt();
+        break;
 	    default:
 	        $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 	}
@@ -35,7 +38,7 @@
 
 		$passportElementsArray = array('user_id' => 'user_id', 'service_type' => 'service_type', 'application_type' => 'application_type', 'dob' => 'dob', 'name' => 'name', 'mobile_no' => 'mobile_no', 'surname' => 'surname', 'mother_name' => 'mother_name', 'father_name' => 'father_name', 'no_of_pages' => 'no_of_pages', 'place_of_birth' => 'place_of_birth', 'state_of_birth' => 'state_of_birth', 'district_of_birth' => 'district_of_birth', 'gender' => 'gender', 'since_staying_from' => 'since_staying_from', 'marital_status' => 'marital_status', 'educational_qualification' => 'educational_qualification', 'employment_type' => 'employment_type', 'permanent_address' => 'permanent_address', 'area_police_station_name' => 'area_police_station_name', 'email_id' => 'email_id', 'age_id_proof' => 'age_id_proof', 'address_proof' => 'address_proof', 'aadhaar_no' => 'aadhaar_no', 'old_passport_no' => 'old_passport_no', 'date_of_issue' => 'date_of_issue', 'date_of_expiry' => 'date_of_expiry', 'file_no' => 'file_no', 'place_of_issue' => 'place_of_issue', 'old_passport_no_child' => 'old_passport_no_child', 'date_of_issue_child' => 'date_of_issue_child', 'date_of_expiry_child' => 'date_of_expiry_child', 'file_no_child' => 'file_no_child', 'place_of_issue_child' => 'place_of_issue_child', 'parent_passport' => 'parent_passport', 'parent_passport_no' => 'parent_passport_no', 'date_of_issue_parent' => 'date_of_issue_parent', 'date_of_expiry_parent' => 'date_of_expiry_parent', 'place_of_issue_parent' => 'place_of_issue_parent');
 		$passportElementsArray = $form->getFormValues($passportElementsArray, $_POST);
-		$time = date('YmdHis');
+		$time = date('Ymd');
         $passportElementsArray['submitted_date'] = date('d/m/Y');
         // file_put_contents("formlog.log", print_r( $_POST, true ));
 
@@ -92,7 +95,8 @@
                 $walletUpdateResult = updateWalletAmount($walletId, $userWallerBalance, $servicePrice, false);
                 if($walletUpdateResult['status'] == 'success'){
                     $description = 'Amount deduced for Passport application. Application No.: ' . $lastInsertId;
-                    addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                    $transactionResult = addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                    updateTransactionId(TABLE_PASSPORT_APP, $lastInsertId, $transactionResult['last_insert_id']);
                 }
                 return array("status"=>"success","message"=>"New Passport application request submitted successfully.", 'application_no'=> $lastInsertId);
             } else {
@@ -110,9 +114,34 @@
         $result = $db->updateOperation(TABLE_PASSPORT_APP, array('status'=>$newStatus), array('application_no'=>$applicationNo));
         // file_put_contents("formlog.log", print_r( $result, true ));
         if($result['status'] == 'success'){
+            if($newStatus == STATUS_DENIED) {
+                reverseWalletTransaction(getWalletTransactionId(TABLE_PASSPORT_APP, $applicationNo));
+            }
             return array("status"=>"success","message"=>"Passport Application updated successfully.");
         }
         return array("status"=>"failure","message"=>"Passport Application update failure.");
-    }   
+    } 
+
+    function uploadReceipt(){
+        global $db;
+        $applicationNo = $_POST['application_no'];
+        $result['status'] = '';
+        if(isset($_FILES['receipt_document']['name'])){
+            $fileExtenstion = explode('.', $_FILES['receipt_document']['name']);
+            $documentFname = $applicationNo .'_passport_receipt';
+            $documentPath = RECEIPTS_PATH.$documentFname.'.'.$fileExtenstion[1];
+            $receiptFileName = $documentFname.'.'.$fileExtenstion[1];
+            if(!move_uploaded_file($_FILES['receipt_document']['tmp_name'], $documentPath)){
+                $output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
+            }
+            $result = $db->updateOperation(TABLE_PASSPORT_APP, array('receipt_file_name'=>$receiptFileName), array('application_no'=>$applicationNo));
+                // file_put_contents("formlog.log", print_r( $result, true ));
+            if($result['status'] == 'success'){
+                return array("status"=>"success","message"=>"Receipt uploaded successfully.");
+            }
+            return array("status"=>"failure","message"=>"Receipt upload failure.");
+        }
+        return array("status"=>"failure","message"=>"Please attach the receipt.");
+    }  
 
 ?>

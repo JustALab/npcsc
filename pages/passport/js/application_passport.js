@@ -124,7 +124,7 @@ function confirmProcessPassport() {
             bootbox.alert(result.message);
             if (result.status === 'success') {
                 bootbox.alert(result.message, function(){
-                    //window.location = 'view_passport.php?application_no=' + result.application_no;
+                    window.location = 'view_passport.php?application_no=' + result.application_no;
                 });
             }
         },

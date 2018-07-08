@@ -7,16 +7,16 @@
   include '../sidebar.php';
   include '../dbconfig.php';
   include '../../services/constants.php';
-
+  
   $applicationNo = $_GET['application_no'];
   $query = "SELECT * FROM ".TABLE_PASSPORT_APP." WHERE application_no='$applicationNo'";
   $result = mysqli_query($dbc, $query);
   $row = mysqli_fetch_assoc($result);
-?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
+  ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
     <br />
     <div class="card">
       <div class="card-header">
@@ -432,31 +432,60 @@
       </div>
     </div>
     <?php } ?>
-    
     <?php if($row['status'] == STATUS_PENDING){ ?>
-      <div class="card">
-        <div class="card-body">
-           <div id="approve_reject_row" class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
-            </div>
-          </div> 
+    <div class="card">
+      <div class="card-body">
+        <div id="approve_reject_row" class="row">
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-danger" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-success" onclick="updatePassportStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
+          </div>
         </div>
       </div>
-    <?php } ?>
     </div>
+    <?php } ?>
+    <?php if($row['status'] == STATUS_APPROVED) { ?>
+    <form id="receipt_form" name="receipt_form">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Receipt</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="">
+                        <input type="file" required="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
+                        <!-- <label class="custom-file-label" for="receipt_document">Choose file</label> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <button class="btn btn-success btn-block" onclick="uploadReceipt();">Upload</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" name="application_no" value="<?php echo $applicationNo; ?>">
+      <input type="hidden" name="action" value="upload_receipt">
+    </form>
+    <?php } ?>
   </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <?php 
-    include '../footer_imports.php';
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php 
+  include '../footer_imports.php';
   ?>
-  <script type="text/javascript" src="js/application_passport_admin.js"></script>
-  <?php 
-    include '../footer.php';
+<script type="text/javascript" src="js/application_passport_admin.js"></script>
+<?php 
+  include '../footer.php';
   ?>

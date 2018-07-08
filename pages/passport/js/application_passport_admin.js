@@ -62,6 +62,26 @@ function loadPage() {
     this.document.location.href = url;
 }
 
+function uploadReceipt(){
+    var data = $('#receipt_form').serializefiles();
+    $.ajax({
+        url: servicesUrl + 'passport_services.php',
+        type: 'POST',
+        data:  data,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function(result){
+            bootbox.alert(result.message,function() {
+                location.reload();
+            });
+        },
+        error: function(){
+            bootbox.alert("failure");
+        }           
+    });
+}
+
 (function($) {
     $.fn.serializefiles = function() {
         var obj = $(this);
