@@ -33,7 +33,8 @@
 		$passportElementsArray = array('user_id' => 'user_id', 'service_type' => 'service_type', 'application_type' => 'application_type', 'dob' => 'dob', 'name' => 'name', 'mobile_no' => 'mobile_no', 'surname' => 'surname', 'mother_name' => 'mother_name', 'father_name' => 'father_name', 'no_of_pages' => 'no_of_pages', 'place_of_birth' => 'place_of_birth', 'state_of_birth' => 'state_of_birth', 'district_of_birth' => 'district_of_birth', 'gender' => 'gender', 'since_staying_from' => 'since_staying_from', 'marital_status' => 'marital_status', 'educational_qualification' => 'educational_qualification', 'employment_type' => 'employment_type', 'permanent_address' => 'permanent_address', 'area_police_station_name' => 'area_police_station_name', 'email_id' => 'email_id', 'age_id_proof' => 'age_id_proof', 'address_proof' => 'address_proof', 'aadhaar_no' => 'aadhaar_no', 'old_passport_no' => 'old_passport_no', 'date_of_issue' => 'date_of_issue', 'date_of_expiry' => 'date_of_expiry', 'file_no' => 'file_no', 'place_of_issue' => 'place_of_issue', 'old_passport_no_child' => 'old_passport_no_child', 'date_of_issue_child' => 'date_of_issue_child', 'date_of_expiry_child' => 'date_of_expiry_child', 'file_no_child' => 'file_no_child', 'place_of_issue_child' => 'place_of_issue_child', 'parent_passport' => 'parent_passport', 'parent_passport_no' => 'parent_passport_no', 'date_of_issue_parent' => 'date_of_issue_parent', 'date_of_expiry_parent' => 'date_of_expiry_parent', 'place_of_issue_parent' => 'place_of_issue_parent');
 		$passportElementsArray = $form->getFormValues($passportElementsArray, $_POST);
 		$time = date('YmdHis');
-        file_put_contents("formlog.log", print_r( $_POST, true ));
+        $passportElementsArray['submitted_date'] = date('d/m/Y');
+        // file_put_contents("formlog.log", print_r( $_POST, true ));
 
 		if(isset($_FILES['age_id_proof_file']['name'])){
 			$fileExtenstion = explode('.', $_FILES['age_id_proof_file']['name']);

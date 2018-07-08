@@ -197,7 +197,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo HOMEURL; ?>/pages/pan/view_passport_list.php" class="nav-link">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/view_passport_list.php" class="nav-link">
                   <i class="fa fa-file-text-o nav-icon"></i>
                   <p>View Passport</p>
                 </a>

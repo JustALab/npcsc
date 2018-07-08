@@ -40,6 +40,15 @@ $(function() {
         changeServiceType(this.value);
     });
 
+    $('#passport_status').on('change', function() {
+        loadPage();
+    });
+
+    $('#passport_table').DataTable();
+
+    bindNumberEvents('aadhaar_no');
+    bindNumberEvents('mobile_no');
+
     $('#passport_application_form').validate({
         errorClass: "my-error-class",
         rules: {
@@ -57,8 +66,6 @@ $(function() {
         }
     });
 
-    bindNumberEvents('aadhaar_no');
-    bindNumberEvents('mobile_no');
 });
 
 function changeServiceType(value) {
@@ -274,6 +281,23 @@ function bindNumberEvents(elementId){
             e.preventDefault();
         }
     });
+}
+
+function loadPage() {
+    var status = $('#passport_status').val();
+    var url = 'view_passport_list.php?status=';
+    switch (status) {
+        case 'Pending':
+            url += 'Pending';
+            break;
+        case 'Approved':
+            url += 'Approved';
+            break;
+        case 'Denied':
+            url += 'Denied';
+            break;
+    }
+    this.document.location.href = url;
 }
 
 (function($) {
