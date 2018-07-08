@@ -115,7 +115,8 @@
         // file_put_contents("formlog.log", print_r( $result, true ));
         if($result['status'] == 'success'){
             if($newStatus == STATUS_DENIED) {
-                reverseWalletTransaction(getWalletTransactionId(TABLE_PASSPORT_APP, $applicationNo));
+                $description = 'Amount reversed due to rejection of Passport application.';
+                reverseWalletTransaction(getWalletTransactionId(TABLE_PASSPORT_APP, $applicationNo), $description);
             }
             return array("status"=>"success","message"=>"Passport Application updated successfully.");
         }

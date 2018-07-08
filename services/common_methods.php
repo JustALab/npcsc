@@ -35,7 +35,7 @@
 		return $result;
 	}
 
-	function reverseWalletTransaction($transactionId){
+	function reverseWalletTransaction($transactionId, $description){
 		global $dbc;
 		$transactionQuery = "SELECT * FROM ".TABLE_WALLET_TRANS." WHERE transaction_id='$transactionId'";
 		$transactionResult = mysqli_query($dbc, $transactionQuery);
@@ -43,7 +43,6 @@
 		$walletBalance = getWalletBalance($transactionData['wallet_id']);
 		$walletUpdateResult = updateWalletAmount($transactionData['wallet_id'], $walletBalance, $transactionData['amount'], true);
 		if($walletUpdateResult['status'] == 'success'){
-			$description = 'Amount reversed due to rejection of PAN application';
 			addWalletTransaction($transactionData['wallet_id'], $description, $walletBalance,TRANSACTION_CREDIT, $transactionData['amount'], $walletUpdateResult['new_balance']);
 		}
 	}
