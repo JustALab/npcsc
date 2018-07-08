@@ -32,8 +32,34 @@
 		global $db;
 		$transactionData = array('date_time' => date("d-m-Y H:i:s"), 'description' => $description, 'previous_balance' => $previousBalance, 'transaction_type' => $trancationType, 'amount' => $amount, 'balance' => $newBalance, 'wallet_id' => $walletId);
 		$result = $db->insertOperation(TABLE_WALLET_TRANS, $transactionData);
-		return $result['status'];
+		return $result;
 	}
+
+	function reverseWalletTransaction($transactionId){
+		global $dbc;
+		$transactionQuery = "SELECT * FROM ".TABLE_WALLET_TRANS." WHERE transaction_id='$transactionId'";
+		$transactionResult = mysqli_query($dbc, $transactionQuery);
+		$transactionData = mysqli_fetch_assoc($transactionResult);
+		$walletBalance = getWalletBalance($transactionData['wallet_id']);
+		$walletUpdateResult = updateWalletAmount($transactionData['wallet_id'], $walletBalance, $transactionData['amount'], true);
+		if($walletUpdateResult['status'] == 'success'){
+			$description = 'Amount reversed due to rejection of PAN application';
+			addWalletTransaction($transactionData['wallet_id'], $description, $walletBalance,TRANSACTION_CREDIT, $transactionData['amount'], $walletUpdateResult['new_balance']);
+		}
+	}
+
+	function updateTransactionId($tableName, $applicationNo, $walletTransactionId){
+		global $db;
+		$result = $db->updateOperation($tableName, array('wallet_transaction_id' => $walletTransactionId), array('application_no' => $applicationNo));
+		return $result;
+	}
+
+	function getWalletTransactionId($tableName, $applicationNo){
+        global $dbc;
+        $query = 'SELECT wallet_transaction_id FROM '.$tableName.' WHERE application_no="'.$applicationNo.'"';
+        $result = mysqli_query($dbc, $query);
+        return mysqli_fetch_assoc($result)['wallet_transaction_id'];
+    }  
 
 	function getServicePrice($serviceId){
 		global $dbc;
