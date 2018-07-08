@@ -87,7 +87,7 @@
           <div class="inner">
             <h3><?php echo $pendingPassportAppCount; ?></h3>
 
-            <p>Pending User Registrations</p>
+            <p>Pending Passport Registrations</p>
           </div>
           <div class="icon">
             <i class="fa fa-address-book-o"></i>
