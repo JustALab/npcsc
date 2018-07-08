@@ -83,7 +83,8 @@
                 $walletUpdateResult = updateWalletAmount($walletId, $userWallerBalance, $servicePrice, false);
                 if($walletUpdateResult['status'] == 'success'){
                     $description = 'Amount deduced for PAN application. Application No.: ' . $lastInsertId;
-                    addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                    $transactionResult = addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                    updateTransactionId(TABLE_PAN_APP, $lastInsertId, $transactionResult['last_insert_id']);
                 }
                 return array("status"=>"success","message"=>"New PAN application request submitted successfully.", 'application_no'=> $lastInsertId);
             } else {
@@ -102,10 +103,13 @@
         $result = $db->updateOperation(TABLE_PAN_APP, array('status'=>$newStatus), array('application_no'=>$applicationNo));
         // file_put_contents("formlog.log", print_r( $result, true ));
         if($result['status'] == 'success'){
+            if($newStatus == STATUS_DENIED) {
+                reverseWalletTransaction(getWalletTransactionId(TABLE_PAN_APP, $applicationNo));
+            }
             return array("status"=>"success","message"=>"PAN Application updated successfully.");
         }
         return array("status"=>"failure","message"=>"PAN Application update failure.");
-    }   
+    } 
 
     function uploadReceipt(){
         global $db;
