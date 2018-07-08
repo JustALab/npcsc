@@ -12,6 +12,10 @@
   $approvedPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';
   $approvedPanAppResult = mysqli_query($dbc, $approvedPanAppQuery);
   $approvedPanAppCount = mysqli_fetch_assoc($approvedPanAppResult)['count'];
+
+  $approvedPassportAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PASSPORT_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';
+  $approvedPassportAppResult = mysqli_query($dbc, $approvedPassportAppQuery);
+  $approvedPassportAppCount = mysqli_fetch_assoc($approvedPassportAppResult)['count'];
   
   ?>
 <!-- Content Wrapper. Contains page content -->
@@ -84,12 +88,12 @@
         <div class="small-box bg-success">
           <div class="inner">
             <h3>Passport</h3>
-            <p>Total Passports applied: </p>
+            <p>Total Passports applied: <?php echo $approvedPassportAppCount; ?></p>
           </div>
           <div class="icon">
             <i class="fa fa-address-book-o"></i>
           </div>
-          <a href="#" class="small-box-footer" onclick="comingsoon()">
+          <a href="<?php echo HOMEURL; ?>/pages/passport/passport_application.php" class="small-box-footer" onclick="comingsoon()">
             Apply now
           <i class="fa fa-arrow-circle-right"></i></a>
         </div>
