@@ -111,7 +111,7 @@
           </li>
         </ul>
         <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;">Powered by <a href="http://www.justalab.in" target="_blank">JustALab</a></div>
-          <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;">v1.1</div>
+          <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;"><?php echo VERSION; ?></div>
       </nav>
       <!-- /. Admin sidebar-menu -->
     </div>
@@ -225,7 +225,7 @@
 
         
           <div id="copyright" style="position:absolute;bottom:4px;left:4px;">Powered by <a href="http://www.justalab.in" target="_blank">JustALab</a></div>
-          <div id="version" style="position:absolute;bottom:4px;right:4px;color:grey;">v1.1</div>
+          <div id="version" style="position:absolute;bottom:4px;right:4px;color:grey;"><?php echo VERSION; ?></div>
         
 
       </nav>

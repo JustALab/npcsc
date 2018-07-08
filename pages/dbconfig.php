@@ -2,6 +2,9 @@
 
 /** Default time zone set to India */
 date_default_timezone_set('Asia/Calcutta');
+
+/** Version Number */
+define('VERSION','V2.1.1');
 	
 if(!defined('HOMEURL'))
 	define('HOMEURL', 'http://localhost:8888/npcsc');

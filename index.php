@@ -316,7 +316,7 @@
         </div>
       </div>
     </div>
-    <div class="footer text-secondary" style="font-weight: 200;font-size: 13px"> &copy 2018. Powered by <a href="http://justalab.in/" target="_blank">JustALab.</a> v1.1</div>
+    <div class="footer text-secondary" style="font-weight: 200;font-size: 13px"> &copy 2018. Powered by <a href="http://justalab.in/" target="_blank">JustALab.</a> <?php echo VERSION; ?></div>
   </body>
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
