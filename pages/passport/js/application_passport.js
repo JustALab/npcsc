@@ -8,9 +8,8 @@ $(function() {
         'placeholder': 'dd/mm/yyyy',
     });
 
-    $('#since_staying_from').inputmask('yyyy', {
-        'placeholder': 'yyyy',
-    });
+    // $('#since_staying_from').inputmask('yyyy', {
+    // });
 
     $('#date_of_issue').inputmask('dd/mm/yyyy', {
         'placeholder': 'dd/mm/yyyy',
@@ -62,6 +61,10 @@ $(function() {
             mobile_no: {
                 minlength: 10,
                 maxlength: 10
+            }, 
+            since_staying_from: {
+                minlength: 4,
+                maxlength: 4
             }
         }
     });

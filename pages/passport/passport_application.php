@@ -148,7 +148,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-calendar"></i></span>
                   </div>
-                  <input type="text" id="since_staying_from" name="since_staying_from" class="form-control required" data-inputmask="'alias': 'yyyy'" data-mask>
+                  <input type="number" id="since_staying_from" name="since_staying_from" class="form-control required" placeholder="yyyy" data-mask>
                 </div>
               </div>
             </div>
