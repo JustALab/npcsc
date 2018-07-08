@@ -12,9 +12,9 @@
   $pendingPanAppResult = mysqli_query($dbc, $pendingPanAppQuery);
   $pendingPanAppCount = mysqli_fetch_assoc($pendingPanAppResult)['count'];
   
-  $pendingPanAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PAN_APP.' WHERE status="'.STATUS_PENDING.'"';
-  $pendingPanAppResult = mysqli_query($dbc, $pendingPanAppQuery);
-  $pendingPanAppCount = mysqli_fetch_assoc($pendingPanAppResult)['count'];
+  $pendingPassportAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PASSPORT_APP.' WHERE status="'.STATUS_PENDING.'"';
+  $pendingPassportAppResult = mysqli_query($dbc, $pendingPassportAppQuery);
+  $pendingPassportAppCount = mysqli_fetch_assoc($pendingPassportAppResult)['count'];
   
   $pendingWalletReqQuery = 'SELECT count(*) as "count" FROM '.TABLE_WALLET_REQUESTS.' WHERE status="'.STATUS_PENDING.'"';
   $pendingWalletReqResult = mysqli_query($dbc, $pendingWalletReqQuery);
@@ -75,6 +75,24 @@
             <i class="ion ion-person-add"></i>
           </div>
           <a href="<?php echo HOMEURL.'/pages/users/view_users.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
+            More info <i class="fa fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-6">
+        <!-- small card -->
+        <div class="small-box bg-secondary">
+          <div class="inner">
+            <h3><?php echo $pendingPassportAppCount; ?></h3>
+
+            <p>Pending User Registrations</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-address-book-o"></i>
+          </div>
+          <a href="<?php echo HOMEURL.'/pages/passport/view_admin_passport_list.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
             More info <i class="fa fa-arrow-circle-right"></i>
           </a>
         </div>
