@@ -52,6 +52,7 @@
             <th>S. No.</th>
             <th>App. No.</th>
             <th>Service Type</th>
+            <th>Application Type</th>
             <th>Name</th>
             <th>DOB</th>
             <th>Submitted Date</th>
@@ -70,6 +71,7 @@
                     echo "<td>".++$rowCount."</td>";
                     echo "<td>".$row['application_no']."</td>";
                     echo "<td>".$row['service_type']."</td>";
+                    echo "<td>".$row['application_type']."</td>";
                     echo "<td>".$row['name']."</td>";
                     echo "<td>".$row['dob']."</td>";
                     echo "<td>".$row['submitted_date']."</td>";
