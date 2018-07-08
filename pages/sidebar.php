@@ -71,7 +71,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-file-text-o"></i>
+              <i class="nav-icon fa fa-address-card-o"></i>
               <p>
                 PAN
                 <i class="fa fa-angle-right right"></i>
@@ -94,7 +94,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-newspaper-o"></i>
+              <i class="nav-icon fa fa-address-book-o"></i>
               <p>
                 Passport
                 <i class="fa fa-angle-right right"></i>
@@ -177,7 +177,7 @@
 
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-file-text-o"></i>
+              <i class="nav-icon fa fa-address-card-o"></i>
               <p>
                 PAN
                 <i class="fa fa-angle-right right"></i>
@@ -200,7 +200,7 @@
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fa fa-newspaper-o"></i>
+              <i class="nav-icon fa fa-address-book-o"></i>
               <p>
                 Passport
                 <i class="fa fa-angle-right right"></i>
