@@ -108,6 +108,30 @@
                 </a>
               </li>
             </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_required_documents.php" class="nav-link">
+                  <i class="fa fa-copy nav-icon"></i>
+                  <p>Required Documents</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_faq.php" class="nav-link">
+                  <i class="fa fa-question-circle nav-icon"></i>
+                  <p>FAQ</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_annexures.php" class="nav-link">
+                  <i class="fa fa-legal nav-icon"></i>
+                  <p>Annexures</p>
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
         <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;">Powered by <a href="http://www.justalab.in" target="_blank">JustALab</a></div>
@@ -217,6 +241,30 @@
                 <a href="<?php echo HOMEURL; ?>/pages/passport/view_passport_list.php" class="nav-link">
                   <i class="fa fa-file-text-o nav-icon"></i>
                   <p>View Passport</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_required_documents.php" class="nav-link">
+                  <i class="fa fa-copy nav-icon"></i>
+                  <p>Required Documents</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_faq.php" class="nav-link">
+                  <i class="fa fa-question-circle nav-icon"></i>
+                  <p>FAQ</p>
+                </a>
+              </li>
+            </ul>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/passport/passport_annexures.php" class="nav-link">
+                  <i class="fa fa-legal nav-icon"></i>
+                  <p>Annexures</p>
                 </a>
               </li>
             </ul>
