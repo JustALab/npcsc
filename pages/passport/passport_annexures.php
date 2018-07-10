@@ -28,55 +28,55 @@
         <td>1</td>
         <td>A</td>
         <td>Identity Certificate (Annexure "A")</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureA.pdf" download>Download</a>
       </tr>
       <tr>
         <td>2</td>
         <td>c</td>
         <td>Declaration of ParentGuardian for Minor Passports (one parent not given consent) (Annexure "C")</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureC.pdf" download>Download</a>
       </tr>
       <tr>
         <td>3</td>
         <td>D</td>
         <td>Declaration of ParentGuardian for Minor Passports (Annexure "D")</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureD.pdf" download>Download</a>
       </tr>
       <tr>
         <td>4</td>
         <td>E</td>
-        <td>  Standard Affidavit (Annexure "E")</td>
-        <td><a href="#">Download</a>
+        <td> Standard Affidavit (Annexure "E")</td>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureE.pdf" download>Download</a>
       </tr>
       <tr>
         <td>5</td>
         <td>F</td>
-        <td>  Affidavit for a passport in lieu of lostdamaged passport (Annexure "F")</td>
-        <td><a href="#">Download</a>
+        <td>Affidavit for a passport in lieu of lostdamaged passport (Annexure "F")</td>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureF.pdf" download>Download</a>
       </tr>
       <tr>
         <td>6</td>
         <td>G</td>
         <td>Prior Intimation Letter(Annexure "G"</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureG.pdf" download>Download</a>
       </tr>
       <tr>
         <td>7</td>
         <td>H</td>
         <td>A Declaration affirming the particulars furnished in the application about the minor. (Annexure "H")</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureH.pdf" download>Download</a>
       </tr>
       <tr>
         <td>8</td>
         <td>I</td>
         <td>No Objection Certificate (Annexure "I"</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AnnexureI.pdf" download>Download</a>
       </tr>
       <tr>
         <td>9</td>
         <td></td>
         <td>Authority Letter</td>
-        <td><a href="#">Download</a>
+        <td><a href="<?php echo HOMEURL.'/services/'.PASSPORT_ANNEXURES_PATH; ?>AuthorityLetter.pdf" download>Download</a>
       </tr>
       
     </tbody>

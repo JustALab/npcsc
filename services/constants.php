@@ -26,6 +26,7 @@
     define('ADDRESS_PROOFS_PATH', 'store/passport/address_proofs/');
     define('OLD_PASSPORT_COPY_PATH', 'store/passport/old_passports_copy/');
     define('OLD_PASSPORT_CHILD_COPY_PATH', 'store/passport/old_passports_child_copy/');
+    define('PASSPORT_ANNEXURES_PATH', 'store/passport/annexures/');
 
     define('PAN_SERVICE', 1);
     define('PASSPORT_SERVICE', 2);
