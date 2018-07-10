@@ -69,7 +69,7 @@
                     echo "<tr>";
                     echo "<td>".++$rowCount."</td>";
                     echo "<td>".$row['application_no']."</td>";
-                    echo "<td>".$row['service_type']."</td>";
+                    echo "<td>".$row['service_type'].": ".$row['application_type']."</td>";
                     echo "<td>".$row['name']."</td>";
                     echo "<td>".$row['submitted_date']."</td>";
                     echo "<td>".addUserIdPadding($row['user_id'])."</td>";

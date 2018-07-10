@@ -27,10 +27,10 @@
                 <label>Service type</label>
                 <select id="service_type" name="service_type" class="form-control required">
                   <option value="" disabled="true">Select</option>
-                  <option value="Fresh" selected="selected">Fresh(New)</option>
-                  <option value="Re-issue">Re-issue(Renewal)</option>
-                  <option value="Children">Children(Below 18 years)</option>
-                  <option value="Children Renewal">Children Renewal(Below 18 years)</option>
+                  <option value="<?php echo PASSPORT_FRESH; ?>" selected="selected">Fresh(New)</option>
+                  <option value="<?php echo PASSPORT_REISSUE; ?>">Re-issue(Renewal)</option>
+                  <option value="<?php echo PASSPORT_CHILDREN; ?>">Children(Below 18 years)</option>
+                  <option value="<?php echo PASSPORT_CHILDREN_RENEWAL; ?>">Children Renewal(Below 18 years)</option>
                 </select>
               </div>
             </div>

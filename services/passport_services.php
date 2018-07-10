@@ -82,8 +82,27 @@
     		}
     	}
 
+        $serviceType = $passportElementsArray['service_type'];
+        $applicationType = $passportElementsArray['application_type'];
+        $noOfPages = $passportElementsArray['no_of_pages'];
+
+        if($serviceType == PASSPORT_FRESH || $serviceType == PASSPORT_REISSUE) {
+            if($noOfPages == '36') {
+                $serviceId = PASSPORT_36_PAGES;
+            } else {
+                $serviceId = PASSPORT_60_PAGES;
+            }
+        }
+
+        if($serviceType == PASSPORT_CHILDREN || $serviceType == PASSPORT_CHILDREN_RENEWAL) {
+            $serviceId = PASSPORT_MINOR_36_PAGES;
+        }
+
     	$walletId = $_POST['wallet_id'];
-        $servicePrice = getServicePrice(PASSPORT_SERVICE);
+        $servicePrice = getServicePrice($serviceId);
+        if($applicationType == 'Tatkal') {
+            $servicePrice += getTatkalPrice();
+        }
         $userWalletBalance = getWalletBalance($walletId);
 
         if(compareServicePrice($userWalletBalance, $servicePrice)) {
@@ -106,6 +125,10 @@
         	return array("status"=>"failure","message"=>"Wallet balance is low!! Application not submitted. Please add money to your wallet.");
         }
 	}
+
+    function getTatkalPrice(){
+        return getServicePrice(PASSPORT_TATKAL);
+    }
 
     function updateStatus(){
         global $db;
