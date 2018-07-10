@@ -84,18 +84,18 @@
 
     	$walletId = $_POST['wallet_id'];
         $servicePrice = getServicePrice(PASSPORT_SERVICE);
-        $userWallerBalance = getWalletBalance($walletId);
+        $userWalletBalance = getWalletBalance($walletId);
 
-        if(compareServicePrice($userWallerBalance, $servicePrice)) {
+        if(compareServicePrice($userWalletBalance, $servicePrice)) {
         	$result = $db->insertOperation(TABLE_PASSPORT_APP, $passportElementsArray);
         	//file_put_contents("formlog.log", print_r( $result, true ));
             if($result['status'] == 'success'){
                 $lastInsertId = $result['last_insert_id'];
                 //deduce amount from wallet
-                $walletUpdateResult = updateWalletAmount($walletId, $userWallerBalance, $servicePrice, false);
+                $walletUpdateResult = updateWalletAmount($walletId, $userWalletBalance, $servicePrice, false);
                 if($walletUpdateResult['status'] == 'success'){
                     $description = 'Amount deduced for Passport application. Application No.: ' . $lastInsertId;
-                    $transactionResult = addWalletTransaction($walletId, $description, $userWallerBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
+                    $transactionResult = addWalletTransaction($walletId, $description, $userWalletBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
                     updateTransactionId(TABLE_PASSPORT_APP, $lastInsertId, $transactionResult['last_insert_id']);
                 }
                 return array("status"=>"success","message"=>"New Passport application request submitted successfully.", 'application_no'=> $lastInsertId);
