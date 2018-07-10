@@ -90,9 +90,10 @@ function changeServiceType(value) {
 }
 
 function processPassport() {
+    var message = 'I hereby confirm that details given above are correct and I have verified Originals and found to be correct. If any mistake I will take the responsibility on his/her behalf. I agree to the terms and conditions by clicking <span style="color: red;">"<i><b>Yes</b></i>"</span> in this confirmation dialog.';
     if ($('#passport_application_form').valid()) {
         bootbox.confirm({
-            message: "Are you sure want to submit the Passport application?",
+            message: message,
             buttons: {
                 confirm: {
                     label: 'Yes',
