@@ -25,10 +25,10 @@
           <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
           <?php } ?>
           <?php if($row['status'] == STATUS_APPROVED && $row['receipt_file_name'] == ''){ ?>
-          <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
+          <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Appointment Fixed</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_DENIED){ ?>
-          <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
+          <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Application Denied</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_PENDING){ ?>
           <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>

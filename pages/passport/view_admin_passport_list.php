@@ -29,8 +29,8 @@
             <div class="form-group">
               <select id="passport_status" name="passport_status" class="form-control">
                 <option value="Pending" <?php echo (($status==STATUS_PENDING)?'selected="selected"':''); ?>>Pending</option>
-                <option value="Approved" <?php echo (($status==STATUS_APPROVED)?'selected="selected"':''); ?>>Approved</option>
-                <option value="Denied" <?php echo (($status==STATUS_DENIED)?'selected="selected"':''); ?>>Denied</option>
+                <option value="Approved" <?php echo (($status==STATUS_APPROVED)?'selected="selected"':''); ?>>Appointment Fixed</option>
+                <option value="Denied" <?php echo (($status==STATUS_DENIED)?'selected="selected"':''); ?>>Application Denied</option>
               </select>
             </div>
           </div>
