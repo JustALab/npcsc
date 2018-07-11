@@ -35,7 +35,7 @@
 <?php 
   include '../footer_imports.php';
   ?>
-<script type="text/javascript" src="js/application_passport.js"></script>
+<script type="text/javascript" src="js/gst_resgistration.js"></script>
 <?php 
   include '../footer.php';
   ?>

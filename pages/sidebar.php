@@ -133,6 +133,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-file-text-o"></i>
+              <p>
+                GST Registration
+                <i class="fa fa-angle-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <!-- <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/pan/apply_new_pan.php" class="nav-link">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Apply New PAN</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/gst/view_gst_registration_admin_list.php" class="nav-link">
+                  <i class="fa fa-file nav-icon"></i>
+                  <p>View GST Registrations</p>
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
         <div id="copyright_agent" style="position:absolute;bottom:4px;left:4px;">Powered by <a href="http://www.justalab.in" target="_blank">JustALab</a></div>
           <div id="version_agent" style="position:absolute;bottom:4px;right:4px;color:grey;"><?php echo VERSION; ?></div>
@@ -265,6 +288,29 @@
                 <a href="<?php echo HOMEURL; ?>/pages/passport/passport_annexures.php" class="nav-link">
                   <i class="fa fa-legal nav-icon"></i>
                   <p>Annexures</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-file-text-o"></i>
+              <p>
+                GST Registration
+                <i class="fa fa-angle-right right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/gst/gst_resgistration.php" class="nav-link">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Apply GST</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo HOMEURL; ?>/pages/gst/view_gst_registration_list.php" class="nav-link">
+                  <i class="fa fa-file nav-icon"></i>
+                  <p>View GST Registrations</p>
                 </a>
               </li>
             </ul>
