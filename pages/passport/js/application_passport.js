@@ -43,6 +43,18 @@ $(function() {
         loadPage();
     });
 
+    $('#address_proof_file').on('change', function() {
+        checkFileSize(this.id);
+    });
+
+    $('#old_passport_copy_file').on('change', function(){
+        checkFileSize(this.id);
+    });
+
+    $('#old_passport_child_copy_file').on('change', function(){
+        checkFileSize(this.id);
+    });
+
     $('#passport_table').DataTable();
 
     bindNumberEvents('aadhaar_no');
@@ -70,6 +82,14 @@ $(function() {
     });
 
 });
+
+function checkFileSize(elementId) {
+    var size = parseFloat($('#' + elementId)[0].files[0].size / 1024).toFixed(2);
+    if(size > 500){
+        i=1;
+        bootbox.alert("Please Upload file less than 500KB");
+    }
+}
 
 function changeServiceType(value) {
     if(value === 'Fresh'){

@@ -281,7 +281,7 @@
               <div class="form-group">
                 <label>Upload Address Proof</label>
                 <div class="input-group">
-                  <input type="file" class="required" id="address_proof_file" name="address_proof_file">
+                  <input type="file" class="required" id="address_proof_file" name="address_proof_file" accept=".jpg,.JPG,.JPEG,.jpeg">
                 </div>
               </div>
             </div>
@@ -341,7 +341,7 @@
               <div class="form-group">
                 <label>Upload Old Passport Copy</label>
                 <div class="input-group">
-                  <input type="file" class="required" id="old_passport_copy_file" name="old_passport_copy_file">
+                  <input type="file" class="required" id="old_passport_copy_file" name="old_passport_copy_file" accept=".jpg,.JPG,.JPEG,.jpeg,.pdf">
                 </div>
               </div>
             </div>
@@ -401,7 +401,7 @@
               <div class="form-group">
                 <label>Upload Old Passport Copy</label>
                 <div class="input-group">
-                  <input type="file" class="required" id="old_passport_child_copy_file" name="old_passport_child_copy_file">
+                  <input type="file" class="required" id="old_passport_child_copy_file" name="old_passport_child_copy_file" accept=".jpg,.JPG,.JPEG,.jpeg,.pdf">
                 </div>
               </div>
             </div>
