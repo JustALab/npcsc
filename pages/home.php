@@ -92,7 +92,7 @@
           <div class="icon">
             <i class="fa fa-address-book-o"></i>
           </div>
-          <a href="<?php echo HOMEURL; ?>/pages/passport/passport_application.php" class="small-box-footer" onclick="comingsoon()">
+          <a href="<?php echo HOMEURL; ?>/pages/passport/passport_application.php" class="small-box-footer" onclick="">
             Apply now
           <i class="fa fa-arrow-circle-right"></i></a>
         </div>
