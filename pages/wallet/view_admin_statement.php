@@ -16,7 +16,7 @@
     <!-- Default box -->
     <div class="card">
       <div class="card-header">
-        <h3 class="card-title">Wallet Statement</h3>
+        <h3 class="card-title">Wallet Statement - Debit Transactions</h3>
         <!-- <div class="card-tools">
           <button type="button" class="btn btn-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i></button>
@@ -33,7 +33,7 @@
               <th>Date Time</th>
               <th>Description</th>
               <th>Previous Balance</th>
-              <th>Transaction Type</th>
+              <!-- <th>Transaction Type</th> -->
               <th>Amount</th>
               <th>Balance</th>
               <th>Agent ID</th>
@@ -42,7 +42,7 @@
           </thead>
           <tbody>
             <?php
-              $query = 'SELECT wt.transaction_id, wt.date_time, wt.description, wt.previous_balance, wt.transaction_type, wt.balance, wt.amount, u.user_id, u.name FROM '.TABLE_WALLET_TRANS.' wt, '.TABLE_WALLET.' w, '.TABLE_USERS.' u where wt.wallet_id=w.wallet_id AND w.user_id=u.user_id  ORDER BY transaction_id DESC';
+              $query = 'SELECT wt.transaction_id, wt.date_time, wt.description, wt.previous_balance, wt.transaction_type, wt.balance, wt.amount, u.user_id, u.name FROM '.TABLE_WALLET_TRANS.' wt, '.TABLE_WALLET.' w, '.TABLE_USERS.' u where wt.wallet_id=w.wallet_id AND w.user_id=u.user_id AND wt.transaction_type="'.TRANSACTION_DEBIT.'"  ORDER BY transaction_id DESC';
               $result = mysqli_query($dbc, $query);
               if(mysqli_num_rows($result) > 0){
                 $rowCount = 0;
@@ -53,7 +53,7 @@
                   echo "<td>".$row['date_time']."</td>";
                   echo "<td>".$row['description']."</td>";
                   echo "<td>".$row['previous_balance']."</td>";
-                  echo "<td>".$row['transaction_type']."</td>";
+                  // echo "<td>".$row['transaction_type']."</td>";
                   echo "<td>".$row['amount']."</td>";
                   echo "<td>".$row['balance']."</td>";
                   echo "<td>".addUserIdPadding($row['user_id'])."</td>";
