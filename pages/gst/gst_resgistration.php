@@ -12,7 +12,7 @@
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->
-    <form id="gst_registration_form" name="passport_application_form">
+    <form id="gst_registration_form" name="gst_registration_form">
       <br />
       <div class="card">
         <div class="card-header">
@@ -27,7 +27,7 @@
                 <label id="registration_type_label">Select Registration Type</label>
                 <select id="registration_type" name="registration_type" class="form-control required">
                   <option value=""  selected="selected">Select</option>
-                  <option value="Proprietorship/ Ownership Firm">Proprietorship/ Ownership Firm</option>
+                  <option value="Proprietorship/Ownership Firm">Proprietorship/ Ownership Firm</option>
                   <option value="Partnership Firm">Partnership Firm</option>
                   <option value="Limited Liability Partnership">Limited Liability Partnership</option>
                   <option value="Private Limited Company">Private Limited Company</option>
@@ -36,7 +36,7 @@
             </div>
           </div>
 
-          <div class="row">
+          <div class="row" id="no_of_people_row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label id="no_of_people_label">Number of Partners/ Directors</label>
@@ -130,7 +130,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr id="row_1">
         <td>Partner 1</td>
         <td><input type="file" class="required" id="pan_card_1" name="pan_card_1" ></td>
         <td><input type="file" class="required" id="colour_photo_1" name="colour_photo_1" ></td>
@@ -143,7 +143,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_1" name="address_proof_1" ></td>
       </tr>
-      <tr>
+      <tr id="row_2">
         <td>Partner 2</td>
         <td><input type="file" class="required" id="pan_card_2" name="pan_card_2" ></td>
         <td><input type="file" class="required" id="colour_photo_2" name="colour_photo_2" ></td>
@@ -156,7 +156,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_2" name="address_proof_2" ></td>
       </tr>
-      <tr>
+      <tr id="row_3">
         <td>Partner 3</td>
         <td><input type="file" class="required" id="pan_card_3" name="pan_card_3" ></td>
         <td><input type="file" class="required" id="colour_photo_3" name="colour_photo_3" ></td>
@@ -169,7 +169,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_3" name="address_proof_3" ></td>
       </tr>
-      <tr>
+      <tr id="row_4">
         <td>Partner 4</td>
         <td><input type="file" class="required" id="pan_card_4" name="pan_card_4" ></td>
         <td><input type="file" class="required" id="colour_photo_4" name="colour_photo_4" ></td>
@@ -182,7 +182,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_4" name="address_proof_4" ></td>
       </tr>
-      <tr>
+      <tr id="row_5">
         <td>Partner 5</td>
         <td><input type="file" class="required" id="pan_card_5" name="pan_card_5" ></td>
         <td><input type="file" class="required" id="colour_photo_5" name="colour_photo_5" ></td>
@@ -195,7 +195,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_5" name="address_proof_5" ></td>
       </tr>
-      <tr>
+      <tr id="row_6">
         <td>Partner 6</td>
         <td><input type="file" class="required" id="pan_card_6" name="pan_card_6" ></td>
         <td><input type="file" class="required" id="colour_photo_6" name="colour_photo_6" ></td>
@@ -208,7 +208,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_6" name="address_proof_6" ></td>
       </tr>
-      <tr>
+      <tr id="row_7">
         <td>Partner 7</td>
         <td><input type="file" class="required" id="pan_card_7" name="pan_card_7" ></td>
         <td><input type="file" class="required" id="colour_photo_7" name="colour_photo_7" ></td>
@@ -221,7 +221,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_7" name="address_proof_7" ></td>
       </tr>
-      <tr>
+      <tr id="row_8">
         <td>Partner 8</td>
         <td><input type="file" class="required" id="pan_card_8" name="pan_card_8" ></td>
         <td><input type="file" class="required" id="colour_photo_8" name="colour_photo_8" ></td>
@@ -234,7 +234,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_8" name="address_proof_8" ></td>
       </tr>
-      <tr>
+      <tr id="row_9">
         <td>Partner 9</td>
         <td><input type="file" class="required" id="pan_card_9" name="pan_card_9" ></td>
         <td><input type="file" class="required" id="colour_photo_9" name="colour_photo_9" ></td>
@@ -247,7 +247,7 @@
                 </select></td>
         <td><input type="file" class="required" id="address_proof_9" name="address_proof_9" ></td>
       </tr>
-      <tr>
+      <tr id="row_10">
         <td>Partner 10</td>
         <td><input type="file" class="required" id="pan_card_10" name="pan_card_10" ></td>
         <td><input type="file" class="required" id="colour_photo_10" name="colour_photo_10" ></td>
@@ -264,96 +264,32 @@
   </table>
       <br>
       <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="business_place_proof_label">Select Address Proof of Place of Business</label>
-                <select id="business_place_proof" name="business_place_proof" class="form-control required">
-                  <option value="" selected="selected">Select</option>
-                  <option value="Own Premises" >Own Premises</option>
-                  <option value="Rent Premises">Rent Premises</option>
-                  
-                </select>
-              </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+              <label id="business_place_proof_label">Select Address Proof of Place of Business</label>
+              <select id="business_place_proof" name="business_place_proof" class="form-control required">
+                <option value="" selected="selected">Select</option>
+                <option value="Own Premises" >Own Premises</option>
+                <option value="Rent Premises">Rent Premises</option>   
+              </select>
             </div>
+          </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="bank_document_label">Bank Statement / Passbook Address Page / Cancelled Cheque Leaf</label>
-                <input type="file" class="required" id="bank_document" name="bank_document" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="tin_tax_certificate_label">TIN Certificate / Service Tax Certificate of existing business - if any</label>
-                <input type="file" class="required" id="tin_tax_certificate" name="tin_tax_certificate" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="certificate_incorporation_label">Certificate of Incorporation</label><br>
-                <input type="file" class="required" id="certificate_incorporation" name="certificate_incorporation" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="board_resolution_format_label">Authorisation Letter in Specific Format (to be signed by minimum 2 partners)</label>
-                <input type="file" class="required" id="board_resolution_format" name="board_resolution_format" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="company_pan_label">PAN of the Limited Liability Partnership</label><br>
-                <input type="file" class="required" id="company_pan" name="company_pan" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="tb_amount_label">TB Deduction Amount</label>
-                <input type="Number" class="required" id="tb_amount" name="tb_amount" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="partnership_deed_label">Partnership Deed </label><br>
-                <input type="file" class="required" id="partnership_deed" name="partnership_deed" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="form-group">
-                <label id="firm_registration_certificate_label">Firm Registration Certificate - if any </label><br>
-                <input type="file" class="required" id="firm_registration_certificate" name="firm_registration_certificate" >
-              </div>
-            </div>
-        </div>
-
-        <div class="row">
+        <div class="row" id="property_tax_row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label id="property_tax_receipt_label">Property Tax Payment Receipt</label><br>
                 <input type="file" class="required" id="property_tax_receipt" name="property_tax_receipt" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id="rental_agreement_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="rental_agreement_label">Rental Agreement</label><br>
+                <input type="file" class="required" id="rental_agreement" name="rental_agreement" >
               </div>
             </div>
         </div>
@@ -367,16 +303,62 @@
             </div>
         </div>
 
-        <div class="row">
+
+        <div class="row" id="bank_document_row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label id="rental_agreement_label">Rent Agreement</label><br>
-                <input type="file" class="required" id="rental_agreement" name="rental_agreement" >
+                <label id="bank_document_label">Bank Statement / Passbook Address Page / Cancelled Cheque Leaf</label>
+                <input type="file" class="required" id="bank_document" name="bank_document" >
               </div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="tin_tax_certificate_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="tin_tax_certificate_label">TIN Certificate / Service Tax Certificate of existing business - if any</label>
+                <input type="file" class="required" id="tin_tax_certificate" name="tin_tax_certificate" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id="certificate_incorporation_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="certificate_incorporation_label">Certificate of Incorporation</label><br>
+                <input type="file" class="required" id="certificate_incorporation" name="certificate_incorporation" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id="authorisation_letter_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="board_resolution_format_label">Authorisation Letter in Specific Format (to be signed by minimum 2 partners)</label>
+                <input type="file" class="required" id="authorisation_letter" name="authorisation_letter" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id="partnership_deed_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="partnership_deed_label">Partnership Deed </label><br>
+                <input type="file" class="required" id="partnership_deed" name="partnership_deed" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id="firm_registration_certificate_row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="firm_registration_certificate_label">Firm Registration Certificate - if any </label><br>
+                <input type="file" class="required" id="firm_registration_certificate" name="firm_registration_certificate" >
+              </div>
+            </div>
+        </div>
+
+        <div class="row" id='board_resolution_format_row'>
             <div class="col-sm-6">
               <div class="form-group">
                 <label id="board_resolution_format_label">Board Resolution in Specific Format (to be signed by minimum 2 directors)</label><br>
@@ -385,7 +367,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="company_pan_row">
             <div class="col-sm-6">
               <div class="form-group">
                 <label id="company_pan_label">PAN of the Company </label><br>
@@ -393,6 +375,15 @@
               </div>
             </div>
         </div>
+
+        <!-- <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label id="tb_amount_label">TB Deduction Amount</label>
+                <input type="Number" class="required" id="tb_amount" name="tb_amount" >
+              </div>
+            </div>
+        </div> -->
 
       </div>
       <input type="hidden" name="action" id="action" value="process_gst">
