@@ -4,7 +4,7 @@
 date_default_timezone_set('Asia/Calcutta');
 
 /** Version Number */
-define('VERSION','V2.1.1');
+define('VERSION','V2.1.2');
 	
 if(!defined('HOMEURL'))
 	define('HOMEURL', 'http://localhost:8888/npcsc');
