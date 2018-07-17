@@ -7,38 +7,38 @@
   include '../sidebar.php';
   include '../../services/constants.php';
   include 'pan_config.php';
-
+  
   $applicationNo = $_GET['application_no'];
   $query = "SELECT * FROM ".TABLE_PAN_APP." WHERE application_no='$applicationNo'";
   $result = mysqli_query($dbc, $query);
   $row = mysqli_fetch_assoc($result);
-?>
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-      <br />
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">PAN Application No: <?php echo $row['application_no']; ?></h3>
-          <div class="card-tools">
+  ?>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <br />
+    <div class="card">
+      <div class="card-header">
+        <h3 class="card-title">PAN Application No: <?php echo $row['application_no']; ?></h3>
+        <div class="card-tools">
           <?php if($row['receipt_file_name'] != '') { ?>
-            <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
+          <a href="<?php echo HOMEURL.'/services/'.RECEIPTS_PATH.$row['receipt_file_name']; ?>" download><button class="btn btn-primary btm-sm btn-flat">Download Receipt</button></a>
           <?php } ?>
           <?php if($row['status'] == STATUS_APPROVED && $row['receipt_file_name'] == ''){ ?>
-            <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
+          <button type="button" class="btn btn-block btn-success btn-sm btn-flat" disabled>Approved</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_DENIED){ ?>
-            <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
+          <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Denied</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_PENDING){ ?>
-            <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
+          <button type="button" class="btn btn-block btn-warning btn-sm btn-flat" disabled>Pending</button>
           <?php } ?>
           <?php if($row['status'] == STATUS_BLOCKED){ ?>
-            <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
+          <button type="button" class="btn btn-block btn-danger btn-sm btn-flat" disabled>Blocked</button>
           <?php } ?>
-          </div>
         </div>
+      </div>
       <div class="card-body">
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">
@@ -55,12 +55,12 @@
               <label>Application type</label>
               <input type="text" class="form-control" value="<?php echo $row['application_type']; ?>" disabled>
             </div>
-          <?php if($row['application_type'] == 'Correction/Change'){ ?>
+            <?php if($row['application_type'] == 'Correction/Change'){ ?>
             <div class="form-group" id="pan_number_correction_div">
               <label>PAN Number</label>
               <input type="text" class="form-control" value="<?php echo $row['pan_number']; ?>" disabled>
             </div>
-          <?php } ?>
+            <?php } ?>
             <div class="form-group">
               <label>Category of Applicant</label>
               <input type="text" class="form-control" value="<?php echo $row['applicant_category']; ?>" disabled>
@@ -212,64 +212,60 @@
             </div>
           </div>
         </div>
-       <?php if($row['status'] == STATUS_PENDING){ ?>
+        <?php if($row['status'] == STATUS_PENDING){ ?>
         <!-- <div class="card-footer"> -->
-          <div id="approve_reject_row" class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-danger" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-4">
-              <button class="btn btn-block btn-success" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
-            </div>
+        <div id="approve_reject_row" class="row">
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-danger" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
           </div>
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-success" onclick="updatePanStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
+          </div>
+        </div>
         <!-- </div> -->
         <?php } ?>
       </div>
     </div>
-      <!-- /.card -->
-
-      <?php if($row['status'] == STATUS_APPROVED) { ?>
-        <form id="receipt_form" name="receipt_form">
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Receipt</h3>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="">
-                            <input type="file" required="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
-                            <!-- <label class="custom-file-label" for="receipt_document">Choose file</label> -->
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                      <button class="btn btn-success btn-block" onclick="uploadReceipt();">Upload</button>
+    <!-- /.card -->
+    <?php if($row['status'] == STATUS_APPROVED) { ?>
+    <form id="receipt_form" name="receipt_form">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Receipt</h3>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <!-- <label for="php">Receipt</label> -->
+                    <div class="input-group">
+                      <input type="file" class="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
                     </div>
                   </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <button class="btn btn-success btn-flat" onclick="uploadReceipt();">Upload</button>
                 </div>
               </div>
             </div>
           </div>
-          <input type="hidden" name="application_no" value="<?php echo $applicationNo; ?>">
-          <input type="hidden" name="action" value="upload_receipt">
-        </form>
-      <?php } ?>
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <?php 
-    include '../footer_imports.php';
+        </div>
+      </div>
+</div>
+<input type="hidden" name="application_no" value="<?php echo $applicationNo; ?>">
+<input type="hidden" name="action" value="upload_receipt">
+</form>
+<?php } ?>
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<?php 
+  include '../footer_imports.php';
   ?>
-  <script type="text/javascript" src="js/application_pan_admin.js"></script>
-  <?php 
-    include '../footer.php';
+<script type="text/javascript" src="js/application_pan_admin.js"></script>
+<?php 
+  include '../footer.php';
   ?>

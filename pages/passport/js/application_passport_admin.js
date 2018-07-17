@@ -63,23 +63,25 @@ function loadPage() {
 }
 
 function uploadReceipt(){
-    var data = $('#receipt_form').serializefiles();
-    $.ajax({
-        url: servicesUrl + 'passport_services.php',
-        type: 'POST',
-        data:  data,
-        processData: false,
-        contentType: false,
-        dataType: 'json',
-        success: function(result){
-            bootbox.alert(result.message,function() {
-                location.reload();
-            });
-        },
-        error: function(){
-            bootbox.alert("failure");
-        }           
-    });
+    if($('#receipt_form').valid()){
+        var data = $('#receipt_form').serializefiles();
+        $.ajax({
+            url: servicesUrl + 'passport_services.php',
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(result){
+                bootbox.alert('Receipt uploaded successfully.',function() {
+                    location.reload();
+                });
+            },
+            error: function(){
+                bootbox.alert("failure");
+            }           
+        });
+    }
 }
 
 (function($) {

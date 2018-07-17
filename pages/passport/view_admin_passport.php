@@ -457,16 +457,14 @@
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <div class="form-group">
+                    <!-- <label for="php">Receipt</label> -->
                     <div class="input-group">
-                      <div class="">
-                        <input type="file" required="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
-                        <!-- <label class="custom-file-label" for="receipt_document">Choose file</label> -->
-                      </div>
+                      <input type="file" class="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                  <button class="btn btn-success btn-block" onclick="uploadReceipt();">Upload</button>
+                  <button class="btn btn-success btn-flat" onclick="uploadReceipt();">Upload</button>
                 </div>
               </div>
             </div>
