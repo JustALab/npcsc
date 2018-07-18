@@ -130,7 +130,31 @@ function buildLimitedLiablityPartnershipFirmForm() {
 }
 
 function buildPrivateLimitedCompany() {
-
+    $('#no_of_people_row').show();
+    addRequiredClass('no_of_people');
+    $('#authorised_person_name_label').html('Name of the Authorised Director');
+    $('#authorised_person_phone_label').html('Phone number of the Authorised Director');
+    $('#authorised_person_email_label').html('Email ID of the Authorised Director');
+    $('#business_name_label').html('Name of the Company');
+    $('#business_address_label').html('Address of the Company');
+    displayPartnerRows(2);
+    $('#bank_document_row').show();
+    $('#tin_tax_certificate_row').show();
+    $('#certificate_incorporation_row').show();
+    $('#authorisation_letter_row').hide();
+    $('#partnership_deed_row').hide();
+    $('#firm_registration_certificate_row').hide();
+    $('#board_resolution_format_row').show();
+    $('#company_pan_row').show();
+    addRequiredClass('bank_document');
+    addRequiredClass('tin_tax_certificate');
+    addRequiredClass('certificate_incorporation');
+    removeRequiredClass('authorisation_letter');
+    removeRequiredClass('partnership_deed');
+    removeRequiredClass('firm_registration_certificate');
+    addRequiredClass('board_resolution_format');
+    addRequiredClass('company_pan');
+    $('#company_pan_label').html('PAN of the Limited Liability Partnership');
 }
 
 function buildBusinessPlaceFields(place) {
