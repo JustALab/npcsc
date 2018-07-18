@@ -106,7 +106,7 @@
                   <div class="col-sm-6">
                      <div class="form-group">
                         <label id="business_description">Brief Description of the Business / Service</label>
-                        <textarea class="form-control" rows="5" id="business_description" name="business_description"></textarea>
+                        <textarea class="form-control required" rows="5" id="business_description" name="business_description"></textarea>
                      </div>
                   </div>
                </div>
@@ -384,6 +384,23 @@
                   </div> -->
             </div>
          </div>
+         <div class="card" id="process_controls_card">
+            <div class="card-body">
+              <div class="card">
+                <div class="overlay" id="loading_spinner">
+                  <i class="fa fa-refresh fa-spin"></i>
+                </div>
+              </div>
+              <div class="row" id="apply_gst_controls_div">
+                <div class="col-sm-4">
+                  <button type="button" class="btn btn-block btn-primary" onclick="processGstApplication();">Process</button>
+                </div>
+                <div class="col-sm-4">
+                  <button type="button" onclick="clearFields();" class="btn btn-block btn-secondary">Clear</button>
+                </div>
+              </div>
+            </div>
+          </div>
          <input type="hidden" name="action" id="action" value="process_gst">
          <input type="hidden" name="user_id" id="user_id" value="<?php echo $_SESSION['user_id']; ?>">
          <input type="hidden" name="wallet_id" id="wallet_id" value="<?php echo $_SESSION['wallet_id']; ?>">

@@ -16,6 +16,7 @@ $(function() {
         changeFormBasedOnRegistrationType(this.value);
         clearFields();
         $('#resgitration_type_fields_div').show();
+        $('#process_controls_card').show();
     });
 
     $('#property_tax_row').hide();
@@ -27,7 +28,60 @@ $(function() {
     $('#no_of_people').on('change', function() {
         displayPartnerRows(this.value);
     });
+
+    $('#loading_spinner').hide();
+    $('#process_controls_card').hide();
 });
+
+
+function processGstApplication() {
+    var message = 'Are you sure you want to process this GST Registration?';
+    if ($('#gst_registration_form').valid()) {
+        bootbox.confirm({
+            message: message,
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $('#apply_gst_controls_div').hide();
+                    $('#loading_spinner').show();
+                    confirmProcessGstApplication();
+                }
+            }
+        });
+    }
+}
+
+function confirmProcessGstApplication() {
+    var data = $('#gst_registration_form').serializefiles();
+    $.ajax({
+        url: servicesUrl + 'gst_services.php',
+        type: "POST",
+        data: data,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function(result) {
+            bootbox.alert(result.message);
+            if (result.status === 'success') {
+                bootbox.alert(result.message, function(){
+                    window.location = 'view_gst_registration.php?application_no=' + result.application_no;
+                });
+            }
+        },
+        error: function() {
+            bootbox.alert("Unknown error occured!");
+        }
+    });
+}
 
 function changeFormBasedOnRegistrationType(type){
     if(type == 'Proprietorship/Ownership Firm') {
