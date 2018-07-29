@@ -1,63 +1,141 @@
-$(function() {
-    
+$(function () {
+
     $('#dob').inputmask('dd/mm/yyyy', {
         'placeholder': 'dd/mm/yyyy',
     });
 
-    $('#gst_registration_form').validate({
-        errorClass: "my-error-class",
-        rules: {
-            
-        }
-    });
+    // $('#gst_registration_form').validate({
+    //     errorClass: "my-error-class",
+    //     rules: {
+
+    //     }
+    // });
 
     $('#resgitration_type_fields_div').hide();
-    $('#registration_type').on('change', function() {
+    $('#registration_type').on('change', function () {
         changeFormBasedOnRegistrationType(this.value);
-        clearFields();
         $('#resgitration_type_fields_div').show();
         $('#process_controls_card').show();
     });
 
     $('#property_tax_row').hide();
     $('#rental_agreement_row').hide();
-    $('#business_place_proof').on('change', function() {
+    $('#business_place_proof_type').on('change', function () {
         buildBusinessPlaceFields(this.value);
     });
 
-    $('#no_of_people').on('change', function() {
+    $('#no_of_people').on('change', function () {
         displayPartnerRows(this.value);
     });
 
     $('#loading_spinner').hide();
     $('#process_controls_card').hide();
+
+    $('.pan_card').on('change', function () {
+        var idNo = $(this).attr('id');
+        var splitNumber = idNo.split('_');
+        var id = splitNumber[2];
+        validateFilesByElementId("pan_card_" + id, 100);
+    });
+
+    $('.color_photo').on('change', function () {
+        var idNo = $(this).attr('id');
+        var splitNumber = idNo.split('_');
+        var id = splitNumber[2];
+        validateFilesByElementId("color_photo_" + id, 100);
+    });
+
+    $('.address_proof').on('change', function () {
+        var idNo = $(this).attr('id');
+        var splitNumber = idNo.split('_');
+        var id = splitNumber[2];
+        validateFilesByElementId("address_proof_" + id, 100);
+    });
+
+    $('#property_tax_receipt').on('change', function () {
+        validateFilesByElementId("property_tax_receipt", 1000);
+    });
+
+    $('#rental_agreement').on('change', function () {
+        validateFilesByElementId("rental_agreement", 2000);
+    });
+
+    $('#eb_card').on('change', function () {
+        validateFilesByElementId("eb_card", 1000);
+    });
+
+    $('#bank_document').on('change', function () {
+        validateFilesByElementId("bank_document", 1000);
+    });
+
+    $('#tin_tax_certificate').on('change', function () {
+        validateFilesByElementId("tin_tax_certificate", 1000);
+    });
+
+    $('#partnership_deed').on('change', function () {
+        validateFilesByElementId("partnership_deed", 1000);
+    });
+
+    $('#firm_registration_certificate').on('change', function () {
+        validateFilesByElementId("firm_registration_certificate", 1000);
+    });
+
+    $('#certificate_incorporation').on('change', function () {
+        validateFilesByElementId("certificate_incorporation", 1000);
+    });
+
+    $('#authorisation_letter').on('change', function () {
+        validateFilesByElementId("authorisation_letter", 1000);
+    });
+
+    $('#board_resolution_format').on('change', function () {
+        validateFilesByElementId("board_resolution_format", 1000);
+    });
+
+    $('#company_pan').on('change', function () {
+        validateFilesByElementId("company_pan", 1000);
+    });
 });
 
+function validateFilesByElementId(id, maxSize) {
+    var file = document.getElementById(id);
+    var size = (file.files[0].size / 1024).toFixed(2);
+    if (size > maxSize) {
+        var sizeText = '100 KB';
+        if (maxSize == 2000) {
+            sizeText = '2 MB';
+        } else if (maxSize == 1000) {
+            sizeText = '1 MB';
+        }
+        bootbox.alert("Please Upload file less than " + sizeText + ".");
+        $('#' + id).val('');
+    }
+}
 
 function processGstApplication() {
     var message = 'Are you sure you want to process this GST Registration?';
-    if ($('#gst_registration_form').valid()) {
-        bootbox.confirm({
-            message: message,
-            buttons: {
-                confirm: {
-                    label: 'Yes',
-                    className: 'btn-success'
-                },
-                cancel: {
-                    label: 'No',
-                    className: 'btn-danger'
-                }
+    //if ($('#gst_registration_form').valid()) {
+    bootbox.confirm({
+        message: message,
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
             },
-            callback: function (result) {
-                if(result){
-                    $('#apply_gst_controls_div').hide();
-                    $('#loading_spinner').show();
-                    confirmProcessGstApplication();
-                }
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
             }
-        });
-    }
+        },
+        callback: function (result) {
+            if (result) {
+                $('#apply_gst_controls_div').hide();
+                $('#loading_spinner').show();
+                confirmProcessGstApplication();
+            }
+        }
+    });
+    // }
 }
 
 function confirmProcessGstApplication() {
@@ -69,34 +147,34 @@ function confirmProcessGstApplication() {
         processData: false,
         contentType: false,
         dataType: 'json',
-        success: function(result) {
+        success: function (result) {
             bootbox.alert(result.message);
             if (result.status === 'success') {
-                bootbox.alert(result.message, function(){
+                bootbox.alert(result.message, function () {
                     window.location = 'view_gst_registration.php?application_no=' + result.application_no;
                 });
             }
         },
-        error: function() {
+        error: function () {
             bootbox.alert("Unknown error occured!");
         }
     });
 }
 
-function changeFormBasedOnRegistrationType(type){
-    if(type == 'Proprietorship/Ownership Firm') {
+function changeFormBasedOnRegistrationType(type) {
+    if (type == 'Proprietorship/Ownership Firm') {
         buildOwnershipFirmForm();
     }
 
-    if(type == 'Partnership Firm') {
+    if (type == 'Partnership Firm') {
         buildPartnershipFirmForm();
     }
 
-    if(type == 'Limited Liability Partnership') {
+    if (type == 'Limited Liability Partnership') {
         buildLimitedLiablityPartnershipFirmForm();
     }
 
-    if(type == 'Private Limited Company') {
+    if (type == 'Private Limited Company') {
         buildPrivateLimitedCompany();
     }
 }
@@ -212,7 +290,7 @@ function buildPrivateLimitedCompany() {
 }
 
 function buildBusinessPlaceFields(place) {
-    if(place == 'Own Premises') {
+    if (place == 'Own Premises') {
         $('#property_tax_row').show();
         addRequiredClass('property_tax_receipt');
         $('#rental_agreement_row').hide();
@@ -226,19 +304,19 @@ function buildBusinessPlaceFields(place) {
 }
 
 function displayPartnerRows(displayCount) {
-    for(var i = 10; i > displayCount; i--) {
-        $('#row_'+i).hide();
-        removeRequiredClass('pan_card_'+i);
-        removeRequiredClass('colour_photo_'+i);
-        removeRequiredClass('address_proof_type_'+i);
-        removeRequiredClass('address_proof_'+i);
+    for (var i = 10; i > displayCount; i--) {
+        $('#row_' + i).hide();
+        removeRequiredClass('pan_card_' + i);
+        removeRequiredClass('color_photo_' + i);
+        removeRequiredClass('address_proof_type_' + i);
+        removeRequiredClass('address_proof_' + i);
     }
-    for(var i = 1; i <= displayCount; i++) {
-        $('#row_'+i).show();
-        addRequiredClass('pan_card_'+i);
-        addRequiredClass('colour_photo_'+i);
-        addRequiredClass('address_proof_type_'+i);
-        addRequiredClass('address_proof_'+i);
+    for (var i = 1; i <= displayCount; i++) {
+        $('#row_' + i).show();
+        addRequiredClass('pan_card_' + i);
+        addRequiredClass('color_photo_' + i);
+        addRequiredClass('address_proof_type_' + i);
+        addRequiredClass('address_proof_' + i);
     }
 }
 
@@ -250,9 +328,9 @@ function removeRequiredClass(elementId) {
     $('#' + elementId).removeClass('required');
 }
 
-function bindNumberEvents(elementId){
+function bindNumberEvents(elementId) {
     //prevent arrow key events when focussed on a number input
-    document.getElementById(elementId).addEventListener('keydown', function(e) {
+    document.getElementById(elementId).addEventListener('keydown', function (e) {
         if (e.which === 38 || e.which === 40) {
             e.preventDefault();
         }
@@ -267,18 +345,18 @@ function clearFields() {
         .prop('selected', false);
 }
 
-(function($) {
-    $.fn.serializefiles = function() {
+(function ($) {
+    $.fn.serializefiles = function () {
         var obj = $(this);
         /* ADD FILE TO PARAM AJAX */
         var formData = new FormData();
-        $.each($(obj).find("input[type='file']"), function(i, tag) {
-            $.each($(tag)[0].files, function(i, file) {
+        $.each($(obj).find("input[type='file']"), function (i, tag) {
+            $.each($(tag)[0].files, function (i, file) {
                 formData.append(tag.name, file);
             });
         });
         var params = $(obj).serializeArray();
-        $.each(params, function(i, val) {
+        $.each(params, function (i, val) {
             formData.append(val.name, val.value);
         });
         return formData;
