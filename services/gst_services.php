@@ -72,6 +72,7 @@ function processGst()
     $gstFormElements['firm_registration_certificate'] = copyFileAndGetName('firm_registration_certificate', GST_FIRM_REG_CERT_PATH, 'firm_registration_certificate');
     $gstFormElements['board_resolution_format'] = copyFileAndGetName('board_resolution_format', GST_BOARD_RES_FORMAT_PATH, 'board_resolution_format');
     $gstFormElements['company_pan'] = copyFileAndGetName('company_pan', GST_COMPANY_PAN_PATH, 'company_pan');
+    $gstFormElements['application_date'] = date('d/m/Y');
 
     if ($_POST['registration_type'] === 'Proprietorship/Ownership Firm') {
         $serviceId = GST_PROPRITORSHIP;

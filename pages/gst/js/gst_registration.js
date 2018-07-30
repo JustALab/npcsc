@@ -95,6 +95,13 @@ $(function () {
     $('#company_pan').on('change', function () {
         validateFilesByElementId("company_pan", 1000);
     });
+
+    $('#gst_table').DataTable();
+
+    $('#gst_status').on('change', function() {
+        loadPage();
+    });
+
 });
 
 function validateFilesByElementId(id, maxSize) {
@@ -362,3 +369,20 @@ function clearFields() {
         return formData;
     };
 })(jQuery);
+
+function loadPage() {
+    var status = $('#gst_status').val();
+    var url = 'view_gst_registration_list.php?status=';
+    switch (status) {
+        case 'Pending':
+            url += 'Pending';
+            break;
+        case 'Approved':
+            url += 'Approved';
+            break;
+        case 'Denied':
+            url += 'Denied';
+            break;
+    }
+    this.document.location.href = url;
+}

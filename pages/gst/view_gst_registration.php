@@ -43,34 +43,97 @@
           <input type="text" class="form-control" value="<?php echo $row['registration_type']; ?>" disabled>
         </div>
       </div>
+    <?php if($row['registration_type'] !== 'Proprietorship/Ownership Firm') { ?>
       <div class="col-sm-6">
         <div class="form-group">
-          <label id="no_of_people_label">Number of Partners/ Directors</label>
+          <label>Number of Partners/ Directors</label>
           <input type="text" class="form-control" value="<?php echo $row['no_of_people']; ?>" disabled>
         </div>
       </div>
+    <?php } ?>
       <div class="col-sm-6">
         <div class="form-group">
-          <label id="authorised_person_name_label">Name of the Authorised Partner</label>
+          <?php if($row['registration_type'] === 'Proprietorship/Ownership Firm') { ?>
+            <label>Name of the Proprietor</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Partnership Firm') { ?>
+            <label>Name of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Limited Liability Partnership') { ?>
+            <label>Name of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Private Limited Company') { ?>
+            <label>Name of the Authorised Director</label>
+          <?php } ?>
           <input type="text" class="form-control" value="<?php echo $row['authorised_person_name']; ?>" disabled>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
-          <label id="authorised_person_phone_label">Phone Number of the Authorised Partner</label>
+          <?php if($row['registration_type'] === 'Proprietorship/Ownership Firm') { ?>
+            <label>Phone number of the Proprietor</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Partnership Firm') { ?>
+            <label>Phone number of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Limited Liability Partnership') { ?>
+            <label>Phone number of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Private Limited Company') { ?>
+            <label>Phone number of the Authorised Director</label>
+          <?php } ?>
           <input type="text" class="form-control" value="<?php echo $row['authorised_person_phone']; ?>" disabled>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
-          <label id="authorised_person_email_label">E-mail of the Authorised Partner</label>
+        <?php if($row['registration_type'] === 'Proprietorship/Ownership Firm') { ?>
+            <label>E-mail of the Proprietor</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Partnership Firm') { ?>
+            <label>E-mail of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Limited Liability Partnership') { ?>
+            <label>E-mail of the Authorised Partner</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Private Limited Company') { ?>
+            <label>E-mail of the Authorised Director</label>
+          <?php } ?>
           <input type="text" class="form-control" value="<?php echo $row['authorised_person_email']; ?>" disabled>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
-          <label id="business_name_label">Name of the Partnership Firm</label>
+          <?php if($row['registration_type'] === 'Proprietorship/Ownership Firm') { ?>
+            <label>Name of the Proprietorship Concern</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Partnership Firm') { ?>
+            <label>Name of the Partnership Firm</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Limited Liability Partnership') { ?>
+            <label>Name of the Partnership Firm</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Private Limited Company') { ?>
+            <label>Name of the Company</label>
+          <?php } ?>
           <input type="text" class="form-control" value="<?php echo $row['business_name']; ?>" disabled>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <?php if($row['registration_type'] === 'Proprietorship/Ownership Firm') { ?>
+            <label>Address of the Proprietorship Concern</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Partnership Firm') { ?>
+            <label>Address of the Partnership Firm</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Limited Liability Partnership') { ?>
+            <label>Address of the Partnership Firm</label>
+          <?php } ?>
+          <?php if($row['registration_type'] === 'Private Limited Company') { ?>
+            <label>Address of the Company</label>
+          <?php } ?>
+          <textarea class="form-control" id="business_address" name="business_address" disabled><?php echo $row['business_address']; ?></textarea>
         </div>
       </div>
       <div class="col-sm-6">
@@ -82,7 +145,7 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label id="business_description">Brief Description of the Business / Service</label>
-          <textarea class="form-control" id="business_description" name="business_description" disabled></textarea>
+          <textarea class="form-control" id="business_description" name="business_description" disabled><?php echo $row['business_description']; ?></textarea>
         </div>
       </div>
       <div>
@@ -152,6 +215,177 @@
             ?>
           </tbody>
         </table>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>Address Proof of Place of Business</label>
+            <input type="text" class="form-control" value="<?php echo $row['business_place_proof_type']; ?>" disabled>
+          </div>
+        </div>
+        <?php if($row['property_tax_receipt'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Property Tax Payment Receipt</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['property_tax_receipt']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_PROPERTY_TAX_RCPT_PATH.$row['property_tax_receipt']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['rental_agreement'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Rental Agreement</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['rental_agreement']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_RENTAL_AGREEMENT_PATH.$row['rental_agreement']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['eb_card'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>EB Card</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['eb_card']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_EB_CARD_PATH.$row['eb_card']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['bank_document'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Bank Statement / Passbook Address Page / Cancelled Cheque Leaf</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['bank_document']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_BANK_DOC_PATH.$row['bank_document']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['tin_tax_certificate'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>TIN Certificate / Service Tax Certificate of existing business</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['tin_tax_certificate']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_TIN_TAX_CERT_PATH.$row['tin_tax_certificate']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['certificate_incorporation'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Certificate of Incorporation</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['certificate_incorporation']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_CERT_OF_INC_PATH.$row['certificate_incorporation']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['authorisation_letter'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Authorisation Letter in Specific Format (to be signed by minimum 2 partners)</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['authorisation_letter']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_AUTH_LETTER_PATH.$row['authorisation_letter']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['partnership_deed'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Partnership Deed </label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['partnership_deed']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_PARTNERSHIP_DEEP_PATH.$row['partnership_deed']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['firm_registration_certificate'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Firm Registration Certificate</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['firm_registration_certificate']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_FIRM_REG_CERT_PATH.$row['firm_registration_certificate']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['board_resolution_format'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>Board Resolution in Specific Format (to be signed by minimum 2 directors)</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['board_resolution_format']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_FIRM_REG_CERT_PATH.$row['board_resolution_format']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
+        <?php if($row['company_pan'] !== '') { ?>
+          <div class="col-sm-8">
+            <div class="form-group">
+              <label>PAN of the Company</label><br>
+              <div class='row'>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <?php echo $row['company_pan']; ?>
+                </div>
+                <div class='col-sm-12 col-md-6 col-lg-6'>
+                  <a href='<?php echo HOMEURL."/services/".GST_FIRM_REG_CERT_PATH.$row['company_pan']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php } ?>
       </div>
     </div>
 </section>

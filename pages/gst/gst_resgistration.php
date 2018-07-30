@@ -321,7 +321,7 @@ include '../../services/constants.php';
                <div class="row" id="tin_tax_certificate_row">
                   <div class="col-sm-6">
                      <div class="form-group">
-                        <label id="tin_tax_certificate_label">TIN Certificate / Service Tax Certificate of existing business - if any</label>
+                        <label id="tin_tax_certificate_label">TIN Certificate / Service Tax Certificate of existing business</label>
                         <input type="file" class="required" id="tin_tax_certificate" name="tin_tax_certificate" accept=".jpg,.JPG,.JPEG,.jpeg,.pdf,.PDF">
                      </div>
                   </div>
@@ -353,7 +353,7 @@ include '../../services/constants.php';
                <div class="row" id="firm_registration_certificate_row">
                   <div class="col-sm-6">
                      <div class="form-group">
-                        <label id="firm_registration_certificate_label">Firm Registration Certificate - if any </label><br>
+                        <label id="firm_registration_certificate_label">Firm Registration Certificate</label><br>
                         <input type="file" class="required" id="firm_registration_certificate" name="firm_registration_certificate" accept=".jpg,.JPG,.JPEG,.jpeg,.pdf,.PDF">
                      </div>
                   </div>
@@ -412,7 +412,7 @@ include '../../services/constants.php';
 <?php
 include '../footer_imports.php';
 ?>
-<script type="text/javascript" src="js/gst_resgistration.js"></script>
+<script type="text/javascript" src="js/gst_registration.js"></script>
 <?php
 include '../footer.php';
 ?>
