@@ -24,7 +24,12 @@ INSERT INTO `services` (`service_id`, `service_name`) VALUES
 (2, 'Passport Application - Fresh/Reissue - 36 Pages'),
 (3, 'Passport Application - Fresh/Reissue - 60 Pages'),
 (4, 'Passport Application - Minors - Fresh/Reissue - 36 Pages'),
-(5, 'Passport Application - Tatkal');
+(5, 'Passport Application - Tatkal'),
+(6, 'GST - Proprietorship/Ownership Firm'),
+(7, 'GST - Partnership Firm'),
+(8, 'GST - Limited Liability Partnership'),
+(9, 'GST - Private Limited Company');
+
 
 --
 -- Dumping data for table `price_config`
@@ -35,4 +40,8 @@ INSERT INTO `price_config` (`price_config_id`, `service_id`, `amount`) VALUES
 (2, 2, '1500'),
 (3, 3, '2000'),
 (4, 4, '1000'),
-(5, 5, '2000');
+(5, 5, '2200'),
+(6, 6, '710'),
+(7, 7, '940'),
+(8, 8, '950'),
+(9, 9, '2400');

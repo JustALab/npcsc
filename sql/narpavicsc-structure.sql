@@ -349,3 +349,73 @@ ALTER TABLE `wallet_requests`
 --
 ALTER TABLE `wallet_transactions`
   ADD CONSTRAINT `wallet_transactions_ibfk_1` FOREIGN KEY (`wallet_id`) REFERENCES `wallet` (`wallet_id`);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gst_registrations`
+--
+
+CREATE TABLE `gst_registrations` (
+  `application_no` int(11) NOT NULL,
+  `wallet_transaction_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` varchar(20) NOT NULL DEFAULT 'Pending',
+  `registration_type` varchar(50) NOT NULL,
+  `no_of_people` int(11) DEFAULT NULL,
+  `authorised_person_name` varchar(100) NOT NULL,
+  `authorised_person_phone` varchar(15) NOT NULL,
+  `authorised_person_email` varchar(50) NOT NULL,
+  `business_name` varchar(50) NOT NULL,
+  `business_address` text NOT NULL,
+  `business_nature` varchar(100) NOT NULL,
+  `business_description` text NOT NULL,
+  `business_place_proof_type` varchar(30) NOT NULL,
+  `property_tax_receipt` varchar(50) DEFAULT NULL,
+  `rental_agreement` varchar(50) DEFAULT NULL,
+  `eb_card` varchar(100) NOT NULL,
+  `bank_document` varchar(100) NOT NULL,
+  `tin_tax_certificate` varchar(100) NOT NULL,
+  `certificate_incorporation` varchar(100) DEFAULT NULL,
+  `authorisation_letter` varchar(100) DEFAULT NULL,
+  `partnership_deed` varchar(100) DEFAULT NULL,
+  `firm_registration_certificate` varchar(100) DEFAULT NULL,
+  `board_resolution_format` varchar(100) NOT NULL,
+  `company_pan` varchar(100) NOT NULL,
+  `pan_card` varchar(500) NOT NULL,
+  `color_photo` varchar(500) NOT NULL,
+  `address_proof_type` varchar(500) NOT NULL,
+  `address_proof` varchar(500) NOT NULL,
+  `receipt_file_name` varchar(200) DEFAULT NULL,
+  `application_date` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `gst_registrations`
+--
+ALTER TABLE `gst_registrations`
+  ADD PRIMARY KEY (`application_no`),
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `gst_registrations`
+--
+ALTER TABLE `gst_registrations`
+  MODIFY `application_no` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `gst_registrations`
+--
+ALTER TABLE `gst_registrations`
+  ADD CONSTRAINT `gst_registrations_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
