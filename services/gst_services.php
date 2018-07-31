@@ -20,6 +20,12 @@ switch ($action) {
     case 'process_gst':
         $finaloutput = processGst();
         break;
+    case 'update_status':
+        $finaloutput = updateStatus();
+        break;
+    case 'upload_receipt':
+        $finaloutput = uploadReceipt();
+        break;
     default:
         $finaloutput = array("infocode" => "INVALIDACTION", "message" => "Irrelevant action");
 }
@@ -29,7 +35,7 @@ echo json_encode($finaloutput);
 function processGst()
 {
     global $db, $form;
-    $gstFormElements = array('registration_type' => 'registration_type', 'authorised_person_name' => 'authorised_person_name', 'authorised_person_phone' => 'authorised_person_phone', 'authorised_person_email' => 'authorised_person_email', 'business_name' => 'business_name', 'business_address' => 'business_address', 'business_nature' => 'business_nature', 'business_description' => 'business_description', 'business_place_proof_type' => 'business_place_proof_type');
+    $gstFormElements = array('registration_type' => 'registration_type', 'authorised_person_name' => 'authorised_person_name', 'authorised_person_phone' => 'authorised_person_phone', 'authorised_person_email' => 'authorised_person_email', 'business_name' => 'business_name', 'business_address' => 'business_address', 'business_nature' => 'business_nature', 'business_description' => 'business_description', 'business_place_proof_type' => 'business_place_proof_type', 'user_id' => 'user_id');
     $gstFormElements = $form->getFormValues($gstFormElements, $_POST);
 
     $time = date('YmdHis');
@@ -106,9 +112,9 @@ function processGst()
                 $transactionResult = addWalletTransaction($walletId, $description, $userWalletBalance, TRANSACTION_DEBIT, $servicePrice, $walletUpdateResult['new_balance']);
                 updateTransactionId(TABLE_GST_APP, $lastInsertId, $transactionResult['last_insert_id']);
             }
-            return array("status" => "success", "message" => "New PAN application request submitted successfully.", 'application_no' => $lastInsertId);
+            return array("status" => "success", "message" => "New GST application request submitted successfully.", 'application_no' => $lastInsertId);
         } else {
-            return array("status" => "failure", "message" => "PAN application submission failure.");
+            return array("status" => "failure", "message" => "GST application submission failure.");
         }
     } else {
         return array("status" => "failure", "message" => "Wallet balance is low!! Application not submitted. Please add money to your wallet.");
@@ -127,4 +133,42 @@ function copyFileAndGetName($formElementName, $fileCopyPath, $typeName)
     } else {
         return '';
     }
+}
+
+function updateStatus() {
+    global $db;
+    $applicationNo = $_POST['application_no'];
+    $newStatus = $_POST['new_status'];
+    $result = $db->updateOperation(TABLE_GST_APP, array('status'=>$newStatus), array('application_no'=>$applicationNo));
+    // file_put_contents("formlog.log", print_r( $result, true ));
+    if($result['status'] == 'success'){
+        if($newStatus == STATUS_DENIED) {
+            $description = 'Amount reversed due to rejection of GST Application.';
+            reverseWalletTransaction(getWalletTransactionId(TABLE_GST_APP, $applicationNo), $description);
+        }
+        return array("status"=>"success","message"=>"GST Application updated successfully.");
+    }
+    return array("status"=>"failure","message"=>"GST Application update failure.");
+}
+
+function uploadReceipt(){
+    global $db;
+    $applicationNo = $_POST['application_no'];
+    $result['status'] = '';
+    if(isset($_FILES['receipt_document']['name'])){
+        $fileExtenstion = explode('.', $_FILES['receipt_document']['name']);
+        $documentFname = $applicationNo .'_gst_receipt';
+        $documentPath = RECEIPTS_PATH.$documentFname.'.'.$fileExtenstion[1];
+        $receiptFileName = $documentFname.'.'.$fileExtenstion[1];
+        if(!move_uploaded_file($_FILES['receipt_document']['tmp_name'], $documentPath)){
+            $output = array("infocode" => "FILEUPLOADERR", "message" => "Unable to upload document, please try again!");
+        }
+        $result = $db->updateOperation(TABLE_GST_APP, array('receipt_file_name'=>$receiptFileName), array('application_no'=>$applicationNo));
+            // file_put_contents("formlog.log", print_r( $result, true ));
+        if($result['status'] == 'success'){
+            return array("status"=>"success","message"=>"Receipt uploaded successfully.");
+        }
+        return array("status"=>"failure","message"=>"Receipt upload failure.");
+    }
+    return array("status"=>"failure","message"=>"Please attach the receipt.");
 }

@@ -4,12 +4,12 @@ $(function () {
         'placeholder': 'dd/mm/yyyy',
     });
 
-    // $('#gst_registration_form').validate({
-    //     errorClass: "my-error-class",
-    //     rules: {
+    $('#gst_registration_form').validate({
+        errorClass: "my-error-class",
+        rules: {
 
-    //     }
-    // });
+        }
+    });
 
     $('#resgitration_type_fields_div').hide();
     $('#registration_type').on('change', function () {
@@ -121,28 +121,28 @@ function validateFilesByElementId(id, maxSize) {
 
 function processGstApplication() {
     var message = 'Are you sure you want to process this GST Registration?';
-    //if ($('#gst_registration_form').valid()) {
-    bootbox.confirm({
-        message: message,
-        buttons: {
-            confirm: {
-                label: 'Yes',
-                className: 'btn-success'
+    if ($('#gst_registration_form').valid()) {
+        bootbox.confirm({
+            message: message,
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
             },
-            cancel: {
-                label: 'No',
-                className: 'btn-danger'
+            callback: function (result) {
+                if (result) {
+                    $('#apply_gst_controls_div').hide();
+                    $('#loading_spinner').show();
+                    confirmProcessGstApplication();
+                }
             }
-        },
-        callback: function (result) {
-            if (result) {
-                $('#apply_gst_controls_div').hide();
-                $('#loading_spinner').show();
-                confirmProcessGstApplication();
-            }
-        }
-    });
-    // }
+        });
+    }
 }
 
 function confirmProcessGstApplication() {

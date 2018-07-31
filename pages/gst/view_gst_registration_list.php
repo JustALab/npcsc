@@ -96,7 +96,7 @@
 <?php 
   include '../footer_imports.php';
 ?>  
-<script type="text/javascript" src="js/gst_registration_admin.js">
+<script type="text/javascript" src="js/gst_registration.js">
 </script>
 <?php 
   include '../footer.php';

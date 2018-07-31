@@ -386,8 +386,52 @@
             </div>
           </div>
         <?php } ?>
+        <?php if($row['status'] == STATUS_PENDING){ ?>
+        <!-- <div class="card-footer"> -->
+        <div id="approve_reject_row" class="row">
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-danger" onclick="updateGstStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_DENIED.'\''; ?>);">Deny</button>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-4">
+            <button class="btn btn-block btn-success" onclick="updateGstStatus(<?php echo $applicationNo; ?>, <?php echo '\''.STATUS_APPROVED.'\''; ?>);">Approve</button>
+          </div>
+        </div>
+        <!-- </div> -->
+        <?php } ?>
       </div>
     </div>
+  </div>
+  <?php if($row['status'] == STATUS_APPROVED) { ?>
+  <form id="receipt_form" name="receipt_form">
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Receipt</h3>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                  <!-- <label for="php">Receipt</label> -->
+                  <div class="input-group">
+                    <input type="file" class="required" id="receipt_document" name="receipt_document" accept=".pdf,.PDF">
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <button class="btn btn-success btn-flat" onclick="uploadReceipt();">Upload</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <input type="hidden" name="application_no" value="<?php echo $applicationNo; ?>">
+  <input type="hidden" name="action" value="upload_receipt">
+  </form>
+  <?php } ?>
 </section>
 <!-- /.content -->
 </div>
@@ -395,7 +439,7 @@
 <?php
   include '../footer_imports.php';
   ?>
-<script type="text/javascript" src="js/application_passport.js"></script>
+<script type="text/javascript" src="js/gst_registration_admin.js"></script>
 <?php
   include '../footer.php';
   ?>

@@ -8,6 +8,43 @@ $(function () {
 
 });
 
+function updateGstStatus(applicationNo, newStatus) {
+    bootbox.confirm({
+        message: "Are you sure want to update the status of this GST Application?",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            if(result){
+                confirmUpdateGstStatus(applicationNo, newStatus);
+            }
+        }
+    });
+}
+
+function confirmUpdateGstStatus(applicationNo, newStatus) {
+    var data = 'application_no=' + applicationNo + '&new_status=' + newStatus + '&action=update_status';
+    $.ajax({
+        url: servicesUrl + 'gst_services.php',
+        type: 'POST',
+        data:  data,
+        dataType: 'json',
+        success: function(result){
+            location.reload();
+        },
+        error: function(){
+            bootbox.alert("failure");
+        }           
+    });
+}
+
 (function ($) {
     $.fn.serializefiles = function () {
         var obj = $(this);
@@ -41,4 +78,26 @@ function loadPage() {
             break;
     }
     this.document.location.href = url;
+}
+
+function uploadReceipt(){
+    if($('#receipt_form').valid()){
+        var data = $('#receipt_form').serializefiles();
+        $.ajax({
+            url: servicesUrl + 'gst_services.php',
+            type: "POST",
+            data: data,
+            processData: false,
+            contentType: false,
+            dataType: 'json',
+            success: function(result){
+                bootbox.alert('Receipt uploaded successfully.',function() {
+                    location.reload();
+                });
+            },
+            error: function(){
+                bootbox.alert("failure");
+            }           
+        });
+    }
 }

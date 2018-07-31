@@ -62,6 +62,8 @@
           <tbody>
             <?php
                 $query = 'SELECT gst.application_no, gst.application_date, gst.registration_type, gst.business_name, gst.authorised_person_name, gst.authorised_person_phone, gst.authorised_person_email, usr.user_id, usr.name FROM '.TABLE_GST_APP.' gst LEFT JOIN '.TABLE_USERS.' usr ON usr.user_id=gst.user_id WHERE gst.status="'.$status.'" ORDER BY gst.application_no DESC';
+                // file_put_contents("formlog.log", print_r( $query, true ));
+
                 $result = mysqli_query($dbc, $query);
                 if(mysqli_num_rows($result) > 0){
                   $rowCount = 0;
@@ -100,7 +102,7 @@
 <?php 
   include '../footer_imports.php';
 ?>  
-<script type="text/javascript" src="js/gst_registration.js">
+<script type="text/javascript" src="js/gst_registration_admin.js">
 </script>
 <?php 
   include '../footer.php';
