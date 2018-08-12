@@ -15,8 +15,12 @@
   $approvedPassportAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_PASSPORT_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';
   $approvedPassportAppResult = mysqli_query($dbc, $approvedPassportAppQuery);
   $approvedPassportAppCount = mysqli_fetch_assoc($approvedPassportAppResult)['count'];
-  
-  ?>
+
+  $approvedGstAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_GST_APP.' WHERE status="'.STATUS_APPROVED.'" AND user_id="'.$_SESSION['user_id'].'"';
+  $approvedGstAppResult =  mysqli_query($dbc, $approvedGstAppQuery);
+  $approvedGstAppCount = mysqli_fetch_assoc($approvedGstAppResult)['count'];
+
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Main content -->
@@ -98,6 +102,21 @@
         </div>
       </div>
 
+      <div class="col-lg-3 col-6">
+        <!-- small card -->
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>GST</h3>
+            <p>Total GST registrations: <?php echo $approvedGstAppCount; ?></p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-folder-open-o"></i>
+          </div>
+          <a href="<?php echo HOMEURL; ?>/pages/gst/gst_resgistration.php" class="small-box-footer" onclick="">
+            Apply now
+          <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
 
       <div class="col-lg-3 col-6">
         <!-- small card -->

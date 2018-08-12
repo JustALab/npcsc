@@ -380,7 +380,7 @@
                   <?php echo $row['company_pan']; ?>
                 </div>
                 <div class='col-sm-12 col-md-6 col-lg-6'>
-                  <a href='<?php echo HOMEURL."/services/".GST_FIRM_REG_CERT_PATH.$row['company_pan']; ?>' download><button class='btn btn-primary'>Download</button></a>
+                  <a href='<?php echo HOMEURL."/services/".GST_COMPANY_PAN_PATH.$row['company_pan']; ?>' download><button class='btn btn-primary'>Download</button></a>
                 </div>
               </div>
             </div>

@@ -19,6 +19,10 @@
   $pendingPassportAppResult = mysqli_query($dbc, $pendingPassportAppQuery);
   $pendingPassportAppCount = mysqli_fetch_assoc($pendingPassportAppResult)['count'];
 
+  $pendingGstAppQuery = 'SELECT count(*) as "count" FROM '.TABLE_GST_APP.' WHERE status="'.STATUS_PENDING.'" AND user_id="'.$_SESSION['user_id'].'"';
+  $pendingGstAppResult = mysqli_query($dbc, $pendingGstAppQuery);
+  $pendingGstAppCount = mysqli_fetch_assoc($pendingGstAppResult)['count'];
+
   ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -90,6 +94,22 @@
             <i class="fa fa-address-book-o"></i>
           </div>
           <a href="<?php echo HOMEURL.'/pages/passport/view_passport_list.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
+            More info <i class="fa fa-arrow-circle-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-4 col-6">
+        <!-- small card -->
+        <div class="small-box">
+          <div class="inner">
+            <h3><?php echo $pendingGstAppCount; ?></h3>
+
+            <p>Pending GST Applications</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-folder-open-o"></i>
+          </div>
+          <a style='color: black' href="<?php echo HOMEURL.'/pages/gst/view_gst_registration_list.php?status='.STATUS_PENDING; ?>" class="small-box-footer">
             More info <i class="fa fa-arrow-circle-right"></i>
           </a>
         </div>

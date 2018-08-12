@@ -382,10 +382,10 @@ CREATE TABLE `gst_registrations` (
   `firm_registration_certificate` varchar(100) DEFAULT NULL,
   `board_resolution_format` varchar(100) NOT NULL,
   `company_pan` varchar(100) NOT NULL,
-  `pan_card` varchar(500) NOT NULL,
-  `color_photo` varchar(500) NOT NULL,
+  `pan_card` varchar(1500) NOT NULL,
+  `color_photo` varchar(1500) NOT NULL,
   `address_proof_type` varchar(500) NOT NULL,
-  `address_proof` varchar(500) NOT NULL,
+  `address_proof` varchar(1500) NOT NULL,
   `receipt_file_name` varchar(200) DEFAULT NULL,
   `application_date` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
